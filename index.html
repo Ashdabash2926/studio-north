@@ -179,7 +179,7 @@
            HERO
         ═══════════════════════════════ */
         .hero {
-            min-height: 100vh;
+            min-height: 100svh; /* svh = small viewport height, excludes browser chrome on mobile */
             padding-top: 60px;
             display: flex;
             align-items: center;
@@ -187,7 +187,6 @@
             background-color: var(--bg);
             background-image: radial-gradient(circle, rgba(0,0,0,0.055) 1px, transparent 1px);
             background-size: 26px 26px;
-            overflow: hidden;
         }
 
         .hero-inner {
@@ -910,10 +909,17 @@
             .nav-links, .nav-cta { display: none; }
             .nav-burger { display: flex; }
 
+            /* On mobile: don't flex-centre the hero — let it flow from the top */
+            .hero {
+                display: block;
+                min-height: unset;
+                padding-top: 60px;
+            }
+
             .hero-inner {
                 grid-template-columns: 1fr;
                 gap: 0;
-                padding: 56px 24px 48px;
+                padding: 52px 24px 52px;
                 text-align: center;
             }
 
