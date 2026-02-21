@@ -176,12 +176,22 @@
             opacity: 1;
         }
 
+        :root {
+            --nb-scale: 1;
+            --nb-ty: -2100px;
+        }
+
+        @keyframes nb-page-scroll {
+            0%   { transform: scale(var(--nb-scale)) translateY(0); }
+            100% { transform: scale(var(--nb-scale)) translateY(var(--nb-ty)); }
+        }
+
         .nb-slide iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 1440px;
-            height: 900px;
+            height: 3000px;
             transform-origin: top left;
             border: none;
             pointer-events: none;
@@ -208,7 +218,7 @@
         /* ── Main content (bottom-left) ── */
         .nb-content {
             position: absolute;
-            bottom: 230px;
+            bottom: 80px;
             left: 48px;
             z-index: 10;
             max-width: 520px;
@@ -279,105 +289,18 @@
 
         .nb-btn-info:hover { background: rgba(109,109,110,0.9); }
 
-        /* ── Thumbnail row (bottom) ── */
-        .nb-row {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 10;
-            padding: 0 48px 28px;
-        }
-
-        .nb-row-label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 10px;
-            letter-spacing: 0.05em;
-        }
-
-        .nb-thumbs-outer {
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .nb-thumbs-track {
-            display: flex;
-            animation: nb-scroll 38s linear infinite;
-            will-change: transform;
-        }
-
-        .nb-thumbs-track:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes nb-scroll {
-            0%   { transform: translateX(0); }
-            100% { transform: translateX(-2052px); } /* 9 × 228px */
-        }
-
-        .nb-thumb {
-            flex-shrink: 0;
-            width: 220px;
-            height: 132px;
-            margin-right: 8px;
-            border-radius: 6px;
-            overflow: hidden;
-            cursor: pointer;
-            position: relative;
-            border: 2px solid transparent;
-            transition: border-color 0.2s, transform 0.25s;
-        }
-
-        .nb-thumb:hover {
-            transform: scale(1.06) translateY(-3px);
-        }
-
-        .nb-thumb.nb-active {
-            border-color: rgba(255,255,255,0.9);
-        }
-
-        .nb-thumb iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 1440px;
-            height: 900px;
-            transform: scale(0.1528); /* 220/1440 */
-            transform-origin: top left;
-            border: none;
-            pointer-events: none;
-        }
-
-        .nb-thumb-label {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 20px 8px 6px;
-            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-            font-size: 9px;
-            color: rgba(255,255,255,0.85);
-            font-weight: 500;
-            letter-spacing: 0.03em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* Progress bar under active thumb */
-        .nb-thumb.nb-active::after {
-            content: '';
+        /* Progress bar at bottom of hero (auto-advance indicator) */
+        .nb-progress-bar {
             position: absolute;
             bottom: 0;
             left: 0;
             height: 3px;
-            background: #e50914;
-            animation: nb-progress 8s linear;
+            background: rgba(255,255,255,0.7);
+            z-index: 10;
+            animation: nb-bar 18s linear forwards;
         }
 
-        @keyframes nb-progress {
+        @keyframes nb-bar {
             from { width: 0%; }
             to   { width: 100%; }
         }
@@ -464,91 +387,8 @@
             </div>
         </div>
 
-        <!-- ── Thumbnail strip (bottom) ── -->
-        <div class="nb-row">
-            <p class="nb-row-label">Our Work ›</p>
-            <div class="nb-thumbs-outer">
-                <div class="nb-thumbs-track" id="nbThumbsTrack">
-
-                    <!-- Set 1 -->
-                    <div class="nb-thumb nb-active" data-idx="0">
-                        <iframe src="https://ashdabash2926.github.io/KandyKrushTemplate/" loading="lazy" scrolling="no" title="Kandy Krush thumb"></iframe>
-                        <div class="nb-thumb-label">Kandy Krush</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="1">
-                        <iframe src="https://ashdabash2926.github.io/sacred-ember/sauna2.html" loading="lazy" scrolling="no" title="Sacred Ember thumb"></iframe>
-                        <div class="nb-thumb-label">Sacred Ember</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="2">
-                        <iframe src="https://ashdabash2926.github.io/coffee-shop/" loading="lazy" scrolling="no" title="Coffee Lab thumb"></iframe>
-                        <div class="nb-thumb-label">Artisan Coffee Lab</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="3">
-                        <iframe src="https://ashdabash2926.github.io/blade-co/" loading="lazy" scrolling="no" title="Blade thumb"></iframe>
-                        <div class="nb-thumb-label">Blade & Co.</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="4">
-                        <iframe src="https://ashdabash2926.github.io/stone-table/" loading="lazy" scrolling="no" title="Stone Table thumb"></iframe>
-                        <div class="nb-thumb-label">The Stone Table</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="5">
-                        <iframe src="https://ashdabash2926.github.io/peak-form/" loading="lazy" scrolling="no" title="Peak Form thumb"></iframe>
-                        <div class="nb-thumb-label">Peak Form</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="6">
-                        <iframe src="https://ashdabash2926.github.io/still-strong/" loading="lazy" scrolling="no" title="Still & Strong thumb"></iframe>
-                        <div class="nb-thumb-label">Still & Strong</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="7">
-                        <iframe src="https://ashdabash2926.github.io/heather-lane-therapy/" loading="lazy" scrolling="no" title="Heather Lane thumb"></iframe>
-                        <div class="nb-thumb-label">Heather Lane Therapy</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="8">
-                        <iframe src="https://ashdabash2926.github.io/solace-massage/" loading="lazy" scrolling="no" title="Solace thumb"></iframe>
-                        <div class="nb-thumb-label">Solace</div>
-                    </div>
-
-                    <!-- Set 2 (loop duplicate) -->
-                    <div class="nb-thumb nb-active" data-idx="0" aria-hidden="true">
-                        <iframe src="https://ashdabash2926.github.io/KandyKrushTemplate/" loading="lazy" scrolling="no" title="Kandy Krush thumb 2"></iframe>
-                        <div class="nb-thumb-label">Kandy Krush</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="1" aria-hidden="true">
-                        <iframe src="https://ashdabash2926.github.io/sacred-ember/sauna2.html" loading="lazy" scrolling="no" title="Sacred Ember thumb 2"></iframe>
-                        <div class="nb-thumb-label">Sacred Ember</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="2" aria-hidden="true">
-                        <iframe src="https://ashdabash2926.github.io/coffee-shop/" loading="lazy" scrolling="no" title="Coffee Lab thumb 2"></iframe>
-                        <div class="nb-thumb-label">Artisan Coffee Lab</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="3" aria-hidden="true">
-                        <iframe src="https://ashdabash2926.github.io/blade-co/" loading="lazy" scrolling="no" title="Blade thumb 2"></iframe>
-                        <div class="nb-thumb-label">Blade & Co.</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="4" aria-hidden="true">
-                        <iframe src="https://ashdabash2926.github.io/stone-table/" loading="lazy" scrolling="no" title="Stone Table thumb 2"></iframe>
-                        <div class="nb-thumb-label">The Stone Table</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="5" aria-hidden="true">
-                        <iframe src="https://ashdabash2926.github.io/peak-form/" loading="lazy" scrolling="no" title="Peak Form thumb 2"></iframe>
-                        <div class="nb-thumb-label">Peak Form</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="6" aria-hidden="true">
-                        <iframe src="https://ashdabash2926.github.io/still-strong/" loading="lazy" scrolling="no" title="Still & Strong thumb 2"></iframe>
-                        <div class="nb-thumb-label">Still & Strong</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="7" aria-hidden="true">
-                        <iframe src="https://ashdabash2926.github.io/heather-lane-therapy/" loading="lazy" scrolling="no" title="Heather Lane thumb 2"></iframe>
-                        <div class="nb-thumb-label">Heather Lane Therapy</div>
-                    </div>
-                    <div class="nb-thumb" data-idx="8" aria-hidden="true">
-                        <iframe src="https://ashdabash2926.github.io/solace-massage/" loading="lazy" scrolling="no" title="Solace thumb 2"></iframe>
-                        <div class="nb-thumb-label">Solace</div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+        <!-- Auto-advance progress bar -->
+        <div class="nb-progress-bar" id="nbProgressBar"></div>
 
     </section>
 
@@ -1235,61 +1075,62 @@
             { title: 'Solace',                sub: 'Holistic Massage & Bodywork · Leeds',     url: 'https://ashdabash2926.github.io/solace-massage/' },
         ];
 
-        const nbSlides = document.querySelectorAll('.nb-slide');
-        const nbThumbs = document.querySelectorAll('.nb-thumb');
+        const nbSlides  = document.querySelectorAll('.nb-slide');
         const nbTitleEl = document.getElementById('nbTitle');
         const nbSubEl   = document.getElementById('nbSubtitle');
         const nbViewBtn = document.getElementById('nbViewBtn');
-        let nbIdx = 0;
+        const nbBar     = document.getElementById('nbProgressBar');
+        let nbIdx  = 0;
         let nbTimer;
 
-        function nbActivate(idx) {
-            // Crossfade background slides
-            nbSlides.forEach((s, i) => s.classList.toggle('nb-active', i === idx));
+        // Compute scale & scroll distance, set CSS vars
+        function scaleNbBg() {
+            const S = window.innerWidth / 1440;
+            const H = window.innerHeight;
+            const ty = Math.min(0, -(3000 - H / S)); // negative = scroll up
+            document.documentElement.style.setProperty('--nb-scale', S);
+            document.documentElement.style.setProperty('--nb-ty', ty + 'px');
+        }
 
-            // Fade title out, swap, fade in
+        function nbActivate(idx) {
+            // Crossfade background slides + restart scroll animation
+            nbSlides.forEach((s, i) => {
+                const isActive = i === idx;
+                s.classList.toggle('nb-active', isActive);
+                if (isActive) {
+                    const iframe = s.querySelector('iframe');
+                    iframe.style.animation = 'none';
+                    void iframe.offsetWidth; // force reflow to restart
+                    iframe.style.animation = 'nb-page-scroll 18s ease-in-out forwards';
+                }
+            });
+
+            // Fade title out → swap → fade in
             nbTitleEl.style.opacity = '0';
             nbSubEl.style.opacity   = '0';
             setTimeout(() => {
-                nbTitleEl.textContent  = nbSites[idx].title;
-                nbSubEl.textContent    = nbSites[idx].sub;
-                nbViewBtn.href         = nbSites[idx].url;
+                nbTitleEl.textContent   = nbSites[idx].title;
+                nbSubEl.textContent     = nbSites[idx].sub;
+                nbViewBtn.href          = nbSites[idx].url;
                 nbTitleEl.style.opacity = '1';
                 nbSubEl.style.opacity   = '1';
             }, 300);
 
-            // Update active thumb highlight (both sets)
-            nbThumbs.forEach(t => t.classList.toggle('nb-active', parseInt(t.dataset.idx) === idx));
+            // Restart progress bar
+            nbBar.style.animation = 'none';
+            void nbBar.offsetWidth;
+            nbBar.style.animation = 'nb-bar 18s linear forwards';
 
             nbIdx = idx;
         }
 
         function nbStartTimer() {
             clearInterval(nbTimer);
-            nbTimer = setInterval(() => nbActivate((nbIdx + 1) % nbSites.length), 8000);
+            nbTimer = setInterval(() => nbActivate((nbIdx + 1) % nbSites.length), 18000);
         }
 
-        // Thumb clicks
-        nbThumbs.forEach(t => {
-            t.addEventListener('click', () => {
-                nbActivate(parseInt(t.dataset.idx));
-                nbStartTimer();
-            });
-        });
-
-        // Scale background iframes to cover viewport
-        function scaleNbBg() {
-            const scale = Math.max(window.innerWidth / 1440, window.innerHeight / 900);
-            nbSlides.forEach(slide => {
-                const iframe = slide.querySelector('iframe');
-                if (iframe) iframe.style.transform = `scale(${scale})`;
-            });
-        }
-
-        window.addEventListener('load',   scaleNbBg);
+        window.addEventListener('load',   () => { scaleNbBg(); nbActivate(0); nbStartTimer(); });
         window.addEventListener('resize', scaleNbBg);
-
-        nbStartTimer();
         // ────────────────────────────────────────────────────────
 
         // Scale iframes to fit containers
