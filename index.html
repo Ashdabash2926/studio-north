@@ -1,75 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio North — Web Design Leeds</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:           #f9f8f6;
+            --bg-alt:       #f2f1ee;
+            --bg-card:      #ffffff;
+            --text:         #111111;
+            --text-2:       #555555;
+            --text-3:       #999999;
+            --border:       rgba(0,0,0,0.08);
+            --border-str:   rgba(0,0,0,0.13);
+            --shadow-sm:    0 1px 3px rgba(0,0,0,0.07);
+            --shadow-md:    0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+            --shadow-lg:    0 20px 60px rgba(0,0,0,0.10), 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: #0a0a0a;
-            color: #ededed;
+            background: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Nav blur */
-        .nav-blur {
+        /* ═══════════════════════════════
+           NAV
+        ═══════════════════════════════ */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(249,248,246,0.88);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            background: rgba(10, 10, 10, 0.9);
+            border-bottom: 1px solid var(--border);
         }
 
-        /* Browser mockup chrome bar */
-        .browser-chrome {
-            background: #161616;
-            padding: 10px 14px;
+        .nav-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 60px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            justify-content: space-between;
         }
 
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            flex-shrink: 0;
+        .nav-logo {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--text);
+            text-decoration: none;
         }
 
-        .dot-red   { background: #ff5f57; }
-        .dot-yellow{ background: #febc2e; }
-        .dot-green { background: #28c840; }
-
-        .url-bar {
-            flex: 1;
-            background: #0f0f0f;
-            border-radius: 4px;
-            padding: 3px 12px;
-            font-size: 11px;
-            color: #444;
-            text-align: center;
-            font-family: monospace;
-            letter-spacing: 0.2px;
-            border: 1px solid rgba(255,255,255,0.05);
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
         }
 
-        /* Iframe scaling */
-        .iframe-container {
-            position: relative;
+        .nav-links a {
+            font-size: 0.8125rem;
+            color: var(--text-2);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover { color: var(--text); }
+
+        .nav-cta {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: #fff;
+            background: var(--text);
+            padding: 8px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+
+        .nav-cta:hover { background: #333; }
+
+        /* ═══════════════════════════════
+           HERO — SPLIT LAYOUT
+        ═══════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            padding-top: 60px;
+            display: flex;
+            align-items: center;
             overflow: hidden;
-            background: #fff;
+        }
+
+        .hero-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 80px 32px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
             width: 100%;
         }
 
-        .iframe-container iframe {
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 24px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 1px;
+            background: var(--text-3);
+            flex-shrink: 0;
+        }
+
+        .hero-title {
+            font-size: clamp(2.6rem, 4.5vw, 3.75rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.035em;
+            color: var(--text);
+            margin-bottom: 22px;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--text-2);
+            line-height: 1.8;
+            max-width: 400px;
+            margin-bottom: 36px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-pri {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #fff;
+            background: var(--text);
+            padding: 12px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+
+        .btn-pri:hover { background: #333; }
+
+        .btn-sec {
+            font-size: 0.875rem;
+            color: var(--text-2);
+            border: 1px solid var(--border-str);
+            padding: 12px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .btn-sec:hover { border-color: var(--text); color: var(--text); }
+
+        /* ── Hero stacked previews ── */
+        .hero-right {
+            position: relative;
+            height: 500px;
+        }
+
+        .preview-card {
             position: absolute;
-            top: 0;
-            left: 0;
+            width: 380px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            background: #fff;
+        }
+
+        .preview-card:nth-child(1) {
+            top: 0; left: -20px;
+            transform: rotate(-5deg) translateY(10px);
+            z-index: 1;
+        }
+
+        .preview-card:nth-child(2) {
+            top: 60px; left: 45px;
+            transform: rotate(2.5deg);
+            z-index: 2;
+        }
+
+        .preview-card:nth-child(3) {
+            top: 145px; left: 100px;
+            transform: rotate(-1.5deg);
+            z-index: 3;
+        }
+
+        /* ── Browser chrome (light, macOS-style) ── */
+        .chrome-bar {
+            background: #eeecea;
+            padding: 9px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid rgba(0,0,0,0.07);
+            flex-shrink: 0;
+        }
+
+        .chrome-dots {
+            display: flex;
+            gap: 5px;
+            flex-shrink: 0;
+        }
+
+        .chrome-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+
+        .chrome-dot-r { background: #ff5f57; }
+        .chrome-dot-y { background: #febc2e; }
+        .chrome-dot-g { background: #28c840; }
+
+        .chrome-url {
+            flex: 1;
+            background: #fff;
+            border-radius: 4px;
+            padding: 3px 10px;
+            font-size: 10px;
+            color: #999;
+            font-family: monospace;
+            border: 1px solid rgba(0,0,0,0.07);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* ── Iframe wrap inside hero previews ── */
+        .preview-iframe-wrap {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .preview-iframe-wrap iframe {
+            position: absolute;
+            top: 0; left: 0;
             width: 1440px;
             height: 900px;
             transform-origin: top left;
@@ -77,28 +278,418 @@
             pointer-events: none;
         }
 
-        /* Hover overlay */
-        .mockup-overlay {
+        /* ═══════════════════════════════
+           SHARED SECTION CHROME
+        ═══════════════════════════════ */
+        .section {
+            padding: 96px 32px;
+        }
+
+        .section-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 56px;
+        }
+
+        .section-label-txt {
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--text);
+            line-height: 1.1;
+        }
+
+        .section-sub {
+            font-size: 0.9375rem;
+            color: var(--text-2);
+            margin-top: 8px;
+            font-weight: 300;
+        }
+
+        /* ═══════════════════════════════
+           PORTFOLIO GRID
+        ═══════════════════════════════ */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .mockup-card {
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: box-shadow 0.22s, transform 0.22s;
+        }
+
+        .mockup-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+
+        .port-chrome {
+            background: #f0efed;
+            padding: 9px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .port-url {
+            flex: 1;
+            background: #fff;
+            border-radius: 4px;
+            padding: 3px 10px;
+            font-size: 10px;
+            color: #999;
+            font-family: monospace;
+            border: 1px solid rgba(0,0,0,0.07);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 1440px;
+            height: 900px;
+            transform-origin: top left;
+            border: none;
+            pointer-events: none;
+        }
+
+        .iframe-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0);
+            background: rgba(0,0,0,0);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
+            z-index: 2;
         }
 
-        .mockup-card:hover .mockup-overlay {
+        .mockup-card:hover .iframe-overlay {
             opacity: 1;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0,0,0,0.42);
         }
 
-        /* Scroll reveal */
+        .view-btn {
+            background: #fff;
+            color: #111;
+            padding: 9px 18px;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            pointer-events: auto;
+            transition: background 0.15s;
+        }
+
+        .view-btn:hover { background: #f0f0f0; }
+
+        .card-info {
+            padding: 15px 16px 18px;
+            border-top: 1px solid var(--border);
+        }
+
+        .card-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .card-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .card-sub {
+            font-size: 0.75rem;
+            color: var(--text-3);
+            margin-top: 2px;
+        }
+
+        .card-tag {
+            font-size: 0.6875rem;
+            color: var(--text-3);
+            border: 1px solid var(--border-str);
+            padding: 2px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .card-desc {
+            font-size: 0.75rem;
+            color: var(--text-2);
+            line-height: 1.65;
+        }
+
+        /* ═══════════════════════════════
+           SERVICES
+        ═══════════════════════════════ */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--text-2);
+        }
+
+        .service-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .service-desc {
+            font-size: 0.875rem;
+            color: var(--text-2);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .service-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .service-list li {
+            font-size: 0.8125rem;
+            color: var(--text-2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-list li::before {
+            content: '';
+            display: block;
+            width: 16px;
+            height: 1px;
+            background: var(--text-3);
+            flex-shrink: 0;
+        }
+
+        /* ═══════════════════════════════
+           PROCESS
+        ═══════════════════════════════ */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+        }
+
+        .process-num {
+            font-size: 0.6875rem;
+            font-family: monospace;
+            color: var(--text-3);
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+
+        .process-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .process-desc {
+            font-size: 0.875rem;
+            color: var(--text-2);
+            line-height: 1.8;
+        }
+
+        /* ═══════════════════════════════
+           CONTACT
+        ═══════════════════════════════ */
+        .contact-inner {
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        .contact-chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+
+        .contact-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.8125rem;
+            color: var(--text-2);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .contact-chip:hover { border-color: var(--text); color: var(--text); }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .form-group { margin-bottom: 12px; }
+
+        .form-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-2);
+            margin-bottom: 6px;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-str);
+            border-radius: 8px;
+            padding: 11px 14px;
+            font-size: 0.875rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            transition: border-color 0.15s;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--text);
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: var(--text-3);
+        }
+
+        .form-textarea {
+            resize: none;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--text);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 13px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: background 0.15s;
+            margin-top: 4px;
+        }
+
+        .form-submit:hover { background: #333; }
+
+        /* ═══════════════════════════════
+           FOOTER
+        ═══════════════════════════════ */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 32px;
+        }
+
+        .footer-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .footer-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--text-3);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 0.75rem;
+            color: var(--text-3);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .footer-links a:hover { color: var(--text); }
+
+        /* ═══════════════════════════════
+           SCROLL REVEAL
+        ═══════════════════════════════ */
         .reveal {
             opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(20px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
         }
 
         .reveal.visible {
@@ -106,723 +697,102 @@
             transform: translateY(0);
         }
 
-        .reveal-delay-1 { transition-delay: 0.08s; }
-        .reveal-delay-2 { transition-delay: 0.16s; }
-        .reveal-delay-3 { transition-delay: 0.24s; }
+        .reveal-d1 { transition-delay: 0.07s; }
+        .reveal-d2 { transition-delay: 0.14s; }
+        .reveal-d3 { transition-delay: 0.21s; }
 
-        /* Form inputs */
-        .form-input {
-            background: #111;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #ededed;
-            transition: border-color 0.2s;
+        /* ═══════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════ */
+        @media (max-width: 900px) {
+            .hero-inner { grid-template-columns: 1fr; padding: 60px 24px; }
+            .hero-right { display: none; }
+            .portfolio-grid { grid-template-columns: 1fr 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; gap: 32px; }
         }
 
-        .form-input:focus {
-            outline: none;
-            border-color: rgba(255, 255, 255, 0.3);
+        @media (max-width: 620px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .section { padding: 72px 20px; }
         }
-
-        .form-input::placeholder {
-            color: #3a3a3a;
-        }
-
-        /* Divider line for section labels */
-        .section-label {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-label::before,
-        .section-label::after {
-            content: '';
-            height: 1px;
-            width: 40px;
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        html { scroll-behavior: smooth; }
-
-        /* ══════════════════════════════════════
-           Hero — horizontal scroll reel
-        ══════════════════════════════════════ */
-
-        :root {
-            --strip-scale: 1;
-            --strip-card-w: 1440px;
-            --strip-dist: 13104px;
-        }
-
-        .hero-reel {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
-            overflow: hidden;
-            background: #0a0a0a;
-        }
-
-        /* ── Scrolling strip ── */
-        .strip-wrapper {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-        }
-
-        .strip-track {
-            display: flex;
-            height: 100%;
-            animation: strip-scroll 75s linear infinite;
-            will-change: transform;
-        }
-
-        @keyframes strip-scroll {
-            from { transform: translateX(0); }
-            to   { transform: translateX(calc(-1 * var(--strip-dist))); }
-        }
-
-        .strip-card {
-            flex-shrink: 0;
-            width: var(--strip-card-w);
-            height: 100%;
-            margin-right: 16px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .strip-card iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 1440px;
-            height: 900px;
-            transform: scale(var(--strip-scale));
-            transform-origin: top left;
-            border: none;
-            pointer-events: none;
-        }
-
-        /* ── Overlay ── */
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            pointer-events: none;
-            background: rgba(10,10,10,0.55);
-        }
-
-        .strip-fade-l,
-        .strip-fade-r {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 180px;
-            z-index: 3;
-            pointer-events: none;
-        }
-
-        .strip-fade-l {
-            left: 0;
-            background: linear-gradient(to right, rgba(10,10,10,0.92), transparent);
-        }
-
-        .strip-fade-r {
-            right: 0;
-            background: linear-gradient(to left, rgba(10,10,10,0.92), transparent);
-        }
-
-        /* ── Hero content (centred) ── */
-        .hero-content {
-            position: absolute;
-            inset: 0;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 80px 24px 40px;
-        }
-
-        .hero-eyebrow {
-            font-size: 0.7rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.4);
-            margin-bottom: 18px;
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            font-weight: 700;
-            color: #fff;
-            line-height: 1;
-            letter-spacing: -0.025em;
-            margin-bottom: 18px;
-        }
-
-        .hero-desc {
-            font-size: 1rem;
-            font-weight: 300;
-            color: rgba(255,255,255,0.5);
-            max-width: 420px;
-            line-height: 1.75;
-            margin-bottom: 34px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .hero-btn-pri {
-            background: #fff;
-            color: #0a0a0a;
-            padding: 11px 26px;
-            border-radius: 8px;
-            font-size: 0.87rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-
-        .hero-btn-pri:hover { background: #e0e0e0; }
-
-        .hero-btn-sec {
-            border: 1px solid rgba(255,255,255,0.18);
-            color: #fff;
-            padding: 11px 26px;
-            border-radius: 8px;
-            font-size: 0.87rem;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-
-        .hero-btn-sec:hover { background: rgba(255,255,255,0.06); }
     </style>
 </head>
-
 <body>
 
-    <!-- ======== NAVIGATION ======== -->
-    <nav class="fixed w-full z-50 nav-blur border-b" style="border-color: rgba(255,255,255,0.06);">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-
-            <div class="text-sm font-semibold tracking-tight text-white">
-                Studio North
-            </div>
-
-            <div class="hidden md:flex gap-8 text-sm" style="color: #666;">
-                <a href="#work"     class="hover:text-white transition-colors duration-200">Work</a>
-                <a href="#services" class="hover:text-white transition-colors duration-200">Services</a>
-                <a href="#process"  class="hover:text-white transition-colors duration-200">Process</a>
-                <a href="#contact"  class="hover:text-white transition-colors duration-200">Contact</a>
-            </div>
-
-            <a href="#contact"
-                class="text-xs font-medium border text-white px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-white hover:text-black"
-                style="border-color: rgba(255,255,255,0.2);">
-                Get a Quote
-            </a>
-
+    <!-- ════ NAV ════ -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">Studio North</a>
+            <ul class="nav-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Get a Quote</a>
         </div>
     </nav>
 
-    <!-- ======== HERO ======== -->
-    <section class="hero-reel">
+    <!-- ════ HERO ════ -->
+    <section class="hero">
+        <div class="hero-inner">
 
-        <!-- ── Horizontal scrolling strip ── -->
-        <div class="strip-wrapper">
-            <div class="strip-track" id="stripTrack">
-
-                <!-- Set 1 -->
-                <div class="strip-card"><iframe src="https://ashdabash2926.github.io/KandyKrushTemplate/" loading="eager" scrolling="no" title="Kandy Krush"></iframe></div>
-                <div class="strip-card"><iframe src="https://ashdabash2926.github.io/sacred-ember/sauna2.html" loading="lazy" scrolling="no" title="Sacred Ember"></iframe></div>
-                <div class="strip-card"><iframe src="https://ashdabash2926.github.io/coffee-shop/" loading="lazy" scrolling="no" title="Coffee Lab"></iframe></div>
-                <div class="strip-card"><iframe src="https://ashdabash2926.github.io/blade-co/" loading="lazy" scrolling="no" title="Blade & Co."></iframe></div>
-                <div class="strip-card"><iframe src="https://ashdabash2926.github.io/stone-table/" loading="lazy" scrolling="no" title="Stone Table"></iframe></div>
-                <div class="strip-card"><iframe src="https://ashdabash2926.github.io/peak-form/" loading="lazy" scrolling="no" title="Peak Form"></iframe></div>
-                <div class="strip-card"><iframe src="https://ashdabash2926.github.io/still-strong/" loading="lazy" scrolling="no" title="Still & Strong"></iframe></div>
-                <div class="strip-card"><iframe src="https://ashdabash2926.github.io/heather-lane-therapy/" loading="lazy" scrolling="no" title="Heather Lane Therapy"></iframe></div>
-                <div class="strip-card"><iframe src="https://ashdabash2926.github.io/solace-massage/" loading="lazy" scrolling="no" title="Solace"></iframe></div>
-
-                <!-- Set 2 (seamless loop) -->
-                <div class="strip-card" aria-hidden="true"><iframe src="https://ashdabash2926.github.io/KandyKrushTemplate/" loading="lazy" scrolling="no" title="Kandy Krush 2"></iframe></div>
-                <div class="strip-card" aria-hidden="true"><iframe src="https://ashdabash2926.github.io/sacred-ember/sauna2.html" loading="lazy" scrolling="no" title="Sacred Ember 2"></iframe></div>
-                <div class="strip-card" aria-hidden="true"><iframe src="https://ashdabash2926.github.io/coffee-shop/" loading="lazy" scrolling="no" title="Coffee Lab 2"></iframe></div>
-                <div class="strip-card" aria-hidden="true"><iframe src="https://ashdabash2926.github.io/blade-co/" loading="lazy" scrolling="no" title="Blade & Co. 2"></iframe></div>
-                <div class="strip-card" aria-hidden="true"><iframe src="https://ashdabash2926.github.io/stone-table/" loading="lazy" scrolling="no" title="Stone Table 2"></iframe></div>
-                <div class="strip-card" aria-hidden="true"><iframe src="https://ashdabash2926.github.io/peak-form/" loading="lazy" scrolling="no" title="Peak Form 2"></iframe></div>
-                <div class="strip-card" aria-hidden="true"><iframe src="https://ashdabash2926.github.io/still-strong/" loading="lazy" scrolling="no" title="Still & Strong 2"></iframe></div>
-                <div class="strip-card" aria-hidden="true"><iframe src="https://ashdabash2926.github.io/heather-lane-therapy/" loading="lazy" scrolling="no" title="Heather Lane 2"></iframe></div>
-                <div class="strip-card" aria-hidden="true"><iframe src="https://ashdabash2926.github.io/solace-massage/" loading="lazy" scrolling="no" title="Solace 2"></iframe></div>
-
-            </div>
-        </div>
-
-        <!-- Overlays -->
-        <div class="hero-overlay"></div>
-        <div class="strip-fade-l"></div>
-        <div class="strip-fade-r"></div>
-
-        <!-- Centred content -->
-        <div class="hero-content">
-            <p class="hero-eyebrow">Leeds-based web design</p>
-            <h1 class="hero-title">Studio North</h1>
-            <p class="hero-desc">We build custom websites for local businesses — clean, fast and handcrafted from scratch. No templates, no shortcuts.</p>
-            <div class="hero-actions">
-                <a href="#work" class="hero-btn-pri">View Our Work</a>
-                <a href="#contact" class="hero-btn-sec">Get a Quote</a>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- ======== WORK / PORTFOLIO ======== -->
-    <section id="work" class="py-24 px-6" style="border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="max-w-6xl mx-auto">
-
-            <div class="text-center mb-16 reveal">
-                <div class="section-label">
-                    <span class="text-xs tracking-widest uppercase" style="color: #444;">Portfolio</span>
+            <!-- Left copy -->
+            <div class="hero-left">
+                <p class="hero-eyebrow">Leeds-based web design</p>
+                <h1 class="hero-title">Handcrafted websites for businesses that care.</h1>
+                <p class="hero-desc">We build custom, fast, mobile-first websites for local businesses — hand-coded from scratch. No templates, no page builders, no shortcuts.</p>
+                <div class="hero-actions">
+                    <a href="#work" class="btn-pri">View Our Work →</a>
+                    <a href="#contact" class="btn-sec">Get a Quote</a>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-white">Our Work</h2>
-                <p class="mt-3 text-sm" style="color: #555;">Real sites, built for real businesses.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Right — stacked project previews -->
+            <div class="hero-right" id="heroPreviews">
 
-                <!-- Project 1: Kandy Krush -->
-                <div class="mockup-card group reveal reveal-delay-1">
-                    <div class="rounded-xl overflow-hidden transition-shadow duration-300 group-hover:shadow-2xl"
-                        style="border: 1px solid rgba(255,255,255,0.07);">
-                        <div class="browser-chrome">
-                            <div class="flex gap-1.5">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <div class="url-bar">ashdabash2926.github.io/KandyKrushTemplate</div>
+                <div class="preview-card" id="previewCard1">
+                    <div class="chrome-bar">
+                        <div class="chrome-dots">
+                            <span class="chrome-dot chrome-dot-r"></span>
+                            <span class="chrome-dot chrome-dot-y"></span>
+                            <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <div class="iframe-container">
-                            <iframe
-                                src="https://ashdabash2926.github.io/KandyKrushTemplate/"
-                                loading="lazy"
-                                scrolling="no"
-                                title="Kandy Krush website preview">
-                            </iframe>
-                            <div class="mockup-overlay">
-                                <a href="https://ashdabash2926.github.io/KandyKrushTemplate/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="bg-white text-black px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide hover:bg-gray-100 transition-colors duration-200"
-                                    style="pointer-events: auto;">
-                                    View Live Site →
-                                </a>
-                            </div>
-                        </div>
+                        <span class="chrome-url">ashdabash2926.github.io/sacred-ember</span>
                     </div>
-                    <div class="mt-4 px-1">
-                        <div class="flex items-start justify-between gap-4">
-                            <div>
-                                <h3 class="font-medium text-white">Kandy Krush</h3>
-                                <p class="text-xs mt-0.5" style="color: #555;">Luxury Balloon Artistry · Leeds</p>
-                            </div>
-                            <span class="text-xs border px-2 py-0.5 rounded mt-0.5 flex-shrink-0"
-                                style="color: #555; border-color: rgba(255,255,255,0.1);">
-                                Brochure Site
-                            </span>
-                        </div>
-                        <p class="text-xs mt-2.5 leading-relaxed" style="color: #444;">
-                            Multi-page luxury site with animated hero, Ken Burns parallax, photo gallery, contact form
-                            and PDF hire agreement generator.
-                        </p>
+                    <div class="preview-iframe-wrap" id="previewWrap1">
+                        <iframe src="https://ashdabash2926.github.io/sacred-ember/sauna2.html" loading="eager" scrolling="no" title="Sacred Ember preview"></iframe>
                     </div>
                 </div>
 
-                <!-- Project 2: Sacred Ember -->
-                <div class="mockup-card group reveal reveal-delay-2">
-                    <div class="rounded-xl overflow-hidden transition-shadow duration-300 group-hover:shadow-2xl"
-                        style="border: 1px solid rgba(255,255,255,0.07);">
-                        <div class="browser-chrome">
-                            <div class="flex gap-1.5">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <div class="url-bar">ashdabash2926.github.io/sacred-ember</div>
+                <div class="preview-card" id="previewCard2">
+                    <div class="chrome-bar">
+                        <div class="chrome-dots">
+                            <span class="chrome-dot chrome-dot-r"></span>
+                            <span class="chrome-dot chrome-dot-y"></span>
+                            <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <div class="iframe-container">
-                            <iframe
-                                src="https://ashdabash2926.github.io/sacred-ember/sauna2.html"
-                                loading="lazy"
-                                scrolling="no"
-                                title="Sacred Ember website preview">
-                            </iframe>
-                            <div class="mockup-overlay">
-                                <a href="https://ashdabash2926.github.io/sacred-ember/sauna2.html"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="bg-white text-black px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide hover:bg-gray-100 transition-colors duration-200"
-                                    style="pointer-events: auto;">
-                                    View Live Site →
-                                </a>
-                            </div>
-                        </div>
+                        <span class="chrome-url">ashdabash2926.github.io/KandyKrushTemplate</span>
                     </div>
-                    <div class="mt-4 px-1">
-                        <div class="flex items-start justify-between gap-4">
-                            <div>
-                                <h3 class="font-medium text-white">Sacred Ember</h3>
-                                <p class="text-xs mt-0.5" style="color: #555;">Sauna & Wellbeing Huts · Yorkshire</p>
-                            </div>
-                            <span class="text-xs border px-2 py-0.5 rounded mt-0.5 flex-shrink-0"
-                                style="color: #555; border-color: rgba(255,255,255,0.1);">
-                                Brochure Site
-                            </span>
-                        </div>
-                        <p class="text-xs mt-2.5 leading-relaxed" style="color: #444;">
-                            Dark luxury site for a premium outdoor sauna hire business, with animated gallery, booking
-                            CTAs and an editorial aesthetic.
-                        </p>
+                    <div class="preview-iframe-wrap" id="previewWrap2">
+                        <iframe src="https://ashdabash2926.github.io/KandyKrushTemplate/" loading="eager" scrolling="no" title="Kandy Krush preview"></iframe>
                     </div>
                 </div>
 
-                <!-- Project 3: Artisan Coffee Lab -->
-                <div class="mockup-card group reveal reveal-delay-3">
-                    <div class="rounded-xl overflow-hidden transition-shadow duration-300 group-hover:shadow-2xl"
-                        style="border: 1px solid rgba(255,255,255,0.07);">
-                        <div class="browser-chrome">
-                            <div class="flex gap-1.5">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <div class="url-bar">ashdabash2926.github.io/coffee-shop</div>
+                <div class="preview-card" id="previewCard3">
+                    <div class="chrome-bar">
+                        <div class="chrome-dots">
+                            <span class="chrome-dot chrome-dot-r"></span>
+                            <span class="chrome-dot chrome-dot-y"></span>
+                            <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <div class="iframe-container">
-                            <iframe
-                                src="https://ashdabash2926.github.io/coffee-shop/"
-                                loading="lazy"
-                                scrolling="no"
-                                title="Artisan Coffee Lab website preview">
-                            </iframe>
-                            <div class="mockup-overlay">
-                                <a href="https://ashdabash2926.github.io/coffee-shop/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="bg-white text-black px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide hover:bg-gray-100 transition-colors duration-200"
-                                    style="pointer-events: auto;">
-                                    View Live Site →
-                                </a>
-                            </div>
-                        </div>
+                        <span class="chrome-url">ashdabash2926.github.io/heather-lane-therapy</span>
                     </div>
-                    <div class="mt-4 px-1">
-                        <div class="flex items-start justify-between gap-4">
-                            <div>
-                                <h3 class="font-medium text-white">Artisan Coffee Lab</h3>
-                                <p class="text-xs mt-0.5" style="color: #555;">Specialty Coffee & Roastery</p>
-                            </div>
-                            <span class="text-xs border px-2 py-0.5 rounded mt-0.5 flex-shrink-0"
-                                style="color: #555; border-color: rgba(255,255,255,0.1);">
-                                Brochure Site
-                            </span>
-                        </div>
-                        <p class="text-xs mt-2.5 leading-relaxed" style="color: #444;">
-                            Warm editorial site for a specialty coffee roastery, featuring menu, story section and
-                            café atmosphere throughout.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Project 4: Blade & Co. -->
-                <div class="mockup-card group reveal reveal-delay-1">
-                    <div class="rounded-xl overflow-hidden transition-shadow duration-300 group-hover:shadow-2xl"
-                        style="border: 1px solid rgba(255,255,255,0.07);">
-                        <div class="browser-chrome">
-                            <div class="flex gap-1.5">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <div class="url-bar">ashdabash2926.github.io/blade-co</div>
-                        </div>
-                        <div class="iframe-container">
-                            <iframe
-                                src="https://ashdabash2926.github.io/blade-co/"
-                                loading="lazy"
-                                scrolling="no"
-                                title="Blade & Co. website preview">
-                            </iframe>
-                            <div class="mockup-overlay">
-                                <a href="https://ashdabash2926.github.io/blade-co/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="bg-white text-black px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide hover:bg-gray-100 transition-colors duration-200"
-                                    style="pointer-events: auto;">
-                                    View Live Site →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 px-1">
-                        <div class="flex items-start justify-between gap-4">
-                            <div>
-                                <h3 class="font-medium text-white">Blade & Co.</h3>
-                                <p class="text-xs mt-0.5" style="color: #555;">Premium Barber Shop</p>
-                            </div>
-                            <span class="text-xs border px-2 py-0.5 rounded mt-0.5 flex-shrink-0"
-                                style="color: #555; border-color: rgba(255,255,255,0.1);">
-                                Brochure Site
-                            </span>
-                        </div>
-                        <p class="text-xs mt-2.5 leading-relaxed" style="color: #444;">
-                            Dark gold barber shop site with canvas particle effects, masonry gallery, live opening
-                            hours and an online booking flow.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Project 5: The Stone Table -->
-                <div class="mockup-card group reveal reveal-delay-2">
-                    <div class="rounded-xl overflow-hidden transition-shadow duration-300 group-hover:shadow-2xl"
-                        style="border: 1px solid rgba(255,255,255,0.07);">
-                        <div class="browser-chrome">
-                            <div class="flex gap-1.5">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <div class="url-bar">ashdabash2926.github.io/stone-table</div>
-                        </div>
-                        <div class="iframe-container">
-                            <iframe
-                                src="https://ashdabash2926.github.io/stone-table/"
-                                loading="lazy"
-                                scrolling="no"
-                                title="The Stone Table website preview">
-                            </iframe>
-                            <div class="mockup-overlay">
-                                <a href="https://ashdabash2926.github.io/stone-table/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="bg-white text-black px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide hover:bg-gray-100 transition-colors duration-200"
-                                    style="pointer-events: auto;">
-                                    View Live Site →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 px-1">
-                        <div class="flex items-start justify-between gap-4">
-                            <div>
-                                <h3 class="font-medium text-white">The Stone Table</h3>
-                                <p class="text-xs mt-0.5" style="color: #555;">Fine Dining Restaurant</p>
-                            </div>
-                            <span class="text-xs border px-2 py-0.5 rounded mt-0.5 flex-shrink-0"
-                                style="color: #555; border-color: rgba(255,255,255,0.1);">
-                                Brochure Site
-                            </span>
-                        </div>
-                        <p class="text-xs mt-2.5 leading-relaxed" style="color: #444;">
-                            Warm candlelit restaurant site with tabbed menu, asymmetric gallery, reservation form
-                            and an editorial dining atmosphere.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Project 6: Peak Form -->
-                <div class="mockup-card group reveal reveal-delay-3">
-                    <div class="rounded-xl overflow-hidden transition-shadow duration-300 group-hover:shadow-2xl"
-                        style="border: 1px solid rgba(255,255,255,0.07);">
-                        <div class="browser-chrome">
-                            <div class="flex gap-1.5">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <div class="url-bar">ashdabash2926.github.io/peak-form</div>
-                        </div>
-                        <div class="iframe-container">
-                            <iframe
-                                src="https://ashdabash2926.github.io/peak-form/"
-                                loading="lazy"
-                                scrolling="no"
-                                title="Peak Form website preview">
-                            </iframe>
-                            <div class="mockup-overlay">
-                                <a href="https://ashdabash2926.github.io/peak-form/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="bg-white text-black px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide hover:bg-gray-100 transition-colors duration-200"
-                                    style="pointer-events: auto;">
-                                    View Live Site →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 px-1">
-                        <div class="flex items-start justify-between gap-4">
-                            <div>
-                                <h3 class="font-medium text-white">Peak Form</h3>
-                                <p class="text-xs mt-0.5" style="color: #555;">Personal Training</p>
-                            </div>
-                            <span class="text-xs border px-2 py-0.5 rounded mt-0.5 flex-shrink-0"
-                                style="color: #555; border-color: rgba(255,255,255,0.1);">
-                                Brochure Site
-                            </span>
-                        </div>
-                        <p class="text-xs mt-2.5 leading-relaxed" style="color: #444;">
-                            Bold red-on-black PT site with animated counters, testimonials, tiered pricing, FAQ
-                            accordion and a full contact form.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Project 7: Still & Strong -->
-                <div class="mockup-card group reveal reveal-delay-1">
-                    <div class="rounded-xl overflow-hidden transition-shadow duration-300 group-hover:shadow-2xl"
-                        style="border: 1px solid rgba(255,255,255,0.07);">
-                        <div class="browser-chrome">
-                            <div class="flex gap-1.5">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <div class="url-bar">ashdabash2926.github.io/still-strong</div>
-                        </div>
-                        <div class="iframe-container">
-                            <iframe
-                                src="https://ashdabash2926.github.io/still-strong/"
-                                loading="lazy"
-                                scrolling="no"
-                                title="Still & Strong website preview">
-                            </iframe>
-                            <div class="mockup-overlay">
-                                <a href="https://ashdabash2926.github.io/still-strong/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="bg-white text-black px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide hover:bg-gray-100 transition-colors duration-200"
-                                    style="pointer-events: auto;">
-                                    View Live Site →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 px-1">
-                        <div class="flex items-start justify-between gap-4">
-                            <div>
-                                <h3 class="font-medium text-white">Still & Strong</h3>
-                                <p class="text-xs mt-0.5" style="color: #555;">Yoga & Pilates Studio</p>
-                            </div>
-                            <span class="text-xs border px-2 py-0.5 rounded mt-0.5 flex-shrink-0"
-                                style="color: #555; border-color: rgba(255,255,255,0.1);">
-                                Brochure Site
-                            </span>
-                        </div>
-                        <p class="text-xs mt-2.5 leading-relaxed" style="color: #444;">
-                            Soft natural-toned yoga studio site with breathing hero animations, class schedule,
-                            retreat section and serene editorial aesthetic.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Project 8: Heather Lane Therapy -->
-                <div class="mockup-card group reveal reveal-delay-2">
-                    <div class="rounded-xl overflow-hidden transition-shadow duration-300 group-hover:shadow-2xl"
-                        style="border: 1px solid rgba(255,255,255,0.07);">
-                        <div class="browser-chrome">
-                            <div class="flex gap-1.5">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <div class="url-bar">ashdabash2926.github.io/heather-lane-therapy</div>
-                        </div>
-                        <div class="iframe-container">
-                            <iframe
-                                src="https://ashdabash2926.github.io/heather-lane-therapy/"
-                                loading="lazy"
-                                scrolling="no"
-                                title="Heather Lane Therapy website preview">
-                            </iframe>
-                            <div class="mockup-overlay">
-                                <a href="https://ashdabash2926.github.io/heather-lane-therapy/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="bg-white text-black px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide hover:bg-gray-100 transition-colors duration-200"
-                                    style="pointer-events: auto;">
-                                    View Live Site →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 px-1">
-                        <div class="flex items-start justify-between gap-4">
-                            <div>
-                                <h3 class="font-medium text-white">Heather Lane Therapy</h3>
-                                <p class="text-xs mt-0.5" style="color: #555;">Counselling & Psychotherapy · Leeds</p>
-                            </div>
-                            <span class="text-xs border px-2 py-0.5 rounded mt-0.5 flex-shrink-0"
-                                style="color: #555; border-color: rgba(255,255,255,0.1);">
-                                Brochure Site
-                            </span>
-                        </div>
-                        <p class="text-xs mt-2.5 leading-relaxed" style="color: #444;">
-                            Calm sage-toned therapy site with credentials, CBT/EMDR approach cards, specialisms tag grid and a FAQ accordion.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Project 9: Solace -->
-                <div class="mockup-card group reveal reveal-delay-3">
-                    <div class="rounded-xl overflow-hidden transition-shadow duration-300 group-hover:shadow-2xl"
-                        style="border: 1px solid rgba(255,255,255,0.07);">
-                        <div class="browser-chrome">
-                            <div class="flex gap-1.5">
-                                <span class="dot dot-red"></span>
-                                <span class="dot dot-yellow"></span>
-                                <span class="dot dot-green"></span>
-                            </div>
-                            <div class="url-bar">ashdabash2926.github.io/solace-massage</div>
-                        </div>
-                        <div class="iframe-container">
-                            <iframe
-                                src="https://ashdabash2926.github.io/solace-massage/"
-                                loading="lazy"
-                                scrolling="no"
-                                title="Solace Massage website preview">
-                            </iframe>
-                            <div class="mockup-overlay">
-                                <a href="https://ashdabash2926.github.io/solace-massage/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="bg-white text-black px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide hover:bg-gray-100 transition-colors duration-200"
-                                    style="pointer-events: auto;">
-                                    View Live Site →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 px-1">
-                        <div class="flex items-start justify-between gap-4">
-                            <div>
-                                <h3 class="font-medium text-white">Solace</h3>
-                                <p class="text-xs mt-0.5" style="color: #555;">Holistic Massage & Bodywork · Leeds</p>
-                            </div>
-                            <span class="text-xs border px-2 py-0.5 rounded mt-0.5 flex-shrink-0"
-                                style="color: #555; border-color: rgba(255,255,255,0.1);">
-                                Brochure Site
-                            </span>
-                        </div>
-                        <p class="text-xs mt-2.5 leading-relaxed" style="color: #444;">
-                            Warm terracotta massage site with full treatment menu, therapist bio, testimonials and an integrated booking form.
-                        </p>
+                    <div class="preview-iframe-wrap" id="previewWrap3">
+                        <iframe src="https://ashdabash2926.github.io/heather-lane-therapy/" loading="lazy" scrolling="no" title="Heather Lane Therapy preview"></iframe>
                     </div>
                 </div>
 
@@ -830,78 +800,314 @@
         </div>
     </section>
 
-    <!-- ======== SERVICES ======== -->
-    <section id="services" class="py-24 px-6" style="background: #0d0d0d; border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="max-w-5xl mx-auto">
+    <!-- ════ PORTFOLIO ════ -->
+    <section id="work" class="section" style="border-top: 1px solid var(--border);">
+        <div class="section-inner">
 
-            <div class="text-center mb-16 reveal">
-                <div class="section-label">
-                    <span class="text-xs tracking-widest uppercase" style="color: #444;">Services</span>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-white">What We Build</h2>
+            <div class="section-header reveal">
+                <p class="section-label-txt">Portfolio</p>
+                <h2 class="section-title">Our Work</h2>
+                <p class="section-sub">Real sites, built for real businesses.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-5">
+            <div class="portfolio-grid">
 
-                <!-- Brochure Sites -->
-                <div class="p-7 rounded-xl reveal reveal-delay-1"
-                    style="background: #111; border: 1px solid rgba(255,255,255,0.07);">
-                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5"
-                        style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
-                        <svg class="w-5 h-5" style="color: #888;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <!-- 1 — Kandy Krush -->
+                <div class="mockup-card reveal reveal-d1">
+                    <div class="port-chrome">
+                        <div class="chrome-dots">
+                            <span class="chrome-dot chrome-dot-r"></span>
+                            <span class="chrome-dot chrome-dot-y"></span>
+                            <span class="chrome-dot chrome-dot-g"></span>
+                        </div>
+                        <span class="port-url">ashdabash2926.github.io/KandyKrushTemplate</span>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe src="https://ashdabash2926.github.io/KandyKrushTemplate/" loading="lazy" scrolling="no" title="Kandy Krush website preview"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://ashdabash2926.github.io/KandyKrushTemplate/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-row">
+                            <div>
+                                <div class="card-name">Kandy Krush</div>
+                                <div class="card-sub">Luxury Balloon Artistry · Leeds</div>
+                            </div>
+                            <span class="card-tag">Brochure Site</span>
+                        </div>
+                        <p class="card-desc">Multi-page luxury site with animated hero, Ken Burns parallax, photo gallery, contact form and PDF hire agreement generator.</p>
+                    </div>
+                </div>
+
+                <!-- 2 — Sacred Ember -->
+                <div class="mockup-card reveal reveal-d2">
+                    <div class="port-chrome">
+                        <div class="chrome-dots">
+                            <span class="chrome-dot chrome-dot-r"></span>
+                            <span class="chrome-dot chrome-dot-y"></span>
+                            <span class="chrome-dot chrome-dot-g"></span>
+                        </div>
+                        <span class="port-url">ashdabash2926.github.io/sacred-ember</span>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe src="https://ashdabash2926.github.io/sacred-ember/sauna2.html" loading="lazy" scrolling="no" title="Sacred Ember website preview"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://ashdabash2926.github.io/sacred-ember/sauna2.html" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-row">
+                            <div>
+                                <div class="card-name">Sacred Ember</div>
+                                <div class="card-sub">Sauna & Wellbeing Huts · Yorkshire</div>
+                            </div>
+                            <span class="card-tag">Brochure Site</span>
+                        </div>
+                        <p class="card-desc">Dark luxury site for a premium outdoor sauna hire business, with animated gallery, booking CTAs and an editorial aesthetic.</p>
+                    </div>
+                </div>
+
+                <!-- 3 — Artisan Coffee Lab -->
+                <div class="mockup-card reveal reveal-d3">
+                    <div class="port-chrome">
+                        <div class="chrome-dots">
+                            <span class="chrome-dot chrome-dot-r"></span>
+                            <span class="chrome-dot chrome-dot-y"></span>
+                            <span class="chrome-dot chrome-dot-g"></span>
+                        </div>
+                        <span class="port-url">ashdabash2926.github.io/coffee-shop</span>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe src="https://ashdabash2926.github.io/coffee-shop/" loading="lazy" scrolling="no" title="Artisan Coffee Lab website preview"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://ashdabash2926.github.io/coffee-shop/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-row">
+                            <div>
+                                <div class="card-name">Artisan Coffee Lab</div>
+                                <div class="card-sub">Specialty Coffee & Roastery</div>
+                            </div>
+                            <span class="card-tag">Brochure Site</span>
+                        </div>
+                        <p class="card-desc">Warm editorial site for a specialty coffee roastery, featuring menu, story section and café atmosphere throughout.</p>
+                    </div>
+                </div>
+
+                <!-- 4 — Blade & Co. -->
+                <div class="mockup-card reveal reveal-d1">
+                    <div class="port-chrome">
+                        <div class="chrome-dots">
+                            <span class="chrome-dot chrome-dot-r"></span>
+                            <span class="chrome-dot chrome-dot-y"></span>
+                            <span class="chrome-dot chrome-dot-g"></span>
+                        </div>
+                        <span class="port-url">ashdabash2926.github.io/blade-co</span>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe src="https://ashdabash2926.github.io/blade-co/" loading="lazy" scrolling="no" title="Blade & Co. website preview"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://ashdabash2926.github.io/blade-co/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-row">
+                            <div>
+                                <div class="card-name">Blade & Co.</div>
+                                <div class="card-sub">Premium Barber Shop</div>
+                            </div>
+                            <span class="card-tag">Brochure Site</span>
+                        </div>
+                        <p class="card-desc">Dark gold barber shop site with canvas particle effects, masonry gallery, live opening hours and an online booking flow.</p>
+                    </div>
+                </div>
+
+                <!-- 5 — The Stone Table -->
+                <div class="mockup-card reveal reveal-d2">
+                    <div class="port-chrome">
+                        <div class="chrome-dots">
+                            <span class="chrome-dot chrome-dot-r"></span>
+                            <span class="chrome-dot chrome-dot-y"></span>
+                            <span class="chrome-dot chrome-dot-g"></span>
+                        </div>
+                        <span class="port-url">ashdabash2926.github.io/stone-table</span>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe src="https://ashdabash2926.github.io/stone-table/" loading="lazy" scrolling="no" title="The Stone Table website preview"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://ashdabash2926.github.io/stone-table/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-row">
+                            <div>
+                                <div class="card-name">The Stone Table</div>
+                                <div class="card-sub">Fine Dining Restaurant</div>
+                            </div>
+                            <span class="card-tag">Brochure Site</span>
+                        </div>
+                        <p class="card-desc">Warm candlelit restaurant site with tabbed menu, asymmetric gallery, reservation form and an editorial dining atmosphere.</p>
+                    </div>
+                </div>
+
+                <!-- 6 — Peak Form -->
+                <div class="mockup-card reveal reveal-d3">
+                    <div class="port-chrome">
+                        <div class="chrome-dots">
+                            <span class="chrome-dot chrome-dot-r"></span>
+                            <span class="chrome-dot chrome-dot-y"></span>
+                            <span class="chrome-dot chrome-dot-g"></span>
+                        </div>
+                        <span class="port-url">ashdabash2926.github.io/peak-form</span>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe src="https://ashdabash2926.github.io/peak-form/" loading="lazy" scrolling="no" title="Peak Form website preview"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://ashdabash2926.github.io/peak-form/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-row">
+                            <div>
+                                <div class="card-name">Peak Form</div>
+                                <div class="card-sub">Personal Training</div>
+                            </div>
+                            <span class="card-tag">Brochure Site</span>
+                        </div>
+                        <p class="card-desc">Bold red-on-black PT site with animated counters, testimonials, tiered pricing, FAQ accordion and a full contact form.</p>
+                    </div>
+                </div>
+
+                <!-- 7 — Still & Strong -->
+                <div class="mockup-card reveal reveal-d1">
+                    <div class="port-chrome">
+                        <div class="chrome-dots">
+                            <span class="chrome-dot chrome-dot-r"></span>
+                            <span class="chrome-dot chrome-dot-y"></span>
+                            <span class="chrome-dot chrome-dot-g"></span>
+                        </div>
+                        <span class="port-url">ashdabash2926.github.io/still-strong</span>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe src="https://ashdabash2926.github.io/still-strong/" loading="lazy" scrolling="no" title="Still & Strong website preview"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://ashdabash2926.github.io/still-strong/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-row">
+                            <div>
+                                <div class="card-name">Still & Strong</div>
+                                <div class="card-sub">Yoga & Pilates Studio</div>
+                            </div>
+                            <span class="card-tag">Brochure Site</span>
+                        </div>
+                        <p class="card-desc">Soft natural-toned yoga studio site with breathing hero animations, class schedule, retreat section and serene editorial aesthetic.</p>
+                    </div>
+                </div>
+
+                <!-- 8 — Heather Lane Therapy -->
+                <div class="mockup-card reveal reveal-d2">
+                    <div class="port-chrome">
+                        <div class="chrome-dots">
+                            <span class="chrome-dot chrome-dot-r"></span>
+                            <span class="chrome-dot chrome-dot-y"></span>
+                            <span class="chrome-dot chrome-dot-g"></span>
+                        </div>
+                        <span class="port-url">ashdabash2926.github.io/heather-lane-therapy</span>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe src="https://ashdabash2926.github.io/heather-lane-therapy/" loading="lazy" scrolling="no" title="Heather Lane Therapy website preview"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://ashdabash2926.github.io/heather-lane-therapy/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-row">
+                            <div>
+                                <div class="card-name">Heather Lane Therapy</div>
+                                <div class="card-sub">Counselling & Psychotherapy · Leeds</div>
+                            </div>
+                            <span class="card-tag">Brochure Site</span>
+                        </div>
+                        <p class="card-desc">Calm sage-toned therapy site with credentials, CBT/EMDR approach cards, specialisms tag grid and a FAQ accordion.</p>
+                    </div>
+                </div>
+
+                <!-- 9 — Solace -->
+                <div class="mockup-card reveal reveal-d3">
+                    <div class="port-chrome">
+                        <div class="chrome-dots">
+                            <span class="chrome-dot chrome-dot-r"></span>
+                            <span class="chrome-dot chrome-dot-y"></span>
+                            <span class="chrome-dot chrome-dot-g"></span>
+                        </div>
+                        <span class="port-url">ashdabash2926.github.io/solace-massage</span>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe src="https://ashdabash2926.github.io/solace-massage/" loading="lazy" scrolling="no" title="Solace Massage website preview"></iframe>
+                        <div class="iframe-overlay">
+                            <a href="https://ashdabash2926.github.io/solace-massage/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-row">
+                            <div>
+                                <div class="card-name">Solace</div>
+                                <div class="card-sub">Holistic Massage & Bodywork · Leeds</div>
+                            </div>
+                            <span class="card-tag">Brochure Site</span>
+                        </div>
+                        <p class="card-desc">Warm terracotta massage site with full treatment menu, therapist bio, testimonials and an integrated booking form.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ════ SERVICES ════ -->
+    <section id="services" class="section" style="background: var(--bg-alt); border-top: 1px solid var(--border);">
+        <div class="section-inner">
+
+            <div class="section-header reveal">
+                <p class="section-label-txt">Services</p>
+                <h2 class="section-title">What We Build</h2>
+            </div>
+
+            <div class="services-grid">
+
+                <div class="service-card reveal reveal-d1">
+                    <div class="service-icon">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
                     </div>
-                    <h3 class="font-semibold text-white mb-2">Brochure Websites</h3>
-                    <p class="text-sm leading-relaxed mb-5" style="color: #555;">
-                        Custom-built, mobile-first websites tailored to your brand. No page builders, no templates —
-                        every site is hand-coded from scratch.
-                    </p>
-                    <ul class="space-y-2 text-xs" style="color: #555;">
-                        <li class="flex items-center gap-2">
-                            <span style="color: #888;">—</span> Mobile-first responsive design
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span style="color: #888;">—</span> Gallery, contact forms & animations
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span style="color: #888;">—</span> SEO-ready page structure
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span style="color: #888;">—</span> Fast load times on any device
-                        </li>
+                    <h3 class="service-name">Brochure Websites</h3>
+                    <p class="service-desc">Custom-built, mobile-first websites tailored to your brand. No page builders, no templates — every site is hand-coded from scratch.</p>
+                    <ul class="service-list">
+                        <li>Mobile-first responsive design</li>
+                        <li>Gallery, contact forms & animations</li>
+                        <li>SEO-ready page structure</li>
+                        <li>Fast load times on any device</li>
                     </ul>
                 </div>
 
-                <!-- Hosting -->
-                <div class="p-7 rounded-xl reveal reveal-delay-2"
-                    style="background: #111; border: 1px solid rgba(255,255,255,0.07);">
-                    <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5"
-                        style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);">
-                        <svg class="w-5 h-5" style="color: #888;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                <div class="service-card reveal reveal-d2">
+                    <div class="service-icon">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
                         </svg>
                     </div>
-                    <h3 class="font-semibold text-white mb-2">Hosting & Maintenance</h3>
-                    <p class="text-sm leading-relaxed mb-5" style="color: #555;">
-                        We handle everything after launch — domain, hosting, SSL and ongoing updates — so you can focus
-                        on running your business.
-                    </p>
-                    <ul class="space-y-2 text-xs" style="color: #555;">
-                        <li class="flex items-center gap-2">
-                            <span style="color: #888;">—</span> Domain registration & management
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span style="color: #888;">—</span> SSL certificate included
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span style="color: #888;">—</span> Content updates on request
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span style="color: #888;">—</span> 99.9% uptime guarantee
-                        </li>
+                    <h3 class="service-name">Hosting & Maintenance</h3>
+                    <p class="service-desc">We handle everything after launch — domain, hosting, SSL and ongoing updates — so you can focus on running your business.</p>
+                    <ul class="service-list">
+                        <li>Domain registration & management</li>
+                        <li>SSL certificate included</li>
+                        <li>Content updates on request</li>
+                        <li>99.9% uptime guarantee</li>
                     </ul>
                 </div>
 
@@ -909,198 +1115,165 @@
         </div>
     </section>
 
-    <!-- ======== PROCESS ======== -->
-    <section id="process" class="py-24 px-6" style="border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="max-w-5xl mx-auto">
+    <!-- ════ PROCESS ════ -->
+    <section id="process" class="section" style="border-top: 1px solid var(--border);">
+        <div class="section-inner">
 
-            <div class="text-center mb-16 reveal">
-                <div class="section-label">
-                    <span class="text-xs tracking-widest uppercase" style="color: #444;">Process</span>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-white">How It Works</h2>
-                <p class="mt-3 text-sm" style="color: #555;">Simple, transparent, stress-free.</p>
+            <div class="section-header reveal">
+                <p class="section-label-txt">Process</p>
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-sub">Simple, transparent, stress-free.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="process-grid">
 
-                <div class="reveal reveal-delay-1">
-                    <div class="text-xs font-mono mb-4" style="color: #333;">01</div>
-                    <h3 class="font-medium text-white mb-2">Chat</h3>
-                    <p class="text-sm leading-relaxed" style="color: #555;">
-                        Tell us about your business and what you want to achieve. We'll work out the right approach
-                        together — no jargon, no pressure.
-                    </p>
+                <div class="reveal reveal-d1">
+                    <div class="process-num">01</div>
+                    <h3 class="process-name">Chat</h3>
+                    <p class="process-desc">Tell us about your business and what you want to achieve. We'll work out the right approach together — no jargon, no pressure.</p>
                 </div>
 
-                <div class="reveal reveal-delay-2">
-                    <div class="text-xs font-mono mb-4" style="color: #333;">02</div>
-                    <h3 class="font-medium text-white mb-2">Build</h3>
-                    <p class="text-sm leading-relaxed" style="color: #555;">
-                        We design and hand-code your site. You'll get regular previews and can give feedback at every
-                        stage before anything goes live.
-                    </p>
+                <div class="reveal reveal-d2">
+                    <div class="process-num">02</div>
+                    <h3 class="process-name">Build</h3>
+                    <p class="process-desc">We design and hand-code your site. You'll get regular previews and can give feedback at every stage before anything goes live.</p>
                 </div>
 
-                <div class="reveal reveal-delay-3">
-                    <div class="text-xs font-mono mb-4" style="color: #333;">03</div>
-                    <h3 class="font-medium text-white mb-2">Launch</h3>
-                    <p class="text-sm leading-relaxed" style="color: #555;">
-                        Your site goes live. We handle the hosting, domain and SSL — and stay on hand for any updates
-                        you need going forward.
-                    </p>
+                <div class="reveal reveal-d3">
+                    <div class="process-num">03</div>
+                    <h3 class="process-name">Launch</h3>
+                    <p class="process-desc">Your site goes live. We handle the hosting, domain and SSL — and stay on hand for any updates you need going forward.</p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- ======== CONTACT ======== -->
-    <section id="contact" class="py-24 px-6" style="background: #0d0d0d; border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="max-w-lg mx-auto">
+    <!-- ════ CONTACT ════ -->
+    <section id="contact" class="section" style="background: var(--bg-alt); border-top: 1px solid var(--border);">
+        <div class="section-inner">
+            <div class="contact-inner">
 
-            <div class="text-center mb-10 reveal">
-                <div class="section-label">
-                    <span class="text-xs tracking-widest uppercase" style="color: #444;">Contact</span>
+                <div class="section-header reveal" style="text-align: center;">
+                    <p class="section-label-txt">Contact</p>
+                    <h2 class="section-title">Let's work together</h2>
+                    <p class="section-sub">Tell us about your project and we'll get back to you within 24 hours.</p>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-white">Let's work together</h2>
-                <p class="mt-3 text-sm" style="color: #555;">
-                    Tell us about your project and we'll get back to you within 24 hours.
-                </p>
-            </div>
 
-            <!-- Contact methods -->
-            <div class="flex flex-wrap justify-center gap-3 mb-8 reveal">
-                <a href="tel:+44XXXXXXXXXX"
-                    class="flex items-center gap-2 text-xs hover:text-white transition-colors duration-200 border px-4 py-2.5 rounded-lg"
-                    style="color: #666; border-color: rgba(255,255,255,0.08);">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    <!-- TODO: Replace with your phone number -->
-                    07700 000 000
-                </a>
-                <a href="mailto:hello@studionorth.co.uk"
-                    class="flex items-center gap-2 text-xs hover:text-white transition-colors duration-200 border px-4 py-2.5 rounded-lg"
-                    style="color: #666; border-color: rgba(255,255,255,0.08);">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <!-- TODO: Replace with your email address -->
-                    hello@studionorth.co.uk
-                </a>
-            </div>
+                <div class="contact-chips reveal">
+                    <a href="tel:+447700000000" class="contact-chip">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        07700 000 000
+                    </a>
+                    <a href="mailto:hello@studionorth.co.uk" class="contact-chip">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        hello@studionorth.co.uk
+                    </a>
+                </div>
 
-            <!-- Form -->
-            <form id="contactForm" class="space-y-3 reveal" onsubmit="handleSubmit(event)">
-                <div class="grid sm:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs mb-1.5" style="color: #555;">Name *</label>
-                        <input type="text" name="name" required placeholder="Jane Smith"
-                            class="form-input w-full px-3.5 py-3 rounded-lg text-sm">
+                <form id="contactForm" class="reveal" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div>
+                            <label class="form-label">Name *</label>
+                            <input type="text" name="name" required placeholder="Jane Smith" class="form-input">
+                        </div>
+                        <div>
+                            <label class="form-label">Phone</label>
+                            <input type="tel" name="phone" placeholder="07700 000000" class="form-input">
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-xs mb-1.5" style="color: #555;">Phone</label>
-                        <input type="tel" name="phone" placeholder="07700 000000"
-                            class="form-input w-full px-3.5 py-3 rounded-lg text-sm">
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" name="email" required placeholder="jane@yourbusiness.co.uk" class="form-input">
                     </div>
-                </div>
-                <div>
-                    <label class="block text-xs mb-1.5" style="color: #555;">Email *</label>
-                    <input type="email" name="email" required placeholder="jane@yourbusiness.co.uk"
-                        class="form-input w-full px-3.5 py-3 rounded-lg text-sm">
-                </div>
-                <div>
-                    <label class="block text-xs mb-1.5" style="color: #555;">Tell us about your project *</label>
-                    <textarea name="message" required rows="5"
-                        placeholder="What kind of site do you need? What does your business do?"
-                        class="form-input w-full px-3.5 py-3 rounded-lg text-sm resize-none"></textarea>
-                </div>
-                <button type="submit"
-                    class="w-full bg-white text-black py-3 rounded-lg font-medium text-sm hover:bg-gray-100 transition-colors duration-200">
-                    Send Message
-                </button>
-            </form>
+                    <div class="form-group">
+                        <label class="form-label">Tell us about your project *</label>
+                        <textarea name="message" required placeholder="What kind of site do you need? What does your business do?" class="form-textarea"></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Send Message</button>
+                </form>
 
-            <!-- Success -->
-            <div id="successMsg" class="hidden text-center py-16">
-                <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style="border: 1px solid rgba(255,255,255,0.15);">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
+                <div id="successMsg" style="display:none; text-align:center; padding: 48px 0;">
+                    <div style="width:48px;height:48px;border-radius:50%;border:1px solid var(--border-str);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                    </div>
+                    <p style="font-weight:600;color:var(--text);margin-bottom:4px;">Message sent</p>
+                    <p style="font-size:0.875rem;color:var(--text-2);">We'll be in touch within 24 hours.</p>
                 </div>
-                <h3 class="font-semibold text-white mb-1">Message sent</h3>
-                <p class="text-sm" style="color: #555;">We'll be in touch within 24 hours.</p>
+
             </div>
-
         </div>
     </section>
 
-    <!-- ======== FOOTER ======== -->
-    <footer class="py-8 px-6" style="border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
-            <div class="text-sm font-medium text-white">Studio North</div>
-            <p class="text-xs" style="color: #333;">© 2026 Studio North · Leeds, UK</p>
-            <div class="flex gap-6 text-xs" style="color: #444;">
-                <a href="#work"     class="hover:text-white transition-colors duration-200">Work</a>
-                <a href="#services" class="hover:text-white transition-colors duration-200">Services</a>
-                <a href="#contact"  class="hover:text-white transition-colors duration-200">Contact</a>
-            </div>
+    <!-- ════ FOOTER ════ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-name">Studio North</span>
+            <p class="footer-copy">© 2026 Studio North · Leeds, UK</p>
+            <ul class="footer-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </footer>
 
     <script>
-        // ── Hero strip scale ─────────────────────────────────────
-        function setupStrip() {
-            const S    = window.innerHeight / 900;
-            const cardW = Math.ceil(1440 * S);
-            const slot  = cardW + 16;
-            const dist  = 9 * slot;
-            document.documentElement.style.setProperty('--strip-scale',  S);
-            document.documentElement.style.setProperty('--strip-card-w', cardW + 'px');
-            document.documentElement.style.setProperty('--strip-dist',   dist  + 'px');
+        // ── Scale hero preview iframes ────────────────────────
+        function scaleHeroPreviews() {
+            for (var i = 1; i <= 3; i++) {
+                var wrap = document.getElementById('previewWrap' + i);
+                var card = document.getElementById('previewCard' + i);
+                if (!wrap || !card) continue;
+                var iframe = wrap.querySelector('iframe');
+                if (!iframe) continue;
+                var scale = card.offsetWidth / 1440;
+                iframe.style.transform = 'scale(' + scale + ')';
+                wrap.style.height = (900 * scale) + 'px';
+            }
         }
 
-        window.addEventListener('load', setupStrip);
-        window.addEventListener('resize', () => {
-            setupStrip();
-            const t = document.getElementById('stripTrack');
-            t.style.animation = 'none';
-            void t.offsetWidth;
-            t.style.animation = 'strip-scroll 75s linear infinite';
-        });
-        // ────────────────────────────────────────────────────────
-
-        // Scale iframes to fit containers
-        function scaleIframes() {
-            document.querySelectorAll('.iframe-container').forEach(container => {
-                const iframe = container.querySelector('iframe');
+        // ── Scale portfolio iframes ───────────────────────────
+        function scalePortfolioIframes() {
+            document.querySelectorAll('.iframe-container').forEach(function(container) {
+                var iframe = container.querySelector('iframe');
                 if (!iframe) return;
-                const scale = container.offsetWidth / 1440;
-                iframe.style.transform = `scale(${scale})`;
+                var scale = container.offsetWidth / 1440;
+                iframe.style.transform = 'scale(' + scale + ')';
                 container.style.height = (900 * scale) + 'px';
             });
         }
 
-        window.addEventListener('load', scaleIframes);
-        window.addEventListener('resize', scaleIframes);
+        function scaleAll() {
+            scaleHeroPreviews();
+            scalePortfolioIframes();
+        }
 
-        // Scroll reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        window.addEventListener('load', scaleAll);
+        window.addEventListener('resize', scaleAll);
+
+        // ── Scroll reveal ─────────────────────────────────────
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(function(el) {
+            observer.observe(el);
+        });
 
-        // Form submit
+        // ── Form submit ───────────────────────────────────────
         function handleSubmit(e) {
             e.preventDefault();
-            document.getElementById('contactForm').classList.add('hidden');
-            document.getElementById('successMsg').classList.remove('hidden');
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('successMsg').style.display = 'block';
         }
     </script>
 
