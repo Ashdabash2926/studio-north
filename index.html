@@ -168,7 +168,7 @@
         .strip-track {
             display: flex;
             align-items: center;
-            animation: scroll-left 55s linear infinite;
+            animation: scroll-left 90s linear infinite;
             will-change: transform;
         }
 
@@ -178,46 +178,31 @@
 
         @keyframes scroll-left {
             0%   { transform: translateX(0); }
-            100% { transform: translateX(-3600px); }
+            100% { transform: translateX(-5940px); }
         }
 
-        /* Each card */
+        /* Each card — 640 px wide, no chrome bar */
         .strip-card {
             flex-shrink: 0;
-            width: 380px;
+            width: 640px;
             margin-right: 20px;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.08);
             cursor: pointer;
             transition: transform 0.35s ease, border-color 0.25s ease, box-shadow 0.35s ease;
         }
 
         .strip-card:hover {
-            transform: scale(1.04) translateY(-4px);
+            transform: scale(1.03) translateY(-4px);
             border-color: rgba(255,255,255,0.22);
             box-shadow: 0 24px 64px rgba(0,0,0,0.55);
         }
 
-        .strip-chrome {
-            background: #161616;
-            padding: 8px 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .strip-dots {
-            display: flex;
-            gap: 5px;
-            flex-shrink: 0;
-        }
-
         .strip-iframe-wrap {
             position: relative;
-            width: 380px;
-            height: 238px;
+            width: 640px;
+            height: 400px;
             overflow: hidden;
             background: #111;
         }
@@ -228,7 +213,7 @@
             left: 0;
             width: 1440px;
             height: 900px;
-            transform: scale(0.2639);
+            transform: scale(0.4444);
             transform-origin: top left;
             border: none;
             pointer-events: none;
@@ -415,10 +400,6 @@
 
                 <!-- ── Set 1 ── -->
                 <div class="strip-card">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/KandyKrushTemplate</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/KandyKrushTemplate/" loading="lazy" scrolling="no" title="Kandy Krush"></iframe>
                         <div class="strip-site-label">Kandy Krush · Luxury Balloon Artistry</div>
@@ -426,10 +407,6 @@
                 </div>
 
                 <div class="strip-card">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/sacred-ember</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/sacred-ember/sauna2.html" loading="lazy" scrolling="no" title="Sacred Ember"></iframe>
                         <div class="strip-site-label">Sacred Ember · Sauna & Wellbeing Huts</div>
@@ -437,10 +414,6 @@
                 </div>
 
                 <div class="strip-card">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/coffee-shop</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/coffee-shop/" loading="lazy" scrolling="no" title="Artisan Coffee Lab"></iframe>
                         <div class="strip-site-label">Artisan Coffee Lab · Specialty Coffee</div>
@@ -448,10 +421,6 @@
                 </div>
 
                 <div class="strip-card">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/blade-co</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/blade-co/" loading="lazy" scrolling="no" title="Blade & Co."></iframe>
                         <div class="strip-site-label">Blade & Co. · Premium Barber Shop</div>
@@ -459,10 +428,6 @@
                 </div>
 
                 <div class="strip-card">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/stone-table</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/stone-table/" loading="lazy" scrolling="no" title="The Stone Table"></iframe>
                         <div class="strip-site-label">The Stone Table · Fine Dining Restaurant</div>
@@ -470,10 +435,6 @@
                 </div>
 
                 <div class="strip-card">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/peak-form</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/peak-form/" loading="lazy" scrolling="no" title="Peak Form"></iframe>
                         <div class="strip-site-label">Peak Form · Personal Training</div>
@@ -481,10 +442,6 @@
                 </div>
 
                 <div class="strip-card">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/still-strong</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/still-strong/" loading="lazy" scrolling="no" title="Still & Strong"></iframe>
                         <div class="strip-site-label">Still & Strong · Yoga & Pilates Studio</div>
@@ -492,10 +449,6 @@
                 </div>
 
                 <div class="strip-card">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/heather-lane-therapy</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/heather-lane-therapy/" loading="lazy" scrolling="no" title="Heather Lane Therapy"></iframe>
                         <div class="strip-site-label">Heather Lane Therapy · Counselling & Psychotherapy</div>
@@ -503,10 +456,6 @@
                 </div>
 
                 <div class="strip-card">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/solace-massage</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/solace-massage/" loading="lazy" scrolling="no" title="Solace"></iframe>
                         <div class="strip-site-label">Solace · Holistic Massage & Bodywork</div>
@@ -515,10 +464,6 @@
 
                 <!-- ── Set 2 (duplicate for seamless loop) ── -->
                 <div class="strip-card" aria-hidden="true">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/KandyKrushTemplate</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/KandyKrushTemplate/" loading="lazy" scrolling="no" title="Kandy Krush"></iframe>
                         <div class="strip-site-label">Kandy Krush · Luxury Balloon Artistry</div>
@@ -526,10 +471,6 @@
                 </div>
 
                 <div class="strip-card" aria-hidden="true">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/sacred-ember</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/sacred-ember/sauna2.html" loading="lazy" scrolling="no" title="Sacred Ember"></iframe>
                         <div class="strip-site-label">Sacred Ember · Sauna & Wellbeing Huts</div>
@@ -537,10 +478,6 @@
                 </div>
 
                 <div class="strip-card" aria-hidden="true">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/coffee-shop</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/coffee-shop/" loading="lazy" scrolling="no" title="Artisan Coffee Lab"></iframe>
                         <div class="strip-site-label">Artisan Coffee Lab · Specialty Coffee</div>
@@ -548,10 +485,6 @@
                 </div>
 
                 <div class="strip-card" aria-hidden="true">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/blade-co</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/blade-co/" loading="lazy" scrolling="no" title="Blade & Co."></iframe>
                         <div class="strip-site-label">Blade & Co. · Premium Barber Shop</div>
@@ -559,10 +492,6 @@
                 </div>
 
                 <div class="strip-card" aria-hidden="true">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/stone-table</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/stone-table/" loading="lazy" scrolling="no" title="The Stone Table"></iframe>
                         <div class="strip-site-label">The Stone Table · Fine Dining Restaurant</div>
@@ -570,10 +499,6 @@
                 </div>
 
                 <div class="strip-card" aria-hidden="true">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/peak-form</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/peak-form/" loading="lazy" scrolling="no" title="Peak Form"></iframe>
                         <div class="strip-site-label">Peak Form · Personal Training</div>
@@ -581,10 +506,6 @@
                 </div>
 
                 <div class="strip-card" aria-hidden="true">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/still-strong</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/still-strong/" loading="lazy" scrolling="no" title="Still & Strong"></iframe>
                         <div class="strip-site-label">Still & Strong · Yoga & Pilates Studio</div>
@@ -592,10 +513,6 @@
                 </div>
 
                 <div class="strip-card" aria-hidden="true">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/heather-lane-therapy</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/heather-lane-therapy/" loading="lazy" scrolling="no" title="Heather Lane Therapy"></iframe>
                         <div class="strip-site-label">Heather Lane Therapy · Counselling & Psychotherapy</div>
@@ -603,10 +520,6 @@
                 </div>
 
                 <div class="strip-card" aria-hidden="true">
-                    <div class="strip-chrome">
-                        <div class="strip-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                        <div class="url-bar">ashdabash2926.github.io/solace-massage</div>
-                    </div>
                     <div class="strip-iframe-wrap">
                         <iframe src="https://ashdabash2926.github.io/solace-massage/" loading="lazy" scrolling="no" title="Solace"></iframe>
                         <div class="strip-site-label">Solace · Holistic Massage & Bodywork</div>
