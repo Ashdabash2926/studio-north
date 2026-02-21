@@ -270,46 +270,20 @@
 
         .btn-sec:hover { border-color: var(--text); color: var(--text); }
 
-        /* Mobile marquee (shows on mobile only, replaces preview cards) */
-        .hero-marquee {
+        /* Mobile single preview card (shows on mobile only) */
+        .mobile-preview {
             display: none;
-            margin-top: 36px;
+            margin-top: 40px;
+        }
+
+        .mobile-preview-card {
+            border-radius: 12px;
             overflow: hidden;
-            mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-        }
-
-        .marquee-track {
-            display: flex;
-            gap: 10px;
-            width: max-content;
-            animation: marquee 22s linear infinite;
-        }
-
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-        }
-
-        .m-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-str);
-            border-radius: 99px;
-            padding: 7px 14px;
-            font-size: 0.8125rem;
-            color: var(--text-2);
-            white-space: nowrap;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-        }
-
-        .m-pill-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            flex-shrink: 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 6px 20px rgba(0,0,0,0.07);
+            border: 1px solid var(--border);
+            background: #fff;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         /* ── Hero stacked previews (desktop) ── */
@@ -949,7 +923,7 @@
             }
 
             .hero-right { display: none; }
-            .hero-marquee { display: block; }
+            .mobile-preview { display: block; }
 
             .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
             .services-grid { grid-template-columns: 1fr; }
@@ -1027,28 +1001,20 @@
                     <a href="#contact" class="btn-sec">Get a Quote</a>
                 </div>
 
-                <!-- Mobile-only scrolling project marquee -->
-                <div class="hero-marquee">
-                    <div class="marquee-track" id="marqueeTrack">
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#e8b4bc;"></span>Kandy Krush</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#4a3728;"></span>Sacred Ember</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#7c5c3e;"></span>Coffee Lab</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#c9a84c;"></span>Blade & Co.</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#8c7355;"></span>Stone Table</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#c0392b;"></span>Peak Form</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#8faa8b;"></span>Still & Strong</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#5c7a55;"></span>Heather Lane</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#b5703f;"></span>Solace</span>
-                        <!-- Duplicate set for seamless loop -->
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#e8b4bc;"></span>Kandy Krush</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#4a3728;"></span>Sacred Ember</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#7c5c3e;"></span>Coffee Lab</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#c9a84c;"></span>Blade & Co.</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#8c7355;"></span>Stone Table</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#c0392b;"></span>Peak Form</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#8faa8b;"></span>Still & Strong</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#5c7a55;"></span>Heather Lane</span>
-                        <span class="m-pill"><span class="m-pill-dot" style="background:#b5703f;"></span>Solace</span>
+                <!-- Mobile-only single preview card -->
+                <div class="mobile-preview">
+                    <div class="mobile-preview-card">
+                        <div class="chrome-bar">
+                            <div class="chrome-dots">
+                                <span class="chrome-dot chrome-dot-r"></span>
+                                <span class="chrome-dot chrome-dot-y"></span>
+                                <span class="chrome-dot chrome-dot-g"></span>
+                            </div>
+                            <span class="chrome-url">ashdabash2926.github.io/KandyKrushTemplate</span>
+                        </div>
+                        <div class="preview-iframe-wrap" id="mobilePreviewWrap">
+                            <iframe src="https://ashdabash2926.github.io/KandyKrushTemplate/" loading="lazy" scrolling="no" title="Kandy Krush preview"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1583,6 +1549,16 @@
                 var scale = card.offsetWidth / 1440;
                 iframe.style.transform = 'scale(' + scale + ')';
                 wrap.style.height = (900 * scale) + 'px';
+            }
+            // Mobile single preview card
+            var mWrap = document.getElementById('mobilePreviewWrap');
+            if (mWrap) {
+                var mIframe = mWrap.querySelector('iframe');
+                if (mIframe) {
+                    var scale = mWrap.offsetWidth / 1440;
+                    mIframe.style.transform = 'scale(' + scale + ')';
+                    mWrap.style.height = (900 * scale) + 'px';
+                }
             }
         }
 
