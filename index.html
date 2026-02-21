@@ -909,7 +909,7 @@
             .nav-links, .nav-cta { display: none; }
             .nav-burger { display: flex; }
 
-            /* On mobile: don't flex-centre the hero — let it flow from the top */
+            /* On mobile: plain block flow, no grid/flex centering weirdness */
             .hero {
                 display: block;
                 min-height: unset;
@@ -917,15 +917,37 @@
             }
 
             .hero-inner {
-                grid-template-columns: 1fr;
-                gap: 0;
-                padding: 52px 24px 52px;
+                display: block; /* kill grid — plain block flow */
+                padding: 52px 24px 56px;
                 text-align: center;
             }
 
-            .hero-eyebrow { justify-content: center; }
-            .hero-desc { max-width: 100%; margin-left: auto; margin-right: auto; }
-            .hero-actions { justify-content: center; }
+            .hero-left {
+                display: block;
+            }
+
+            .hero-eyebrow {
+                display: inline-flex;
+                justify-content: center;
+                color: #888;
+            }
+
+            .hero-title {
+                font-size: 2.25rem;
+                color: #111;
+            }
+
+            .hero-desc {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                color: #555;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
             .hero-right { display: none; }
             .hero-marquee { display: block; }
 
