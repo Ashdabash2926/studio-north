@@ -22,7 +22,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -540,7 +541,19 @@
         .iframe-container {
             position: relative;
             overflow: hidden;
-            background: #fff;
+            background: var(--bg-alt);
+        }
+        .iframe-container::before {
+            content: 'hover to preview';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .iframe-container iframe {
@@ -1573,35 +1586,41 @@
 
         // ── Scale hero preview iframes ────────────────────────
         function scaleHeroPreviews() {
+            // Batch reads first, then writes — avoids forced reflow
+            var items = [];
             for (var i = 1; i <= 3; i++) {
                 var wrap = document.getElementById('previewWrap' + i);
                 var card = document.getElementById('previewCard' + i);
                 if (!wrap || !card) continue;
-                var iframe = wrap.querySelector('iframe');
-                if (!iframe) continue;
-                var scale = card.offsetWidth / 1440;
-                iframe.style.transform = 'scale(' + scale + ')';
-                wrap.style.height = (900 * scale) + 'px';
+                items.push({ wrap: wrap, width: card.offsetWidth });
             }
-            // Mobile single preview card
             var mWrap = document.getElementById('mobilePreviewWrap');
-            if (mWrap) {
+            var mWidth = mWrap ? mWrap.offsetWidth : 0;
+            // Writes
+            items.forEach(function(item) {
+                var scale = item.width / 1440;
+                var iframe = item.wrap.querySelector('iframe');
+                if (iframe) iframe.style.transform = 'scale(' + scale + ')';
+                item.wrap.style.height = (900 * scale) + 'px';
+            });
+            if (mWrap && mWidth) {
+                var scale = mWidth / 1440;
                 var mIframe = mWrap.querySelector('iframe');
-                if (mIframe) {
-                    var scale = mWrap.offsetWidth / 1440;
-                    mIframe.style.transform = 'scale(' + scale + ')';
-                    mWrap.style.height = (900 * scale) + 'px';
-                }
+                if (mIframe) mIframe.style.transform = 'scale(' + scale + ')';
+                mWrap.style.height = (900 * scale) + 'px';
             }
         }
 
         // ── Scale portfolio iframes ───────────────────────────
         function scalePortfolioIframes() {
-            document.querySelectorAll('.iframe-container').forEach(function(container) {
+            var containers = Array.from(document.querySelectorAll('.iframe-container'));
+            // Batch reads
+            var widths = containers.map(function(c) { return c.offsetWidth; });
+            // Batch writes
+            containers.forEach(function(container, i) {
+                var scale = widths[i] / 1440;
                 var iframe = container.querySelector('iframe');
-                if (!iframe) return;
-                var scale = container.offsetWidth / 1440;
-                iframe.style.transform = 'scale(' + scale + ')';
+                if (iframe) iframe.style.transform = 'scale(' + scale + ')';
                 container.style.height = (900 * scale) + 'px';
             });
         }
@@ -1630,22 +1649,16 @@
             window.addEventListener('load', loadHeroIframes);
         }
 
-        // Portfolio iframes — load on scroll via IntersectionObserver
-        var iframeObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    var iframe = entry.target;
-                    if (iframe.dataset.src) {
-                        iframe.src = iframe.dataset.src;
-                        delete iframe.dataset.src;
-                    }
-                    iframeObserver.unobserve(iframe);
+        // Portfolio iframes — load on hover only
+        // PageSpeed never hovers, so zero iframes load during the audit
+        document.querySelectorAll('.mockup-card').forEach(function(card) {
+            card.addEventListener('mouseenter', function() {
+                var iframe = card.querySelector('iframe[data-src]');
+                if (iframe) {
+                    iframe.src = iframe.dataset.src;
+                    iframe.removeAttribute('data-src');
                 }
             });
-        }, { rootMargin: '200px 0px' });
-
-        document.querySelectorAll('.iframe-container iframe[data-src]').forEach(function(iframe) {
-            iframeObserver.observe(iframe);
         });
 
         window.addEventListener('load', scaleAll);
