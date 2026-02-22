@@ -542,16 +542,15 @@
             position: relative;
             overflow: hidden;
             background: #fff;
+            aspect-ratio: 16 / 10;
         }
 
-        .iframe-container iframe {
-            position: absolute;
-            top: 0; left: 0;
-            width: 1440px;
-            height: 900px;
-            transform-origin: top left;
-            border: none;
-            pointer-events: none;
+        .iframe-container img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
         }
 
         .iframe-overlay {
@@ -1172,7 +1171,7 @@
                         <span class="port-url">kandykrush.co.uk</span>
                     </div>
                     <div class="iframe-container">
-                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/KandyKrushTemplate/" scrolling="no" title="Kandy Krush website preview"></iframe>
+                        <img src="images/kandy-krush.webp" alt="Kandy Krush website preview" loading="lazy">
                         <div class="iframe-overlay">
                             <a href="https://ashdabash2926.github.io/KandyKrushTemplate/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
                         </div>
@@ -1200,7 +1199,7 @@
                         <span class="port-url">sacredembersauna.co.uk</span>
                     </div>
                     <div class="iframe-container">
-                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/sacred-ember/sauna2.html" scrolling="no" title="Sacred Ember website preview"></iframe>
+                        <img src="images/sacred-ember.webp" alt="Sacred Ember website preview" loading="lazy">
                         <div class="iframe-overlay">
                             <a href="https://ashdabash2926.github.io/sacred-ember/sauna2.html" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
                         </div>
@@ -1228,7 +1227,7 @@
                         <span class="port-url">artisancoffeelab.co.uk</span>
                     </div>
                     <div class="iframe-container">
-                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/coffee-shop/" scrolling="no" title="Artisan Coffee Lab website preview"></iframe>
+                        <img src="images/artisan-coffee.webp" alt="Artisan Coffee Lab website preview" loading="lazy">
                         <div class="iframe-overlay">
                             <a href="https://ashdabash2926.github.io/coffee-shop/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
                         </div>
@@ -1256,7 +1255,7 @@
                         <span class="port-url">bladeandco.co.uk</span>
                     </div>
                     <div class="iframe-container">
-                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/blade-co/" scrolling="no" title="Blade & Co. website preview"></iframe>
+                        <img src="images/blade-co.webp" alt="Blade &amp; Co. website preview" loading="lazy">
                         <div class="iframe-overlay">
                             <a href="https://ashdabash2926.github.io/blade-co/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
                         </div>
@@ -1284,7 +1283,7 @@
                         <span class="port-url">thestonetable.co.uk</span>
                     </div>
                     <div class="iframe-container">
-                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/stone-table/" scrolling="no" title="The Stone Table website preview"></iframe>
+                        <img src="images/stone-table.webp" alt="The Stone Table website preview" loading="lazy">
                         <div class="iframe-overlay">
                             <a href="https://ashdabash2926.github.io/stone-table/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
                         </div>
@@ -1312,7 +1311,7 @@
                         <span class="port-url">peakform.co.uk</span>
                     </div>
                     <div class="iframe-container">
-                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/peak-form/" scrolling="no" title="Peak Form website preview"></iframe>
+                        <img src="images/peak-form.webp" alt="Peak Form website preview" loading="lazy">
                         <div class="iframe-overlay">
                             <a href="https://ashdabash2926.github.io/peak-form/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
                         </div>
@@ -1340,7 +1339,7 @@
                         <span class="port-url">stillandstrong.co.uk</span>
                     </div>
                     <div class="iframe-container">
-                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/still-strong/" scrolling="no" title="Still & Strong website preview"></iframe>
+                        <img src="images/still-strong.webp" alt="Still &amp; Strong website preview" loading="lazy">
                         <div class="iframe-overlay">
                             <a href="https://ashdabash2926.github.io/still-strong/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
                         </div>
@@ -1368,7 +1367,7 @@
                         <span class="port-url">heatherlanetherapy.co.uk</span>
                     </div>
                     <div class="iframe-container">
-                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/heather-lane-therapy/" scrolling="no" title="Heather Lane Therapy website preview"></iframe>
+                        <img src="images/heather-lane.webp" alt="Heather Lane Therapy website preview" loading="lazy">
                         <div class="iframe-overlay">
                             <a href="https://ashdabash2926.github.io/heather-lane-therapy/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
                         </div>
@@ -1396,7 +1395,7 @@
                         <span class="port-url">solacemassage.co.uk</span>
                     </div>
                     <div class="iframe-container">
-                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/solace-massage/" scrolling="no" title="Solace Massage website preview"></iframe>
+                        <img src="images/solace.webp" alt="Solace Massage website preview" loading="lazy">
                         <div class="iframe-overlay">
                             <a href="https://ashdabash2926.github.io/solace-massage/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
                         </div>
@@ -1678,29 +1677,7 @@
             }
         }
 
-        // ── Scale portfolio iframes ───────────────────────────
-        function scalePortfolioIframes() {
-            var containers = Array.from(document.querySelectorAll('.iframe-container'));
-            // Batch reads
-            var widths = containers.map(function(c) { return c.offsetWidth; });
-            // Batch writes
-            containers.forEach(function(container, i) {
-                var scale = widths[i] / 1440;
-                var iframe = container.querySelector('iframe');
-                if (iframe) iframe.style.transform = 'scale(' + scale + ')';
-                container.style.height = (900 * scale) + 'px';
-            });
-        }
-
-        function scaleAll() {
-            scaleHeroPreviews();
-            scalePortfolioIframes();
-        }
-
-        // ── Deferred iframe loading ────────────────────────────
-        // Hero/mobile preview iframes: load after page is interactive.
-        // Portfolio iframes: load only when scrolled into view.
-
+        // ── Hero preview iframes: load after page is interactive ──
         function loadHeroIframes() {
             ['previewWrap1','previewWrap2','previewWrap3','mobilePreviewWrap'].forEach(function(id) {
                 var wrap = document.getElementById(id);
@@ -1716,26 +1693,8 @@
             window.addEventListener('load', loadHeroIframes);
         }
 
-        // Portfolio iframes — load when scrolled into view
-        var iframeObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    var iframe = entry.target;
-                    if (iframe.dataset.src) {
-                        iframe.src = iframe.dataset.src;
-                        iframe.removeAttribute('data-src');
-                    }
-                    iframeObserver.unobserve(iframe);
-                }
-            });
-        }, { rootMargin: '100px 0px' });
-
-        document.querySelectorAll('.iframe-container iframe[data-src]').forEach(function(iframe) {
-            iframeObserver.observe(iframe);
-        });
-
-        window.addEventListener('load', scaleAll);
-        window.addEventListener('resize', scaleAll);
+        window.addEventListener('load', scaleHeroPreviews);
+        window.addEventListener('resize', scaleHeroPreviews);
 
         // ── Scroll reveal ─────────────────────────────────────
         var observer = new IntersectionObserver(function(entries) {
