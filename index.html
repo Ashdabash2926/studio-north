@@ -541,19 +541,7 @@
         .iframe-container {
             position: relative;
             overflow: hidden;
-            background: var(--bg-alt);
-        }
-        .iframe-container::before {
-            content: 'hover to preview';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 0.65rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-3);
-            pointer-events: none;
-            z-index: 0;
+            background: #fff;
         }
 
         .iframe-container iframe {
@@ -1649,16 +1637,22 @@
             window.addEventListener('load', loadHeroIframes);
         }
 
-        // Portfolio iframes — load on hover only
-        // PageSpeed never hovers, so zero iframes load during the audit
-        document.querySelectorAll('.mockup-card').forEach(function(card) {
-            card.addEventListener('mouseenter', function() {
-                var iframe = card.querySelector('iframe[data-src]');
-                if (iframe) {
-                    iframe.src = iframe.dataset.src;
-                    iframe.removeAttribute('data-src');
+        // Portfolio iframes — load when scrolled into view
+        var iframeObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var iframe = entry.target;
+                    if (iframe.dataset.src) {
+                        iframe.src = iframe.dataset.src;
+                        iframe.removeAttribute('data-src');
+                    }
+                    iframeObserver.unobserve(iframe);
                 }
             });
+        }, { rootMargin: '100px 0px' });
+
+        document.querySelectorAll('.iframe-container iframe[data-src]').forEach(function(iframe) {
+            iframeObserver.observe(iframe);
         });
 
         window.addEventListener('load', scaleAll);
