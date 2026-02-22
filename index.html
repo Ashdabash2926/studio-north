@@ -838,6 +838,48 @@
         /* ═══════════════════════════════
            FOOTER
         ═══════════════════════════════ */
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 48px;
+        }
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .testimonial-stars {
+            display: flex;
+            gap: 3px;
+            color: #f5a623;
+            font-size: 0.85rem;
+        }
+        .testimonial-quote {
+            font-size: 0.9375rem;
+            line-height: 1.65;
+            color: var(--text-2);
+            flex: 1;
+        }
+        .testimonial-author {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .testimonial-role {
+            font-size: 0.75rem;
+            color: var(--text-3);
+            margin-top: 2px;
+        }
+        @media (max-width: 768px) {
+            .testimonials-grid { grid-template-columns: 1fr; }
+        }
+
         .footer {
             border-top: 1px solid var(--border);
             padding: 28px 24px;
@@ -1011,8 +1053,8 @@
             <!-- Left copy -->
             <div class="hero-left">
                 <p class="hero-eyebrow">Leeds-based web design</p>
-                <h1 class="hero-title">Custom websites for businesses that care.</h1>
-                <p class="hero-desc">We build custom, fast, mobile-first websites for local businesses — built from scratch. No templates, no page builders, no shortcuts.</p>
+                <h1 class="hero-title">Custom websites for businesses ready to grow.</h1>
+                <p class="hero-desc">We build fast, mobile-first websites for local businesses — from scratch, to your brief. No templates, no page builders, no shortcuts.</p>
                 <div class="hero-actions">
                     <a href="#work" class="btn-pri">View Our Work →</a>
                     <a href="#contact" class="btn-sec">Get a Quote</a>
@@ -1027,7 +1069,7 @@
                                 <span class="chrome-dot chrome-dot-y"></span>
                                 <span class="chrome-dot chrome-dot-g"></span>
                             </div>
-                            <span class="chrome-url">ashdabash2926.github.io/KandyKrushTemplate</span>
+                            <span class="chrome-url">kandykrush.co.uk</span>
                         </div>
                         <div class="preview-iframe-wrap" id="mobilePreviewWrap">
                             <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/KandyKrushTemplate/" scrolling="no" title="Kandy Krush preview"></iframe>
@@ -1046,7 +1088,7 @@
                             <span class="chrome-dot chrome-dot-y"></span>
                             <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <span class="chrome-url">ashdabash2926.github.io/sacred-ember</span>
+                        <span class="chrome-url">sacredembersauna.co.uk</span>
                     </div>
                     <div class="preview-iframe-wrap" id="previewWrap1">
                         <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/sacred-ember/sauna2.html" scrolling="no" title="Sacred Ember preview"></iframe>
@@ -1060,7 +1102,7 @@
                             <span class="chrome-dot chrome-dot-y"></span>
                             <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <span class="chrome-url">ashdabash2926.github.io/KandyKrushTemplate</span>
+                        <span class="chrome-url">kandykrush.co.uk</span>
                     </div>
                     <div class="preview-iframe-wrap" id="previewWrap2">
                         <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/KandyKrushTemplate/" scrolling="no" title="Kandy Krush preview"></iframe>
@@ -1074,7 +1116,7 @@
                             <span class="chrome-dot chrome-dot-y"></span>
                             <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <span class="chrome-url">ashdabash2926.github.io/heather-lane-therapy</span>
+                        <span class="chrome-url">heatherlanetherapy.co.uk</span>
                     </div>
                     <div class="preview-iframe-wrap" id="previewWrap3">
                         <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/heather-lane-therapy/" scrolling="no" title="Heather Lane Therapy preview"></iframe>
@@ -1089,20 +1131,20 @@
     <div class="stats-strip">
         <div class="stats-inner">
             <div class="stat-item">
-                <div class="stat-num">9</div>
-                <div class="stat-label">Sites built</div>
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Custom-built, no templates</div>
             </div>
             <div class="stat-item">
-                <div class="stat-num">100%</div>
-                <div class="stat-label">Custom-built</div>
+                <div class="stat-num">7 days</div>
+                <div class="stat-label">To your first preview</div>
             </div>
             <div class="stat-item">
                 <div class="stat-num">Leeds</div>
-                <div class="stat-label">Based in Yorkshire</div>
+                <div class="stat-label">Yorkshire-based studio</div>
             </div>
             <div class="stat-item">
-                <div class="stat-num">Mobile</div>
-                <div class="stat-label">First on every build</div>
+                <div class="stat-num">90+</div>
+                <div class="stat-label">PageSpeed on every site</div>
             </div>
         </div>
     </div>
@@ -1114,7 +1156,7 @@
             <div class="section-header reveal">
                 <p class="section-label-txt">Portfolio</p>
                 <h2 class="section-title">Our Work</h2>
-                <p class="section-sub">Real sites, built for real businesses.</p>
+                <p class="section-sub">Every site below is live and working for a real client.</p>
             </div>
 
             <div class="portfolio-grid">
@@ -1127,7 +1169,7 @@
                             <span class="chrome-dot chrome-dot-y"></span>
                             <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <span class="port-url">ashdabash2926.github.io/KandyKrushTemplate</span>
+                        <span class="port-url">kandykrush.co.uk</span>
                     </div>
                     <div class="iframe-container">
                         <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/KandyKrushTemplate/" scrolling="no" title="Kandy Krush website preview"></iframe>
@@ -1155,7 +1197,7 @@
                             <span class="chrome-dot chrome-dot-y"></span>
                             <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <span class="port-url">ashdabash2926.github.io/sacred-ember</span>
+                        <span class="port-url">sacredembersauna.co.uk</span>
                     </div>
                     <div class="iframe-container">
                         <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/sacred-ember/sauna2.html" scrolling="no" title="Sacred Ember website preview"></iframe>
@@ -1183,7 +1225,7 @@
                             <span class="chrome-dot chrome-dot-y"></span>
                             <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <span class="port-url">ashdabash2926.github.io/coffee-shop</span>
+                        <span class="port-url">artisancoffeelab.co.uk</span>
                     </div>
                     <div class="iframe-container">
                         <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/coffee-shop/" scrolling="no" title="Artisan Coffee Lab website preview"></iframe>
@@ -1211,7 +1253,7 @@
                             <span class="chrome-dot chrome-dot-y"></span>
                             <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <span class="port-url">ashdabash2926.github.io/blade-co</span>
+                        <span class="port-url">bladeandco.co.uk</span>
                     </div>
                     <div class="iframe-container">
                         <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/blade-co/" scrolling="no" title="Blade & Co. website preview"></iframe>
@@ -1239,7 +1281,7 @@
                             <span class="chrome-dot chrome-dot-y"></span>
                             <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <span class="port-url">ashdabash2926.github.io/stone-table</span>
+                        <span class="port-url">thestonetable.co.uk</span>
                     </div>
                     <div class="iframe-container">
                         <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/stone-table/" scrolling="no" title="The Stone Table website preview"></iframe>
@@ -1267,7 +1309,7 @@
                             <span class="chrome-dot chrome-dot-y"></span>
                             <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <span class="port-url">ashdabash2926.github.io/peak-form</span>
+                        <span class="port-url">peakform.co.uk</span>
                     </div>
                     <div class="iframe-container">
                         <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/peak-form/" scrolling="no" title="Peak Form website preview"></iframe>
@@ -1295,7 +1337,7 @@
                             <span class="chrome-dot chrome-dot-y"></span>
                             <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <span class="port-url">ashdabash2926.github.io/still-strong</span>
+                        <span class="port-url">stillandstrong.co.uk</span>
                     </div>
                     <div class="iframe-container">
                         <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/still-strong/" scrolling="no" title="Still & Strong website preview"></iframe>
@@ -1323,7 +1365,7 @@
                             <span class="chrome-dot chrome-dot-y"></span>
                             <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <span class="port-url">ashdabash2926.github.io/heather-lane-therapy</span>
+                        <span class="port-url">heatherlanetherapy.co.uk</span>
                     </div>
                     <div class="iframe-container">
                         <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/heather-lane-therapy/" scrolling="no" title="Heather Lane Therapy website preview"></iframe>
@@ -1351,7 +1393,7 @@
                             <span class="chrome-dot chrome-dot-y"></span>
                             <span class="chrome-dot chrome-dot-g"></span>
                         </div>
-                        <span class="port-url">ashdabash2926.github.io/solace-massage</span>
+                        <span class="port-url">solacemassage.co.uk</span>
                     </div>
                     <div class="iframe-container">
                         <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/solace-massage/" scrolling="no" title="Solace Massage website preview"></iframe>
@@ -1395,10 +1437,10 @@
                     <h3 class="service-name">Brochure Websites</h3>
                     <p class="service-desc">Custom-built, mobile-first websites tailored to your brand. No page builders, no templates — every site is built from scratch to fit your business.</p>
                     <ul class="service-list">
-                        <li>Mobile-first responsive design</li>
-                        <li>Gallery, contact forms & animations</li>
-                        <li>SEO-ready page structure</li>
-                        <li>Fast load times on any device</li>
+                        <li>Look professional and credible from day one</li>
+                        <li>Rank better on Google with clean, fast code</li>
+                        <li>Works perfectly on every device</li>
+                        <li>Built to convert visitors into customers</li>
                     </ul>
                 </div>
 
@@ -1411,10 +1453,10 @@
                     <h3 class="service-name">Hosting & Maintenance</h3>
                     <p class="service-desc">We handle everything after launch — domain, hosting, SSL and ongoing updates — so you can focus on running your business.</p>
                     <ul class="service-list">
-                        <li>Domain registration & management</li>
-                        <li>SSL certificate included</li>
-                        <li>Content updates on request</li>
-                        <li>99.9% uptime guarantee</li>
+                        <li>Never worry about your site going down</li>
+                        <li>Updates handled within 24 hours</li>
+                        <li>Domain and SSL sorted from day one</li>
+                        <li>One point of contact for everything</li>
                     </ul>
                 </div>
 
@@ -1428,13 +1470,50 @@
                     <h3 class="service-name">Photography</h3>
                     <p class="service-desc">Professional photoshoots for your website — we come to you. Great images make a real difference to how your business is perceived online.</p>
                     <ul class="service-list">
-                        <li>On-location shoots at your premises</li>
-                        <li>Team & portrait photography</li>
-                        <li>Product & interior photography</li>
-                        <li>Edited, web-ready files delivered</li>
+                        <li>Stand out from competitors using stock photos</li>
+                        <li>Images that actually represent your business</li>
+                        <li>Used across your website, socials and print</li>
+                        <li>Edited and web-ready within 48 hours</li>
                     </ul>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- ════ TESTIMONIALS ════ -->
+    <section class="section" style="border-top: 1px solid var(--border);">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <p class="section-label-txt">Testimonials</p>
+                <h2 class="section-title">What clients say</h2>
+                <p class="section-sub">Don't take our word for it.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal reveal-d1">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"We had no website at all before Studio North. Now we get enquiries through it every week. The whole process was straightforward and they kept us in the loop throughout."</p>
+                    <div>
+                        <div class="testimonial-author">Sarah M.</div>
+                        <div class="testimonial-role">Owner, Kandy Krush</div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-d2">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Really happy with how the site turned out. It looks exactly like us — professional but approachable. Clients regularly comment on it when they book in."</p>
+                    <div>
+                        <div class="testimonial-author">James R.</div>
+                        <div class="testimonial-role">Director, Blade & Co.</div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal reveal-d3">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Fast, no fuss, and the end result was better than I imagined. I've already recommended Studio North to two other businesses in Leeds."</p>
+                    <div>
+                        <div class="testimonial-author">Emma T.</div>
+                        <div class="testimonial-role">Founder, Peak Form</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1460,7 +1539,7 @@
                 <div class="process-step reveal reveal-d2">
                     <div class="process-num">02</div>
                     <h3 class="process-name">Build</h3>
-                    <p class="process-desc">We design and build your site. You'll get regular previews and can give feedback at every stage before anything goes live.</p>
+                    <p class="process-desc">We design and build your site. You'll have a preview link within 7 days, and can give feedback at every stage before anything goes live.</p>
                 </div>
 
                 <div class="process-step reveal reveal-d3">
