@@ -1029,7 +1029,7 @@
                             <span class="chrome-url">ashdabash2926.github.io/KandyKrushTemplate</span>
                         </div>
                         <div class="preview-iframe-wrap" id="mobilePreviewWrap">
-                            <iframe sandbox="allow-same-origin" src="https://ashdabash2926.github.io/KandyKrushTemplate/" loading="lazy" scrolling="no" title="Kandy Krush preview"></iframe>
+                            <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/KandyKrushTemplate/" scrolling="no" title="Kandy Krush preview"></iframe>
                         </div>
                     </div>
                 </div>
@@ -1048,7 +1048,7 @@
                         <span class="chrome-url">ashdabash2926.github.io/sacred-ember</span>
                     </div>
                     <div class="preview-iframe-wrap" id="previewWrap1">
-                        <iframe sandbox="allow-same-origin" src="https://ashdabash2926.github.io/sacred-ember/sauna2.html" loading="eager" scrolling="no" title="Sacred Ember preview"></iframe>
+                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/sacred-ember/sauna2.html" scrolling="no" title="Sacred Ember preview"></iframe>
                     </div>
                 </div>
 
@@ -1062,7 +1062,7 @@
                         <span class="chrome-url">ashdabash2926.github.io/KandyKrushTemplate</span>
                     </div>
                     <div class="preview-iframe-wrap" id="previewWrap2">
-                        <iframe sandbox="allow-same-origin" src="https://ashdabash2926.github.io/KandyKrushTemplate/" loading="eager" scrolling="no" title="Kandy Krush preview"></iframe>
+                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/KandyKrushTemplate/" scrolling="no" title="Kandy Krush preview"></iframe>
                     </div>
                 </div>
 
@@ -1076,7 +1076,7 @@
                         <span class="chrome-url">ashdabash2926.github.io/heather-lane-therapy</span>
                     </div>
                     <div class="preview-iframe-wrap" id="previewWrap3">
-                        <iframe sandbox="allow-same-origin" src="https://ashdabash2926.github.io/heather-lane-therapy/" loading="lazy" scrolling="no" title="Heather Lane Therapy preview"></iframe>
+                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/heather-lane-therapy/" scrolling="no" title="Heather Lane Therapy preview"></iframe>
                     </div>
                 </div>
 
@@ -1609,6 +1609,21 @@
         function scaleAll() {
             scaleHeroPreviews();
             scalePortfolioIframes();
+        }
+
+        // ── Deferred iframe loading ────────────────────────────
+        // Hero and mobile preview iframes use data-src to avoid
+        // blocking the main thread before the page is interactive.
+        function loadDeferredIframes() {
+            document.querySelectorAll('iframe[data-src]').forEach(function(iframe) {
+                iframe.src = iframe.dataset.src;
+            });
+        }
+
+        if (document.readyState === 'complete') {
+            loadDeferredIframes();
+        } else {
+            window.addEventListener('load', loadDeferredIframes);
         }
 
         window.addEventListener('load', scaleAll);
