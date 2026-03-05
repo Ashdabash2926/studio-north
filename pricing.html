@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing — Studio North</title>
+    <meta name="description" content="Simple, transparent pricing for custom websites. Starter from £350, Standard from £600, Premium from £950. Based in Leeds, UK.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://studio-north.uk/pricing">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* ── Page hero ── */
+        .pricing-hero {
+            padding: 120px 24px 64px;
+            text-align: center;
+        }
+        .pricing-hero .section-label-txt { margin-bottom: 12px; }
+        .pricing-hero-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .pricing-hero-sub {
+            font-size: 1rem;
+            color: var(--text-2);
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ── Package cards ── */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .packages-grid { grid-template-columns: 1fr; max-width: 480px; }
+        }
+
+        .package-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-str);
+            border-radius: 16px;
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .package-card.featured {
+            background: var(--text);
+            border-color: var(--text);
+            color: #fff;
+        }
+
+        .package-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #111;
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+        .package-card.featured .package-badge {
+            background: #fff;
+            color: #111;
+        }
+
+        .package-tier {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 8px;
+        }
+        .package-card.featured .package-tier { color: rgba(255,255,255,0.5); }
+
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .package-tagline {
+            font-size: 0.8125rem;
+            color: var(--text-2);
+            margin-bottom: 24px;
+        }
+        .package-card.featured .package-tagline { color: rgba(255,255,255,0.65); }
+
+        .package-divider {
+            height: 1px;
+            background: var(--border-str);
+            margin-bottom: 24px;
+        }
+        .package-card.featured .package-divider { background: rgba(255,255,255,0.15); }
+
+        .package-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+            margin-bottom: 28px;
+        }
+        .package-list li {
+            font-size: 0.8125rem;
+            color: var(--text-2);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.45;
+        }
+        .package-card.featured .package-list li { color: rgba(255,255,255,0.75); }
+
+        .package-list li::before {
+            content: '';
+            display: block;
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23111' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-top: 1px;
+        }
+        .package-card.featured .package-list li::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23fff' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/%3E%3C/svg%3E");
+        }
+
+        .package-delivery {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-3);
+            margin-bottom: 20px;
+        }
+        .package-card.featured .package-delivery { color: rgba(255,255,255,0.45); }
+
+        .package-cta {
+            display: block;
+            text-align: center;
+            padding: 11px 20px;
+            border-radius: 8px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1.5px solid var(--border-str);
+            color: var(--text);
+            background: transparent;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .package-cta:hover { background: var(--bg-alt); }
+        .package-card.featured .package-cta {
+            background: #fff;
+            color: #111;
+            border-color: #fff;
+        }
+        .package-card.featured .package-cta:hover { background: #e8e8e8; }
+
+        /* ── Add-ons ── */
+        .addons-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+        .addons-table th,
+        .addons-table td {
+            padding: 13px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .addons-table th {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-3);
+        }
+        .addons-table tr:last-child td { border-bottom: none; }
+        .addons-table td:last-child {
+            text-align: right;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .addons-table-wrap {
+            background: var(--bg-card);
+            border: 1px solid var(--border-str);
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        /* ── Not included ── */
+        .not-included-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        @media (max-width: 520px) { .not-included-grid { grid-template-columns: 1fr; } }
+
+        .not-included-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-str);
+            border-radius: 10px;
+            padding: 16px 18px;
+            font-size: 0.8125rem;
+            color: var(--text-2);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.5;
+        }
+        .not-included-item::before {
+            content: '';
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            margin-top: 1px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23999' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        /* ── Payment note ── */
+        .payment-card {
+            max-width: 560px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-str);
+            border-radius: 12px;
+            padding: 32px;
+        }
+        .payment-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .payment-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .payment-row:first-child { padding-top: 0; }
+        .payment-pct {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            flex-shrink: 0;
+            width: 56px;
+        }
+        .payment-detail {
+            font-size: 0.8125rem;
+            color: var(--text-2);
+            line-height: 1.5;
+        }
+        .payment-detail strong {
+            display: block;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        /* ── CTA strip ── */
+        .cta-strip {
+            background: var(--text);
+            color: #fff;
+            padding: 72px 24px;
+            text-align: center;
+        }
+        .cta-strip .section-label-txt { color: rgba(255,255,255,0.45); }
+        .cta-strip-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        .cta-strip-sub {
+            font-size: 0.9375rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 32px;
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-pri-inv {
+            display: inline-block;
+            padding: 13px 28px;
+            background: #fff;
+            color: #111;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+        .btn-pri-inv:hover { background: #e8e8e8; }
+
+        .section-note {
+            font-size: 0.8rem;
+            color: var(--text-3);
+            text-align: center;
+            margin-top: 48px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ════ NAV ════ -->
+    <nav class="nav" aria-label="Primary navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">Studio North</a>
+
+            <ul class="nav-links">
+                <li><a href="index.html#work">Work</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="pricing.html" style="color:var(--text);font-weight:500;">Pricing</a></li>
+                <li><a href="index.html#process">Process</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-right">
+                <a href="index.html#contact" class="nav-cta">Get a Quote</a>
+                <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile nav -->
+    <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#services">Services</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html#contact" class="mobile-cta">Get a Quote</a>
+    </nav>
+
+    <main>
+
+    <!-- ════ HERO ════ -->
+    <div class="pricing-hero">
+        <p class="section-label-txt">Pricing</p>
+        <h1 class="pricing-hero-title">Clear, simple pricing.</h1>
+        <p class="pricing-hero-sub">No hidden fees, no surprises. Pick the package that fits your project — or get in touch and we'll work it out together.</p>
+    </div>
+
+    <!-- ════ PACKAGES ════ -->
+    <section class="section section-bordered" style="padding-top: 0;">
+        <div class="section-inner">
+
+            <div class="packages-grid reveal">
+
+                <!-- Starter -->
+                <div class="package-card">
+                    <div class="package-tier">Starter</div>
+                    <div class="package-price">£350</div>
+                    <div class="package-tagline">Personal sites & simple landing pages</div>
+                    <div class="package-divider"></div>
+                    <ul class="package-list">
+                        <li>1–3 page static website</li>
+                        <li>Mobile responsive design</li>
+                        <li>Basic contact form</li>
+                        <li>1 round of revisions</li>
+                    </ul>
+                    <div class="package-delivery">⏱ Delivery: 5–7 days</div>
+                    <a href="index.html#contact" class="package-cta">Get Started</a>
+                </div>
+
+                <!-- Standard (featured) -->
+                <div class="package-card featured">
+                    <div class="package-badge">Most Popular</div>
+                    <div class="package-tier">Standard</div>
+                    <div class="package-price">£600</div>
+                    <div class="package-tagline">Small businesses, freelancers & coaches</div>
+                    <div class="package-divider"></div>
+                    <ul class="package-list">
+                        <li>4–6 page static website</li>
+                        <li>Mobile responsive design</li>
+                        <li>Styled contact form with email notifications</li>
+                        <li>Basic SEO setup (meta tags, sitemap)</li>
+                        <li>Social media links</li>
+                        <li>2 rounds of revisions</li>
+                    </ul>
+                    <div class="package-delivery">⏱ Delivery: 10–14 days</div>
+                    <a href="index.html#contact" class="package-cta">Get Started</a>
+                </div>
+
+                <!-- Premium -->
+                <div class="package-card">
+                    <div class="package-tier">Premium</div>
+                    <div class="package-price">£950</div>
+                    <div class="package-tagline">Businesses wanting a strong online presence</div>
+                    <div class="package-divider"></div>
+                    <ul class="package-list">
+                        <li>5–8 page fully custom designed website</li>
+                        <li>Polished animations & transitions</li>
+                        <li>Contact form with email routing</li>
+                        <li>Full SEO setup + Google Analytics</li>
+                        <li>Social media integration</li>
+                        <li>Speed optimisation</li>
+                        <li>3 rounds of revisions</li>
+                    </ul>
+                    <div class="package-delivery">⏱ Delivery: 2–3 weeks</div>
+                    <a href="index.html#contact" class="package-cta">Get Started</a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ════ ADD-ONS ════ -->
+    <section class="section section-alt">
+        <div class="section-inner">
+
+            <div class="section-header reveal" style="margin-bottom: 36px;">
+                <p class="section-label-txt">Add-Ons</p>
+                <h2 class="section-title">Need something extra?</h2>
+                <p class="section-sub">Bolt on what you need — no package required.</p>
+            </div>
+
+            <div class="addons-table-wrap reveal">
+                <table class="addons-table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Extra page (per page)</td>
+                            <td>£50–80</td>
+                        </tr>
+                        <tr>
+                            <td>Logo design (simple)</td>
+                            <td>£75</td>
+                        </tr>
+                        <tr>
+                            <td>Copywriting (per page)</td>
+                            <td>£40</td>
+                        </tr>
+                        <tr>
+                            <td>Domain + hosting setup</td>
+                            <td>£50</td>
+                        </tr>
+                        <tr>
+                            <td>Google Business Profile setup</td>
+                            <td>£40</td>
+                        </tr>
+                        <tr>
+                            <td>Monthly maintenance</td>
+                            <td>£40/mo</td>
+                        </tr>
+                        <tr>
+                            <td>SSL certificate setup</td>
+                            <td>Free</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ════ NOT INCLUDED ════ -->
+    <section class="section section-bordered">
+        <div class="section-inner">
+
+            <div class="section-header reveal" style="margin-bottom: 36px;">
+                <p class="section-label-txt">Transparency</p>
+                <h2 class="section-title">What's not included</h2>
+                <p class="section-sub">Unless added on — no nasty surprises.</p>
+            </div>
+
+            <div class="not-included-grid reveal">
+                <div class="not-included-item">Content writing — copy, bios, descriptions</div>
+                <div class="not-included-item">Photography or stock images (free alternatives available)</div>
+                <div class="not-included-item">Ongoing hosting fees — recommend Netlify free tier or ~£5/mo</div>
+                <div class="not-included-item">Domain registration — typically £10–15/year</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ════ HOW IT WORKS ════ -->
+    <section class="section section-alt">
+        <div class="section-inner">
+
+            <div class="section-header reveal">
+                <p class="section-label-txt">Process</p>
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-sub">Simple, transparent, stress-free.</p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-step reveal reveal-d1">
+                    <div class="process-num">01</div>
+                    <h3 class="process-name">Discovery Call</h3>
+                    <p class="process-desc">Free 20-min chat to understand what you need. No pressure, no jargon — just a conversation about your project.</p>
+                </div>
+                <div class="process-step reveal reveal-d2">
+                    <div class="process-num">02</div>
+                    <h3 class="process-name">Quote & Agreement</h3>
+                    <p class="process-desc">You get a clear written proposal with the price, scope and timeline. 50% deposit secures your spot.</p>
+                </div>
+                <div class="process-step reveal reveal-d3">
+                    <div class="process-num">03</div>
+                    <h3 class="process-name">Design & Build</h3>
+                    <p class="process-desc">We build the site and share a live preview link. You review, give feedback, and we refine until it's exactly right.</p>
+                </div>
+                <div class="process-step reveal reveal-d1">
+                    <div class="process-num">04</div>
+                    <h3 class="process-name">Launch</h3>
+                    <p class="process-desc">Final payment, then your site goes live. We handle the domain, hosting and SSL — you just share the link.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ════ PAYMENT TERMS ════ -->
+    <section class="section section-bordered">
+        <div class="section-inner">
+
+            <div class="section-header reveal" style="margin-bottom:36px;">
+                <p class="section-label-txt">Payment</p>
+                <h2 class="section-title">Payment Terms</h2>
+            </div>
+
+            <div class="payment-card reveal">
+                <div class="payment-row">
+                    <div class="payment-pct">50%</div>
+                    <div class="payment-detail">
+                        <strong>Deposit — due upfront</strong>
+                        Paid before work begins. Secures your project slot and covers initial design work.
+                    </div>
+                </div>
+                <div class="payment-row">
+                    <div class="payment-pct">50%</div>
+                    <div class="payment-detail">
+                        <strong>Balance — due on completion</strong>
+                        Paid before the site goes live. Bank transfer only.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ════ CTA ════ -->
+    <div class="cta-strip">
+        <p class="section-label-txt">Ready to start?</p>
+        <h2 class="cta-strip-title">Let's build something great.</h2>
+        <p class="cta-strip-sub">Get in touch and we'll figure out the right package for your project — no commitment needed.</p>
+        <a href="index.html#contact" class="btn-pri-inv">Get a Free Quote →</a>
+    </div>
+
+    <p class="section-note" style="padding: 24px;">Prices valid from March 2026. Based in Leeds, UK — happy to work remotely with clients anywhere.</p>
+
+    </main>
+
+    <!-- ════ FOOTER ════ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-name">Studio North</span>
+            <p class="footer-copy">© 2026 Studio North · Leeds, UK</p>
+            <nav aria-label="Footer navigation">
+                <ul class="footer-links">
+                    <li><a href="index.html#work">Work</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        'use strict';
+
+        const burger = document.getElementById('navBurger');
+        const mobileNav = document.getElementById('navMobile');
+
+        burger.addEventListener('click', function () {
+            const isOpen = mobileNav.classList.toggle('open');
+            burger.classList.toggle('open', isOpen);
+            burger.setAttribute('aria-expanded', String(isOpen));
+            burger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+        });
+
+        function closeMenu() {
+            mobileNav.classList.remove('open');
+            burger.classList.remove('open');
+            burger.setAttribute('aria-expanded', 'false');
+            burger.setAttribute('aria-label', 'Open menu');
+        }
+
+        mobileNav.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!burger.contains(e.target) && !mobileNav.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(function (el) {
+            observer.observe(el);
+        });
+
+    })();
+    </script>
+
+</body>
+</html>
