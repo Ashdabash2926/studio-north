@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    background: #f9f8f6;
+    font-family: -apple-system, 'Inter', sans-serif;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .dot-grid {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.055) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+  .card {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+    align-items: flex-start; justify-content: center;
+    padding: 72px 80px;
+    width: 100%; height: 100%;
+  }
+  .eyebrow {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #888; margin-bottom: 24px;
+  }
+  .title {
+    font-size: 64px; font-weight: 700; line-height: 1.1;
+    color: #111; margin-bottom: 20px; max-width: 700px;
+  }
+  .desc {
+    font-size: 20px; color: #555; line-height: 1.5; max-width: 620px;
+    margin-bottom: 40px;
+  }
+  .badge {
+    display: inline-block; background: #111; color: #fff;
+    font-size: 14px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 10px 20px; border-radius: 999px;
+  }
+  .domain {
+    position: absolute; bottom: 40px; right: 56px;
+    font-size: 15px; font-weight: 600; color: #999; letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+  <div class="dot-grid"></div>
+  <div class="card">
+    <p class="eyebrow">Leeds-based Web Design</p>
+    <h1 class="title">Studio North</h1>
+    <p class="desc">Custom websites for businesses ready to grow. Built from scratch — fast, mobile-first, no templates.</p>
+    <span class="badge">studio-north.uk</span>
+  </div>
+  <div class="domain">studio-north.uk</div>
+</body>
+</html>
