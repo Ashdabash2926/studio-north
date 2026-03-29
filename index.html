@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio North — Web Design Leeds</title>
-    <meta name="description" content="Studio North builds custom, fast, mobile-first websites for local businesses in Leeds. No templates, no page builders — built from scratch.">
+    <meta name="description"
+        content="Studio North builds custom, fast, mobile-first websites for local businesses in Leeds. No templates, no page builders — built from scratch.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://studio-north.uk/">
 
@@ -12,7 +14,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://studio-north.uk/">
     <meta property="og:title" content="Studio North — Web Design Leeds">
-    <meta property="og:description" content="Custom, fast, mobile-first websites for local businesses in Leeds. Built from scratch — no templates, no shortcuts.">
+    <meta property="og:description"
+        content="Custom, fast, mobile-first websites for local businesses in Leeds. Built from scratch — no templates, no shortcuts.">
     <meta property="og:site_name" content="Studio North">
     <meta property="og:image" content="https://studio-north.uk/images/social-card.png?v=3">
     <meta property="og:image:width" content="1200">
@@ -53,10 +56,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <!-- ════ NAV ════ -->
@@ -74,7 +77,8 @@
 
             <div class="nav-right">
                 <a href="#contact" class="nav-cta">Get a Quote</a>
-                <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+                <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="navMobile">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -95,24 +99,77 @@
 
     <main>
 
-    <!-- ════ HERO ════ -->
-    <section class="hero">
-        <div class="hero-inner">
+        <!-- ════ HERO ════ -->
+        <section class="hero">
+            <div class="hero-inner">
 
-            <!-- Left copy -->
-            <div class="hero-left">
-                <img src="images/studio-north-logo.webp" alt="Studio North" height="96" style="display:block;margin-bottom:32px;">
-                <p class="hero-eyebrow">Leeds-based web design</p>
-                <h1 class="hero-title">Custom websites for businesses ready to grow.</h1>
-                <p class="hero-desc">We build fast, mobile-first websites for local businesses — from scratch, to your brief. No templates, no page builders, no shortcuts.</p>
-                <div class="hero-actions">
-                    <a href="#work" class="btn-pri">View Our Work →</a>
-                    <a href="#contact" class="btn-sec">Get a Quote</a>
+                <!-- Left copy -->
+                <div class="hero-left">
+                    <img src="images/studio-north-logo.webp" alt="Studio North" height="96" class="logo-img"
+                        style="display:block;margin-bottom:32px;">
+                    <p class="hero-eyebrow">Leeds-based web design</p>
+                    <h1 class="hero-title">Custom websites for businesses <span class="accent">ready to grow.</span></h1>
+                    <p class="hero-desc">We build fast, mobile-first websites for local businesses — from scratch, to
+                        your brief. No templates, no page builders, no shortcuts.</p>
+                    <div class="hero-actions">
+                        <a href="#work" class="btn-pri">View Our Work →</a>
+                        <a href="#contact" class="btn-sec">Get a Quote</a>
+                    </div>
+
+                    <!-- Mobile-only single preview card -->
+                    <div class="mobile-preview">
+                        <div class="mobile-preview-card">
+                            <div class="chrome-bar">
+                                <div class="chrome-dots">
+                                    <span class="chrome-dot chrome-dot-r"></span>
+                                    <span class="chrome-dot chrome-dot-y"></span>
+                                    <span class="chrome-dot chrome-dot-g"></span>
+                                </div>
+                                <span class="chrome-url">kandykrush.co.uk</span>
+                            </div>
+                            <div class="preview-iframe-wrap" id="mobilePreviewWrap">
+                                <iframe sandbox="allow-same-origin"
+                                    data-src="https://ashdabash2926.github.io/KandyKrushTemplate/" scrolling="no"
+                                    title="Kandy Krush website preview"></iframe>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Mobile-only single preview card -->
-                <div class="mobile-preview">
-                    <div class="mobile-preview-card">
+                <!-- Right — stacked project previews (desktop only) -->
+                <div class="hero-right" id="heroPreviews">
+
+                    <div class="preview-card" id="previewCard1">
+                        <div class="chrome-bar">
+                            <div class="chrome-dots">
+                                <span class="chrome-dot chrome-dot-r"></span>
+                                <span class="chrome-dot chrome-dot-y"></span>
+                                <span class="chrome-dot chrome-dot-g"></span>
+                            </div>
+                            <span class="chrome-url">artisancoffeelab.co.uk</span>
+                        </div>
+                        <div class="preview-iframe-wrap" id="previewWrap1">
+                            <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/coffee-shop/"
+                                scrolling="no" title="Artisan Coffee Lab website preview"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="preview-card" id="previewCard2">
+                        <div class="chrome-bar">
+                            <div class="chrome-dots">
+                                <span class="chrome-dot chrome-dot-r"></span>
+                                <span class="chrome-dot chrome-dot-y"></span>
+                                <span class="chrome-dot chrome-dot-g"></span>
+                            </div>
+                            <span class="chrome-url">thestonetable.co.uk</span>
+                        </div>
+                        <div class="preview-iframe-wrap" id="previewWrap2">
+                            <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/stone-table/"
+                                scrolling="no" title="The Stone Table website preview"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="preview-card" id="previewCard3">
                         <div class="chrome-bar">
                             <div class="chrome-dots">
                                 <span class="chrome-dot chrome-dot-r"></span>
@@ -121,556 +178,558 @@
                             </div>
                             <span class="chrome-url">kandykrush.co.uk</span>
                         </div>
-                        <div class="preview-iframe-wrap" id="mobilePreviewWrap">
-                            <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/KandyKrushTemplate/" scrolling="no" title="Kandy Krush website preview"></iframe>
+                        <div class="preview-iframe-wrap" id="previewWrap3">
+                            <iframe sandbox="allow-same-origin"
+                                data-src="https://ashdabash2926.github.io/KandyKrushTemplate/" scrolling="no"
+                                title="Kandy Krush website preview"></iframe>
                         </div>
                     </div>
+
                 </div>
             </div>
+        </section>
 
-            <!-- Right — stacked project previews (desktop only) -->
-            <div class="hero-right" id="heroPreviews">
-
-                <div class="preview-card" id="previewCard1">
-                    <div class="chrome-bar">
-                        <div class="chrome-dots">
-                            <span class="chrome-dot chrome-dot-r"></span>
-                            <span class="chrome-dot chrome-dot-y"></span>
-                            <span class="chrome-dot chrome-dot-g"></span>
-                        </div>
-                        <span class="chrome-url">artisancoffeelab.co.uk</span>
-                    </div>
-                    <div class="preview-iframe-wrap" id="previewWrap1">
-                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/coffee-shop/" scrolling="no" title="Artisan Coffee Lab website preview"></iframe>
-                    </div>
+        <!-- ════ STATS STRIP ════ -->
+        <div class="stats-strip">
+            <div class="stats-inner">
+                <div class="stat-item">
+                    <div class="stat-num">100%</div>
+                    <div class="stat-label">Custom-built, no templates</div>
                 </div>
-
-                <div class="preview-card" id="previewCard2">
-                    <div class="chrome-bar">
-                        <div class="chrome-dots">
-                            <span class="chrome-dot chrome-dot-r"></span>
-                            <span class="chrome-dot chrome-dot-y"></span>
-                            <span class="chrome-dot chrome-dot-g"></span>
-                        </div>
-                        <span class="chrome-url">thestonetable.co.uk</span>
-                    </div>
-                    <div class="preview-iframe-wrap" id="previewWrap2">
-                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/stone-table/" scrolling="no" title="The Stone Table website preview"></iframe>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-num">7 days</div>
+                    <div class="stat-label">To your first preview</div>
                 </div>
-
-                <div class="preview-card" id="previewCard3">
-                    <div class="chrome-bar">
-                        <div class="chrome-dots">
-                            <span class="chrome-dot chrome-dot-r"></span>
-                            <span class="chrome-dot chrome-dot-y"></span>
-                            <span class="chrome-dot chrome-dot-g"></span>
-                        </div>
-                        <span class="chrome-url">kandykrush.co.uk</span>
-                    </div>
-                    <div class="preview-iframe-wrap" id="previewWrap3">
-                        <iframe sandbox="allow-same-origin" data-src="https://ashdabash2926.github.io/KandyKrushTemplate/" scrolling="no" title="Kandy Krush website preview"></iframe>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-num">Leeds</div>
+                    <div class="stat-label">Yorkshire-based studio</div>
                 </div>
-
+                <div class="stat-item">
+                    <div class="stat-num">90+</div>
+                    <div class="stat-label">PageSpeed on every site</div>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- ════ STATS STRIP ════ -->
-    <div class="stats-strip">
-        <div class="stats-inner">
-            <div class="stat-item">
-                <div class="stat-num">100%</div>
-                <div class="stat-label">Custom-built, no templates</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-num">7 days</div>
-                <div class="stat-label">To your first preview</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-num">Leeds</div>
-                <div class="stat-label">Yorkshire-based studio</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-num">90+</div>
-                <div class="stat-label">PageSpeed on every site</div>
-            </div>
-        </div>
-    </div>
+        <!-- ════ PORTFOLIO ════ -->
+        <section id="work" class="section section-bordered">
+            <div class="section-inner">
 
-    <!-- ════ PORTFOLIO ════ -->
-    <section id="work" class="section section-bordered">
-        <div class="section-inner">
-
-            <div class="section-header reveal">
-                <p class="section-label-txt">Portfolio</p>
-                <h2 class="section-title">Our Work</h2>
-                <p class="section-sub">Every site below is live and working.</p>
-            </div>
-
-            <div class="portfolio-grid">
-
-                <!-- 1 — Kandy Krush -->
-                <article class="mockup-card reveal reveal-d1">
-                    <div class="port-chrome">
-                        <div class="chrome-dots">
-                            <span class="chrome-dot chrome-dot-r"></span>
-                            <span class="chrome-dot chrome-dot-y"></span>
-                            <span class="chrome-dot chrome-dot-g"></span>
-                        </div>
-                        <span class="port-url">kandykrush.co.uk</span>
-                    </div>
-                    <div class="iframe-container">
-                        <img src="images/kandy-krush.webp" alt="Kandy Krush website preview" loading="lazy">
-                        <div class="iframe-overlay">
-                            <a href="https://ashdabash2926.github.io/KandyKrushTemplate/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-row">
-                            <div>
-                                <div class="card-name">Kandy Krush</div>
-                                <div class="card-sub">Luxury Balloon Artistry · Leeds</div>
-                            </div>
-                            <span class="card-tag">Brochure Site</span>
-                        </div>
-                        <p class="card-desc">Multi-page luxury site with animated hero, Ken Burns parallax, photo gallery, contact form and PDF hire agreement generator.</p>
-                    </div>
-                </article>
-
-                <!-- 2 — Sacred Ember -->
-                <article class="mockup-card reveal reveal-d2">
-                    <div class="port-chrome">
-                        <div class="chrome-dots">
-                            <span class="chrome-dot chrome-dot-r"></span>
-                            <span class="chrome-dot chrome-dot-y"></span>
-                            <span class="chrome-dot chrome-dot-g"></span>
-                        </div>
-                        <span class="port-url">sacredembersauna.co.uk</span>
-                    </div>
-                    <div class="iframe-container">
-                        <img src="images/sacred-ember.webp" alt="Sacred Ember website preview" loading="lazy">
-                        <div class="iframe-overlay">
-                            <a href="https://ashdabash2926.github.io/sacred-ember/sauna2.html" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-row">
-                            <div>
-                                <div class="card-name">Sacred Ember</div>
-                                <div class="card-sub">Sauna & Wellbeing Huts · Yorkshire</div>
-                            </div>
-                            <span class="card-tag">Brochure Site</span>
-                        </div>
-                        <p class="card-desc">Dark luxury site for a premium outdoor sauna hire business, with animated gallery, booking CTAs and an editorial aesthetic.</p>
-                    </div>
-                </article>
-
-                <!-- 3 — Artisan Coffee Lab -->
-                <article class="mockup-card reveal reveal-d3">
-                    <div class="port-chrome">
-                        <div class="chrome-dots">
-                            <span class="chrome-dot chrome-dot-r"></span>
-                            <span class="chrome-dot chrome-dot-y"></span>
-                            <span class="chrome-dot chrome-dot-g"></span>
-                        </div>
-                        <span class="port-url">artisancoffeelab.co.uk</span>
-                    </div>
-                    <div class="iframe-container">
-                        <img src="images/artisan-coffee.webp" alt="Artisan Coffee Lab website preview" loading="lazy">
-                        <div class="iframe-overlay">
-                            <a href="https://ashdabash2926.github.io/coffee-shop/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-row">
-                            <div>
-                                <div class="card-name">Artisan Coffee Lab</div>
-                                <div class="card-sub">Specialty Coffee & Roastery</div>
-                            </div>
-                            <span class="card-tag">Brochure Site</span>
-                        </div>
-                        <p class="card-desc">Warm editorial site for a specialty coffee roastery, featuring menu, story section and café atmosphere throughout.</p>
-                    </div>
-                </article>
-
-                <!-- 4 — Still & Strong -->
-                <article class="mockup-card reveal reveal-d1">
-                    <div class="port-chrome">
-                        <div class="chrome-dots">
-                            <span class="chrome-dot chrome-dot-r"></span>
-                            <span class="chrome-dot chrome-dot-y"></span>
-                            <span class="chrome-dot chrome-dot-g"></span>
-                        </div>
-                        <span class="port-url">stillandstrong.co.uk</span>
-                    </div>
-                    <div class="iframe-container">
-                        <img src="images/still-strong.webp" alt="Still &amp; Strong website preview" loading="lazy">
-                        <div class="iframe-overlay">
-                            <a href="https://ashdabash2926.github.io/still-strong/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-row">
-                            <div>
-                                <div class="card-name">Still & Strong</div>
-                                <div class="card-sub">Yoga & Pilates Studio</div>
-                            </div>
-                            <span class="card-tag">Brochure Site</span>
-                        </div>
-                        <p class="card-desc">Soft natural-toned yoga studio site with breathing hero animations, class schedule, retreat section and serene editorial aesthetic.</p>
-                    </div>
-                </article>
-
-                <!-- 5 — Heather Lane Therapy -->
-                <article class="mockup-card reveal reveal-d2">
-                    <div class="port-chrome">
-                        <div class="chrome-dots">
-                            <span class="chrome-dot chrome-dot-r"></span>
-                            <span class="chrome-dot chrome-dot-y"></span>
-                            <span class="chrome-dot chrome-dot-g"></span>
-                        </div>
-                        <span class="port-url">heatherlanetherapy.co.uk</span>
-                    </div>
-                    <div class="iframe-container">
-                        <img src="images/heather-lane.webp" alt="Heather Lane Therapy website preview" loading="lazy">
-                        <div class="iframe-overlay">
-                            <a href="https://ashdabash2926.github.io/heather-lane-therapy/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-row">
-                            <div>
-                                <div class="card-name">Heather Lane Therapy</div>
-                                <div class="card-sub">Counselling & Psychotherapy · Leeds</div>
-                            </div>
-                            <span class="card-tag">Brochure Site</span>
-                        </div>
-                        <p class="card-desc">Calm sage-toned therapy site with credentials, CBT/EMDR approach cards, specialisms tag grid and a FAQ accordion.</p>
-                    </div>
-                </article>
-
-                <!-- 6 — Solace -->
-                <article class="mockup-card reveal reveal-d3">
-                    <div class="port-chrome">
-                        <div class="chrome-dots">
-                            <span class="chrome-dot chrome-dot-r"></span>
-                            <span class="chrome-dot chrome-dot-y"></span>
-                            <span class="chrome-dot chrome-dot-g"></span>
-                        </div>
-                        <span class="port-url">solacemassage.co.uk</span>
-                    </div>
-                    <div class="iframe-container">
-                        <img src="images/solace.webp" alt="Solace Massage website preview" loading="lazy">
-                        <div class="iframe-overlay">
-                            <a href="https://ashdabash2926.github.io/solace-massage/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-row">
-                            <div>
-                                <div class="card-name">Solace</div>
-                                <div class="card-sub">Holistic Massage & Bodywork · Leeds</div>
-                            </div>
-                            <span class="card-tag">Brochure Site</span>
-                        </div>
-                        <p class="card-desc">Warm terracotta massage site with full treatment menu, therapist bio, testimonials and an integrated booking form.</p>
-                    </div>
-                </article>
-
-                <!-- 7 — Blade & Co. -->
-                <article class="mockup-card reveal reveal-d1">
-                    <div class="port-chrome">
-                        <div class="chrome-dots">
-                            <span class="chrome-dot chrome-dot-r"></span>
-                            <span class="chrome-dot chrome-dot-y"></span>
-                            <span class="chrome-dot chrome-dot-g"></span>
-                        </div>
-                        <span class="port-url">bladeandco.co.uk</span>
-                    </div>
-                    <div class="iframe-container">
-                        <img src="images/blade-co.webp" alt="Blade &amp; Co. website preview" loading="lazy">
-                        <div class="iframe-overlay">
-                            <a href="https://ashdabash2926.github.io/blade-co/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-row">
-                            <div>
-                                <div class="card-name">Blade & Co.</div>
-                                <div class="card-sub">Premium Barber Shop</div>
-                            </div>
-                            <span class="card-tag">Brochure Site</span>
-                        </div>
-                        <p class="card-desc">Dark gold barber shop site with canvas particle effects, masonry gallery, live opening hours and an online booking flow.</p>
-                    </div>
-                </article>
-
-                <!-- 8 — The Stone Table -->
-                <article class="mockup-card reveal reveal-d2">
-                    <div class="port-chrome">
-                        <div class="chrome-dots">
-                            <span class="chrome-dot chrome-dot-r"></span>
-                            <span class="chrome-dot chrome-dot-y"></span>
-                            <span class="chrome-dot chrome-dot-g"></span>
-                        </div>
-                        <span class="port-url">thestonetable.co.uk</span>
-                    </div>
-                    <div class="iframe-container">
-                        <img src="images/stone-table.webp" alt="The Stone Table website preview" loading="lazy">
-                        <div class="iframe-overlay">
-                            <a href="https://ashdabash2926.github.io/stone-table/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-row">
-                            <div>
-                                <div class="card-name">The Stone Table</div>
-                                <div class="card-sub">Fine Dining Restaurant</div>
-                            </div>
-                            <span class="card-tag">Brochure Site</span>
-                        </div>
-                        <p class="card-desc">Warm candlelit restaurant site with tabbed menu, asymmetric gallery, reservation form and an editorial dining atmosphere.</p>
-                    </div>
-                </article>
-
-                <!-- 9 — Peak Form -->
-                <article class="mockup-card reveal reveal-d3">
-                    <div class="port-chrome">
-                        <div class="chrome-dots">
-                            <span class="chrome-dot chrome-dot-r"></span>
-                            <span class="chrome-dot chrome-dot-y"></span>
-                            <span class="chrome-dot chrome-dot-g"></span>
-                        </div>
-                        <span class="port-url">peakform.co.uk</span>
-                    </div>
-                    <div class="iframe-container">
-                        <img src="images/peak-form.webp" alt="Peak Form website preview" loading="lazy">
-                        <div class="iframe-overlay">
-                            <a href="https://ashdabash2926.github.io/peak-form/" target="_blank" rel="noopener noreferrer" class="view-btn">View Live Site →</a>
-                        </div>
-                    </div>
-                    <div class="card-info">
-                        <div class="card-row">
-                            <div>
-                                <div class="card-name">Peak Form</div>
-                                <div class="card-sub">Personal Training</div>
-                            </div>
-                            <span class="card-tag">Brochure Site</span>
-                        </div>
-                        <p class="card-desc">Bold red-on-black PT site with animated counters, testimonials, tiered pricing, FAQ accordion and a full contact form.</p>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ════ SERVICES ════ -->
-    <section id="services" class="section section-alt">
-        <div class="section-inner">
-
-            <div class="section-header reveal">
-                <p class="section-label-txt">Services</p>
-                <h2 class="section-title">What We Offer</h2>
-            </div>
-
-            <div class="services-grid">
-
-                <div class="service-card reveal reveal-d1">
-                    <div class="service-icon">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-name">Brochure Websites</h3>
-                    <p class="service-desc">Custom-built, mobile-first websites tailored to your brand. No page builders, no templates — every site is built from scratch to fit your business.</p>
-                    <ul class="service-list">
-                        <li>Look professional and credible from day one</li>
-                        <li>Rank better on Google with clean, fast code</li>
-                        <li>Works perfectly on every device</li>
-                        <li>Built to convert visitors into customers</li>
-                    </ul>
+                <div class="section-header reveal">
+                    <p class="section-label-txt">Portfolio</p>
+                    <h2 class="section-title">Our Work</h2>
+                    <p class="section-sub">Every site below is live and working.</p>
                 </div>
 
-                <div class="service-card reveal reveal-d2">
-                    <div class="service-icon">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-name">Hosting & Maintenance</h3>
-                    <p class="service-desc">We handle everything after launch — domain, hosting, SSL and ongoing updates — so you can focus on running your business.</p>
-                    <ul class="service-list">
-                        <li>Never worry about your site going down</li>
-                        <li>Updates handled within 24 hours</li>
-                        <li>Domain and SSL sorted from day one</li>
-                        <li>One point of contact for everything</li>
-                    </ul>
-                </div>
+                <div class="portfolio-grid">
 
-                <div class="service-card reveal reveal-d3">
-                    <div class="service-icon">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-name">Photography</h3>
-                    <p class="service-desc">Professional photoshoots for your website — we come to you. Great images make a real difference to how your business is perceived online.</p>
-                    <ul class="service-list">
-                        <li>Stand out from competitors using stock photos</li>
-                        <li>Images that actually represent your business</li>
-                        <li>Used across your website, socials and print</li>
-                        <li>Edited and web-ready within 48 hours</li>
-                    </ul>
-                </div>
+                    <!-- 1 — Kandy Krush -->
+                    <article class="mockup-card reveal reveal-d1">
+                        <div class="port-chrome">
+                            <div class="chrome-dots">
+                                <span class="chrome-dot chrome-dot-r"></span>
+                                <span class="chrome-dot chrome-dot-y"></span>
+                                <span class="chrome-dot chrome-dot-g"></span>
+                            </div>
+                            <span class="port-url">kandykrush.co.uk</span>
+                        </div>
+                        <div class="iframe-container">
+                            <img src="images/kandy-krush.webp" alt="Kandy Krush website preview" loading="lazy">
+                            <div class="iframe-overlay">
+                                <a href="https://ashdabash2926.github.io/KandyKrushTemplate/" target="_blank"
+                                    rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="card-row">
+                                <div>
+                                    <div class="card-name">Kandy Krush</div>
+                                    <div class="card-sub">Luxury Balloon Artistry · Leeds</div>
+                                </div>
+                                <span class="card-tag">Brochure Site</span>
+                            </div>
+                            <p class="card-desc">Multi-page luxury site with animated hero, Ken Burns parallax, photo
+                                gallery, contact form and PDF hire agreement generator.</p>
+                        </div>
+                    </article>
 
+                    <!-- 2 — Sacred Ember -->
+                    <article class="mockup-card reveal reveal-d2">
+                        <div class="port-chrome">
+                            <div class="chrome-dots">
+                                <span class="chrome-dot chrome-dot-r"></span>
+                                <span class="chrome-dot chrome-dot-y"></span>
+                                <span class="chrome-dot chrome-dot-g"></span>
+                            </div>
+                            <span class="port-url">sacredembersauna.co.uk</span>
+                        </div>
+                        <div class="iframe-container">
+                            <img src="images/sacred-ember.webp" alt="Sacred Ember website preview" loading="lazy">
+                            <div class="iframe-overlay">
+                                <a href="https://ashdabash2926.github.io/sacred-ember/sauna2.html" target="_blank"
+                                    rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="card-row">
+                                <div>
+                                    <div class="card-name">Sacred Ember</div>
+                                    <div class="card-sub">Sauna & Wellbeing Huts · Yorkshire</div>
+                                </div>
+                                <span class="card-tag">Brochure Site</span>
+                            </div>
+                            <p class="card-desc">Dark luxury site for a premium sauna building business, with animated
+                                gallery, booking CTAs and an editorial aesthetic.</p>
+                        </div>
+                    </article>
+
+                    <!-- 3 — Artisan Coffee Lab -->
+                    <article class="mockup-card reveal reveal-d3">
+                        <div class="port-chrome">
+                            <div class="chrome-dots">
+                                <span class="chrome-dot chrome-dot-r"></span>
+                                <span class="chrome-dot chrome-dot-y"></span>
+                                <span class="chrome-dot chrome-dot-g"></span>
+                            </div>
+                            <span class="port-url">artisancoffeelab.co.uk</span>
+                        </div>
+                        <div class="iframe-container">
+                            <img src="images/artisan-coffee.webp" alt="Artisan Coffee Lab website preview"
+                                loading="lazy">
+                            <div class="iframe-overlay">
+                                <a href="https://ashdabash2926.github.io/coffee-shop/" target="_blank"
+                                    rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="card-row">
+                                <div>
+                                    <div class="card-name">Artisan Coffee Lab</div>
+                                    <div class="card-sub">Specialty Coffee & Roastery</div>
+                                </div>
+                                <span class="card-tag">Brochure Site</span>
+                            </div>
+                            <p class="card-desc">Warm editorial site for a specialty coffee roastery, featuring menu,
+                                story section and café atmosphere throughout.</p>
+                        </div>
+                    </article>
+
+                    <!-- 4 — Still & Strong -->
+                    <article class="mockup-card reveal reveal-d1">
+                        <div class="port-chrome">
+                            <div class="chrome-dots">
+                                <span class="chrome-dot chrome-dot-r"></span>
+                                <span class="chrome-dot chrome-dot-y"></span>
+                                <span class="chrome-dot chrome-dot-g"></span>
+                            </div>
+                            <span class="port-url">stillandstrong.co.uk</span>
+                        </div>
+                        <div class="iframe-container">
+                            <img src="images/still-strong.webp" alt="Still &amp; Strong website preview" loading="lazy">
+                            <div class="iframe-overlay">
+                                <a href="https://ashdabash2926.github.io/still-strong/" target="_blank"
+                                    rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="card-row">
+                                <div>
+                                    <div class="card-name">Still & Strong</div>
+                                    <div class="card-sub">Yoga & Pilates Studio</div>
+                                </div>
+                                <span class="card-tag">Brochure Site</span>
+                            </div>
+                            <p class="card-desc">Soft natural-toned yoga studio site with breathing hero animations,
+                                class schedule, retreat section and serene editorial aesthetic.</p>
+                        </div>
+                    </article>
+
+                    <!-- 5 — Heather Lane Therapy -->
+                    <article class="mockup-card reveal reveal-d2">
+                        <div class="port-chrome">
+                            <div class="chrome-dots">
+                                <span class="chrome-dot chrome-dot-r"></span>
+                                <span class="chrome-dot chrome-dot-y"></span>
+                                <span class="chrome-dot chrome-dot-g"></span>
+                            </div>
+                            <span class="port-url">heatherlanetherapy.co.uk</span>
+                        </div>
+                        <div class="iframe-container">
+                            <img src="images/heather-lane.webp" alt="Heather Lane Therapy website preview"
+                                loading="lazy">
+                            <div class="iframe-overlay">
+                                <a href="https://ashdabash2926.github.io/heather-lane-therapy/" target="_blank"
+                                    rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="card-row">
+                                <div>
+                                    <div class="card-name">Heather Lane Therapy</div>
+                                    <div class="card-sub">Counselling & Psychotherapy · Leeds</div>
+                                </div>
+                                <span class="card-tag">Brochure Site</span>
+                            </div>
+                            <p class="card-desc">Calm sage-toned therapy site with credentials, CBT/EMDR approach cards,
+                                specialisms tag grid and a FAQ accordion.</p>
+                        </div>
+                    </article>
+
+                    <!-- 6 — Solace -->
+                    <article class="mockup-card reveal reveal-d3">
+                        <div class="port-chrome">
+                            <div class="chrome-dots">
+                                <span class="chrome-dot chrome-dot-r"></span>
+                                <span class="chrome-dot chrome-dot-y"></span>
+                                <span class="chrome-dot chrome-dot-g"></span>
+                            </div>
+                            <span class="port-url">solacemassage.co.uk</span>
+                        </div>
+                        <div class="iframe-container">
+                            <img src="images/solace.webp" alt="Solace Massage website preview" loading="lazy">
+                            <div class="iframe-overlay">
+                                <a href="https://ashdabash2926.github.io/solace-massage/" target="_blank"
+                                    rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="card-row">
+                                <div>
+                                    <div class="card-name">Solace</div>
+                                    <div class="card-sub">Holistic Massage & Bodywork · Leeds</div>
+                                </div>
+                                <span class="card-tag">Brochure Site</span>
+                            </div>
+                            <p class="card-desc">Warm terracotta massage site with full treatment menu, therapist bio,
+                                testimonials and an integrated booking form.</p>
+                        </div>
+                    </article>
+
+                    <!-- 7 — Blade & Co. -->
+                    <article class="mockup-card reveal reveal-d1">
+                        <div class="port-chrome">
+                            <div class="chrome-dots">
+                                <span class="chrome-dot chrome-dot-r"></span>
+                                <span class="chrome-dot chrome-dot-y"></span>
+                                <span class="chrome-dot chrome-dot-g"></span>
+                            </div>
+                            <span class="port-url">bladeandco.co.uk</span>
+                        </div>
+                        <div class="iframe-container">
+                            <img src="images/blade-co.webp" alt="Blade &amp; Co. website preview" loading="lazy">
+                            <div class="iframe-overlay">
+                                <a href="https://ashdabash2926.github.io/blade-co/" target="_blank"
+                                    rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="card-row">
+                                <div>
+                                    <div class="card-name">Blade & Co.</div>
+                                    <div class="card-sub">Premium Barber Shop</div>
+                                </div>
+                                <span class="card-tag">Brochure Site</span>
+                            </div>
+                            <p class="card-desc">Dark gold barber shop site with canvas particle effects, masonry
+                                gallery, live opening hours and an online booking flow.</p>
+                        </div>
+                    </article>
+
+                    <!-- 8 — The Stone Table -->
+                    <article class="mockup-card reveal reveal-d2">
+                        <div class="port-chrome">
+                            <div class="chrome-dots">
+                                <span class="chrome-dot chrome-dot-r"></span>
+                                <span class="chrome-dot chrome-dot-y"></span>
+                                <span class="chrome-dot chrome-dot-g"></span>
+                            </div>
+                            <span class="port-url">thestonetable.co.uk</span>
+                        </div>
+                        <div class="iframe-container">
+                            <img src="images/stone-table.webp" alt="The Stone Table website preview" loading="lazy">
+                            <div class="iframe-overlay">
+                                <a href="https://ashdabash2926.github.io/stone-table/" target="_blank"
+                                    rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="card-row">
+                                <div>
+                                    <div class="card-name">The Stone Table</div>
+                                    <div class="card-sub">Fine Dining Restaurant</div>
+                                </div>
+                                <span class="card-tag">Brochure Site</span>
+                            </div>
+                            <p class="card-desc">Warm candlelit restaurant site with tabbed menu, asymmetric gallery,
+                                reservation form and an editorial dining atmosphere.</p>
+                        </div>
+                    </article>
+
+                    <!-- 9 — Peak Form -->
+                    <article class="mockup-card reveal reveal-d3">
+                        <div class="port-chrome">
+                            <div class="chrome-dots">
+                                <span class="chrome-dot chrome-dot-r"></span>
+                                <span class="chrome-dot chrome-dot-y"></span>
+                                <span class="chrome-dot chrome-dot-g"></span>
+                            </div>
+                            <span class="port-url">peakform.co.uk</span>
+                        </div>
+                        <div class="iframe-container">
+                            <img src="images/peak-form.webp" alt="Peak Form website preview" loading="lazy">
+                            <div class="iframe-overlay">
+                                <a href="https://ashdabash2926.github.io/peak-form/" target="_blank"
+                                    rel="noopener noreferrer" class="view-btn">View Live Site →</a>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="card-row">
+                                <div>
+                                    <div class="card-name">Peak Form</div>
+                                    <div class="card-sub">Personal Training</div>
+                                </div>
+                                <span class="card-tag">Brochure Site</span>
+                            </div>
+                            <p class="card-desc">Bold red-on-black PT site with animated counters, testimonials, tiered
+                                pricing, FAQ accordion and a full contact form.</p>
+                        </div>
+                    </article>
+
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ════ TESTIMONIALS ════ -->
-    <section class="section section-bordered">
-        <div class="section-inner">
-            <div class="section-header reveal">
-                <p class="section-label-txt">Testimonials</p>
-                <h2 class="section-title">What clients say</h2>
-                <p class="section-sub">Don't take our word for it.</p>
-            </div>
-            <div class="testimonials-grid">
-                <article class="testimonial-card reveal reveal-d1">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-quote">"We had no website at all before Studio North. Now we get enquiries through it every week. The whole process was straightforward and they kept us in the loop throughout."</p>
-                    <div>
-                        <div class="testimonial-author">Sarah M.</div>
-                        <div class="testimonial-role">Owner, Kandy Krush</div>
+        <!-- ════ SERVICES ════ -->
+        <section id="services" class="section section-alt">
+            <div class="section-inner">
+
+                <div class="section-header reveal">
+                    <p class="section-label-txt">Services</p>
+                    <h2 class="section-title">What We Offer</h2>
+                </div>
+
+                <div class="services-grid">
+
+                    <div class="service-card reveal reveal-d1">
+                        <div class="service-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="service-name">Brochure Websites</h3>
+                        <p class="service-desc">Custom-built, mobile-first websites tailored to your brand. No page
+                            builders, no templates — every site is built from scratch to fit your business.</p>
+                        <ul class="service-list">
+                            <li>Look professional and credible from day one</li>
+                            <li>Rank better on Google with clean, fast code</li>
+                            <li>Works perfectly on every device</li>
+                            <li>Built to convert visitors into customers</li>
+                        </ul>
                     </div>
-                </article>
-                <article class="testimonial-card reveal reveal-d2">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-quote">"Really happy with how the site turned out. It looks exactly like us — professional but approachable. Clients regularly comment on it when they book in."</p>
-                    <div>
-                        <div class="testimonial-author">James R.</div>
-                        <div class="testimonial-role">Director, Blade & Co.</div>
+
+                    <div class="service-card reveal reveal-d2">
+                        <div class="service-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                            </svg>
+                        </div>
+                        <h3 class="service-name">Hosting & Maintenance</h3>
+                        <p class="service-desc">We handle everything after launch — domain, hosting, SSL and ongoing
+                            updates — so you can focus on running your business.</p>
+                        <ul class="service-list">
+                            <li>Never worry about your site going down</li>
+                            <li>Updates handled within 24 hours</li>
+                            <li>Domain and SSL sorted from day one</li>
+                            <li>One point of contact for everything</li>
+                        </ul>
                     </div>
-                </article>
-                <article class="testimonial-card reveal reveal-d3">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-quote">"Fast, no fuss, and the end result was better than I imagined. I've already recommended Studio North to two other businesses in Leeds."</p>
-                    <div>
-                        <div class="testimonial-author">Emma T.</div>
-                        <div class="testimonial-role">Founder, Peak Form</div>
+
+                    <div class="service-card reveal reveal-d3">
+                        <div class="service-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="service-name">Photography</h3>
+                        <p class="service-desc">Professional photoshoots for your website — we come to you. Great images
+                            make a real difference to how your business is perceived online.</p>
+                        <ul class="service-list">
+                            <li>Stand out from competitors using stock photos</li>
+                            <li>Images that actually represent your business</li>
+                            <li>Used across your website, socials and print</li>
+                            <li>Edited and web-ready within 48 hours</li>
+                        </ul>
                     </div>
-                </article>
+
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ════ PROCESS ════ -->
-    <section id="process" class="section section-bordered">
-        <div class="section-inner">
-
-            <div class="section-header reveal">
-                <p class="section-label-txt">Process</p>
-                <h2 class="section-title">How It Works</h2>
-                <p class="section-sub">Simple, transparent, stress-free.</p>
-            </div>
-
-            <div class="process-grid">
-
-                <div class="process-step reveal reveal-d1">
-                    <div class="process-num">01</div>
-                    <h3 class="process-name">Chat</h3>
-                    <p class="process-desc">Tell us about your business and what you want to achieve. We'll work out the right approach together — no jargon, no pressure.</p>
+        <!-- ════ TESTIMONIALS ════ -->
+        <section class="section section-bordered">
+            <div class="section-inner">
+                <div class="section-header reveal">
+                    <p class="section-label-txt">Testimonials</p>
+                    <h2 class="section-title">What clients say</h2>
+                    <p class="section-sub">Don't take our word for it.</p>
                 </div>
-
-                <div class="process-step reveal reveal-d2">
-                    <div class="process-num">02</div>
-                    <h3 class="process-name">Build</h3>
-                    <p class="process-desc">We design and build your site. You'll have a preview link within 7 days, and can give feedback at every stage before anything goes live.</p>
-                </div>
-
-                <div class="process-step reveal reveal-d3">
-                    <div class="process-num">03</div>
-                    <h3 class="process-name">Launch</h3>
-                    <p class="process-desc">Your site goes live. We handle the hosting, domain and SSL — and stay on hand for any updates you need going forward.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ════ CONTACT ════ -->
-    <section id="contact" class="section section-alt">
-        <div class="section-inner">
-            <div class="contact-inner">
-
-                <div class="section-header section-header--center reveal">
-                    <p class="section-label-txt">Contact</p>
-                    <h2 class="section-title">Let's work together</h2>
-                    <p class="section-sub">Tell us about your project and we'll get back to you within 24 hours.</p>
-                </div>
-
-                <div class="contact-chips reveal">
-                    <a href="tel:+44712345678" class="contact-chip">
-                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                        </svg>
-                        0712345678
-                    </a>
-                    <a href="mailto:hello@studionorth.co.uk" class="contact-chip">
-                        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                        </svg>
-                        hello@studionorth.co.uk
-                    </a>
-                </div>
-
-                <!-- Replace YOUR_FORM_ID with the ID from your Formspree dashboard -->
-                <form id="contactForm" class="reveal">
-                    <div class="form-row">
+                <div class="testimonials-grid">
+                    <article class="testimonial-card reveal reveal-d1">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-quote">"We had no website at all before Studio North. Now we get enquiries
+                            through it every week. The whole process was straightforward and they kept us in the loop
+                            throughout."</p>
                         <div>
-                            <label class="form-label" for="name">Name *</label>
-                            <input type="text" id="name" name="name" required placeholder="Jane Smith" class="form-input">
+                            <div class="testimonial-author">Sarah M.</div>
+                            <div class="testimonial-role">Owner, Kandy Krush</div>
                         </div>
+                    </article>
+                    <article class="testimonial-card reveal reveal-d2">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-quote">"Really happy with how the site turned out. It looks exactly like
+                            us — professional but approachable. Clients regularly comment on it when they book in."</p>
                         <div>
-                            <label class="form-label" for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone" placeholder="07700 000000" class="form-input">
+                            <div class="testimonial-author">James R.</div>
+                            <div class="testimonial-role">Director, Blade & Co.</div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email *</label>
-                        <input type="email" id="email" name="email" required placeholder="jane@yourbusiness.co.uk" class="form-input">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="message">Tell us about your project *</label>
-                        <textarea id="message" name="message" required placeholder="What kind of site do you need? What does your business do?" class="form-textarea"></textarea>
-                    </div>
-                    <button type="submit" class="form-submit">Send Message</button>
-                </form>
+                    </article>
+                    <article class="testimonial-card reveal reveal-d3">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-quote">"Fast, no fuss, and the end result was better than I imagined. I've
+                            already recommended Studio North to two other businesses in Leeds."</p>
+                        <div>
+                            <div class="testimonial-author">Emma T.</div>
+                            <div class="testimonial-role">Founder, Peak Form</div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-                <div id="successMsg" class="success-msg">
-                    <div class="success-icon">
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                        </svg>
-                    </div>
-                    <p class="success-title">Message sent</p>
-                    <p class="success-sub">We'll be in touch within 24 hours.</p>
+        <!-- ════ PROCESS ════ -->
+        <section id="process" class="section section-bordered">
+            <div class="section-inner">
+
+                <div class="section-header reveal">
+                    <p class="section-label-txt">Process</p>
+                    <h2 class="section-title">How It Works</h2>
+                    <p class="section-sub">Simple, transparent, stress-free.</p>
                 </div>
 
+                <div class="process-grid">
+
+                    <div class="process-step reveal reveal-d1">
+                        <div class="process-num">01</div>
+                        <h3 class="process-name">Chat</h3>
+                        <p class="process-desc">Tell us about your business and what you want to achieve. We'll work out
+                            the right approach together — no jargon, no pressure.</p>
+                    </div>
+
+                    <div class="process-step reveal reveal-d2">
+                        <div class="process-num">02</div>
+                        <h3 class="process-name">Build</h3>
+                        <p class="process-desc">We design and build your site. You'll have a preview link within 7 days,
+                            and can give feedback at every stage before anything goes live.</p>
+                    </div>
+
+                    <div class="process-step reveal reveal-d3">
+                        <div class="process-num">03</div>
+                        <h3 class="process-name">Launch</h3>
+                        <p class="process-desc">Your site goes live. We handle the hosting, domain and SSL — and stay on
+                            hand for any updates you need going forward.</p>
+                    </div>
+
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- ════ CONTACT ════ -->
+        <section id="contact" class="section section-alt">
+            <div class="section-inner">
+                <div class="contact-inner">
+
+                    <div class="section-header section-header--center reveal">
+                        <p class="section-label-txt">Contact</p>
+                        <h2 class="section-title">Let's work together</h2>
+                        <p class="section-sub">Tell us about your project and we'll get back to you within 24 hours.</p>
+                    </div>
+
+                    <div class="contact-chips reveal">
+                        <a href="tel:+44712345678" class="contact-chip">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            0712345678
+                        </a>
+                        <a href="mailto:hello@studionorth.co.uk" class="contact-chip">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            hello@studionorth.co.uk
+                        </a>
+                    </div>
+
+                    <!-- Replace YOUR_FORM_ID with the ID from your Formspree dashboard -->
+                    <form id="contactForm" class="reveal">
+                        <div class="form-row">
+                            <div>
+                                <label class="form-label" for="name">Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="Jane Smith"
+                                    class="form-input">
+                            </div>
+                            <div>
+                                <label class="form-label" for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="07700 000000" class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="jane@yourbusiness.co.uk"
+                                class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Tell us about your project *</label>
+                            <textarea id="message" name="message" required
+                                placeholder="What kind of site do you need? What does your business do?"
+                                class="form-textarea"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Send Message</button>
+                    </form>
+
+                    <div id="successMsg" class="success-msg">
+                        <div class="success-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <p class="success-title">Message sent</p>
+                        <p class="success-sub">We'll be in touch within 24 hours.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
 
     </main>
 
     <!-- ════ FOOTER ════ -->
     <footer class="footer">
         <div class="footer-inner">
-            <img src="images/studio-north-logo.webp" alt="Studio North" height="28" style="display:block;opacity:0.75;">
+            <img src="images/studio-north-logo.webp" alt="Studio North" height="28" class="logo-img" style="display:block;opacity:0.55;">
             <p class="footer-copy">© 2026 Studio North · Leeds, UK</p>
             <nav aria-label="Footer navigation">
                 <ul class="footer-links">
@@ -683,135 +742,136 @@
     </footer>
 
     <script>
-    (function () {
-        'use strict';
+        (function () {
+            'use strict';
 
-        // ── Mobile nav ────────────────────────────────────────
-        const burger = document.getElementById('navBurger');
-        const mobileNav = document.getElementById('navMobile');
+            // ── Mobile nav ────────────────────────────────────────
+            const burger = document.getElementById('navBurger');
+            const mobileNav = document.getElementById('navMobile');
 
-        burger.addEventListener('click', function () {
-            const isOpen = mobileNav.classList.toggle('open');
-            burger.classList.toggle('open', isOpen);
-            burger.setAttribute('aria-expanded', String(isOpen));
-            burger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-        });
-
-        function closeMenu() {
-            mobileNav.classList.remove('open');
-            burger.classList.remove('open');
-            burger.setAttribute('aria-expanded', 'false');
-            burger.setAttribute('aria-label', 'Open menu');
-        }
-
-        mobileNav.querySelectorAll('a').forEach(function (link) {
-            link.addEventListener('click', closeMenu);
-        });
-
-        document.addEventListener('click', function (e) {
-            if (!burger.contains(e.target) && !mobileNav.contains(e.target)) {
-                closeMenu();
-            }
-        });
-
-        // ── Scale hero preview iframes ────────────────────────
-        function scaleHeroPreviews() {
-            const items = [];
-            for (let i = 1; i <= 3; i++) {
-                const wrap = document.getElementById('previewWrap' + i);
-                const card = document.getElementById('previewCard' + i);
-                if (!wrap || !card) continue;
-                items.push({ wrap, width: card.offsetWidth });
-            }
-            const mWrap = document.getElementById('mobilePreviewWrap');
-            const mWidth = mWrap ? mWrap.offsetWidth : 0;
-
-            items.forEach(function (item) {
-                const scale = item.width / 1440;
-                const iframe = item.wrap.querySelector('iframe');
-                if (iframe) iframe.style.transform = 'scale(' + scale + ')';
-                item.wrap.style.height = (900 * scale) + 'px';
+            burger.addEventListener('click', function () {
+                const isOpen = mobileNav.classList.toggle('open');
+                burger.classList.toggle('open', isOpen);
+                burger.setAttribute('aria-expanded', String(isOpen));
+                burger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
             });
 
-            if (mWrap && mWidth) {
-                const scale = mWidth / 1440;
-                const mIframe = mWrap.querySelector('iframe');
-                if (mIframe) mIframe.style.transform = 'scale(' + scale + ')';
-                mWrap.style.height = (900 * scale) + 'px';
+            function closeMenu() {
+                mobileNav.classList.remove('open');
+                burger.classList.remove('open');
+                burger.setAttribute('aria-expanded', 'false');
+                burger.setAttribute('aria-label', 'Open menu');
             }
-        }
 
-        // ── Hero preview iframes: load after page is interactive ──
-        function loadHeroIframes() {
-            ['previewWrap1', 'previewWrap2', 'previewWrap3', 'mobilePreviewWrap'].forEach(function (id) {
-                const wrap = document.getElementById(id);
-                if (!wrap) return;
-                const iframe = wrap.querySelector('iframe[data-src]');
-                if (iframe) iframe.src = iframe.dataset.src;
+            mobileNav.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', closeMenu);
             });
-        }
 
-        if (document.readyState === 'complete') {
-            loadHeroIframes();
-        } else {
-            window.addEventListener('load', loadHeroIframes);
-        }
-
-        window.addEventListener('load', scaleHeroPreviews);
-
-        let resizeTimer;
-        window.addEventListener('resize', function () {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(scaleHeroPreviews, 100);
-        });
-
-        // ── Scroll reveal ─────────────────────────────────────
-        const observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
+            document.addEventListener('click', function (e) {
+                if (!burger.contains(e.target) && !mobileNav.contains(e.target)) {
+                    closeMenu();
+                }
             });
-        }, { threshold: 0.15, rootMargin: '0px 0px -24px 0px' });
 
-        document.querySelectorAll('.reveal').forEach(function (el) {
-            observer.observe(el);
-        });
+            // ── Scale hero preview iframes ────────────────────────
+            function scaleHeroPreviews() {
+                const items = [];
+                for (let i = 1; i <= 3; i++) {
+                    const wrap = document.getElementById('previewWrap' + i);
+                    const card = document.getElementById('previewCard' + i);
+                    if (!wrap || !card) continue;
+                    items.push({ wrap, width: card.offsetWidth });
+                }
+                const mWrap = document.getElementById('mobilePreviewWrap');
+                const mWidth = mWrap ? mWrap.offsetWidth : 0;
 
-        // ── Contact form (Formspree) ───────────────────────────
-        // After creating your form in the Formspree dashboard, replace
-        // YOUR_FORM_ID below with your actual form ID (e.g. xpwzabcd)
-        const FORMSPREE_ID = 'xpqjoapb';
-
-        const form = document.getElementById('contactForm');
-        const successMsg = document.getElementById('successMsg');
-
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const btn = form.querySelector('.form-submit');
-            btn.disabled = true;
-            btn.textContent = 'Sending\u2026';
-
-            try {
-                const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: { 'Accept': 'application/json' }
+                items.forEach(function (item) {
+                    const scale = item.width / 1440;
+                    const iframe = item.wrap.querySelector('iframe');
+                    if (iframe) iframe.style.transform = 'scale(' + scale + ')';
+                    item.wrap.style.height = (900 * scale) + 'px';
                 });
 
-                if (res.ok) {
-                    form.style.display = 'none';
-                    successMsg.classList.add('is-visible');
-                } else {
-                    throw new Error('Server error');
+                if (mWrap && mWidth) {
+                    const scale = mWidth / 1440;
+                    const mIframe = mWrap.querySelector('iframe');
+                    if (mIframe) mIframe.style.transform = 'scale(' + scale + ')';
+                    mWrap.style.height = (900 * scale) + 'px';
                 }
-            } catch {
-                btn.disabled = false;
-                btn.textContent = 'Send Message';
-                alert('Something went wrong. Please try again or email us at hello@studionorth.co.uk');
             }
-        });
 
-    })();
+            // ── Hero preview iframes: load after page is interactive ──
+            function loadHeroIframes() {
+                ['previewWrap1', 'previewWrap2', 'previewWrap3', 'mobilePreviewWrap'].forEach(function (id) {
+                    const wrap = document.getElementById(id);
+                    if (!wrap) return;
+                    const iframe = wrap.querySelector('iframe[data-src]');
+                    if (iframe) iframe.src = iframe.dataset.src;
+                });
+            }
+
+            if (document.readyState === 'complete') {
+                loadHeroIframes();
+            } else {
+                window.addEventListener('load', loadHeroIframes);
+            }
+
+            window.addEventListener('load', scaleHeroPreviews);
+
+            let resizeTimer;
+            window.addEventListener('resize', function () {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(scaleHeroPreviews, 100);
+            });
+
+            // ── Scroll reveal ─────────────────────────────────────
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -24px 0px' });
+
+            document.querySelectorAll('.reveal').forEach(function (el) {
+                observer.observe(el);
+            });
+
+            // ── Contact form (Formspree) ───────────────────────────
+            // After creating your form in the Formspree dashboard, replace
+            // YOUR_FORM_ID below with your actual form ID (e.g. xpwzabcd)
+            const FORMSPREE_ID = 'xpqjoapb';
+
+            const form = document.getElementById('contactForm');
+            const successMsg = document.getElementById('successMsg');
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const btn = form.querySelector('.form-submit');
+                btn.disabled = true;
+                btn.textContent = 'Sending\u2026';
+
+                try {
+                    const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (res.ok) {
+                        form.style.display = 'none';
+                        successMsg.classList.add('is-visible');
+                    } else {
+                        throw new Error('Server error');
+                    }
+                } catch {
+                    btn.disabled = false;
+                    btn.textContent = 'Send Message';
+                    alert('Something went wrong. Please try again or email us at hello@studionorth.co.uk');
+                }
+            });
+
+        })();
     </script>
 
 </body>
+
 </html>
