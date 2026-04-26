@@ -12,6 +12,7 @@ const sites = [
   { url: 'https://ashdabash2926.github.io/still-strong/', file: 'still-strong' },
   { url: 'https://ashdabash2926.github.io/heather-lane-therapy/', file: 'heather-lane' },
   { url: 'https://ashdabash2926.github.io/solace-massage/', file: 'solace' },
+  { url: 'https://ashdabash2926.github.io/travel-portfolio/', file: 'wanderlens' },
 ];
 
 (async () => {
