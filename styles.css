@@ -395,6 +395,14 @@ body {
     pointer-events: none;
 }
 
+.preview-iframe-wrap.preview-static img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
 /* ═══════════════════════════════
    STATS STRIP
 ═══════════════════════════════ */
