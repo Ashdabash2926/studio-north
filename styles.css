@@ -297,35 +297,48 @@ body {
 /* ── Hero stacked previews ── */
 .hero-right {
     position: relative;
-    height: 500px;
+    height: 620px;
 }
 
 .preview-card {
     position: absolute;
-    width: 380px;
+    width: 360px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--border);
     background: var(--bg-card);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .preview-card:nth-child(1) {
-    top: 0; left: -20px;
-    transform: rotate(-5deg) translateY(10px);
+    top: 0; left: -60px;
+    transform: rotate(-6deg);
     z-index: 1;
 }
 
 .preview-card:nth-child(2) {
-    top: 60px; left: 45px;
-    transform: rotate(2.5deg);
+    top: 175px; left: 60px;
+    transform: rotate(3deg);
     z-index: 2;
 }
 
 .preview-card:nth-child(3) {
-    top: 145px; left: 100px;
-    transform: rotate(-1.5deg);
+    top: 350px; left: 170px;
+    transform: rotate(-2deg);
     z-index: 3;
+}
+
+.hero-right:hover .preview-card:nth-child(1) {
+    transform: rotate(-6deg) translate(-12px, -6px);
+}
+
+.hero-right:hover .preview-card:nth-child(2) {
+    transform: rotate(3deg) translate(0, -3px);
+}
+
+.hero-right:hover .preview-card:nth-child(3) {
+    transform: rotate(-2deg) translate(12px, 6px);
 }
 
 /* ── Browser chrome ── */
