@@ -4,7 +4,7 @@ const path = require('path');
 const sites = [
   { url: 'https://kandykrush.co.uk/', file: 'kandy-krush' },
   { url: 'https://ashdabash2926.github.io/bolivian-pal/', file: 'bolivian-pal' },
-  { url: 'https://ashdabash2926.github.io/sacred-ember/sauna2.html', file: 'sacred-ember' },
+  { url: 'https://ashdabash2926.github.io/samasta-saunas/', file: 'samasta-saunas' },
   { url: 'https://ashdabash2926.github.io/coffee-shop/', file: 'artisan-coffee' },
   { url: 'https://ashdabash2926.github.io/blade-co/', file: 'blade-co' },
   { url: 'https://ashdabash2926.github.io/stone-table/', file: 'stone-table' },
