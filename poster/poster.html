@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio North — Pósters A4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f4ef; --paper2:#f0ece5; --card:#fdfcfa;
+  --ink:#141210; --ink2:#4a4642; --ink3:#9a9490;
+  --red:#d63b1f; --red-deep:#b22e16;
+  --line:rgba(20,18,16,.10); --line2:rgba(20,18,16,.16);
+  --disp:'Bricolage Grotesque',sans-serif;
+  --body:'Outfit',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ---- screen scaffolding (hidden when printing/screenshotting) ---- */
+body{background:#d9d4cc;font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;align-items:center;gap:56px}
+.label{font-family:var(--disp);font-weight:700;color:#5b554e;text-transform:uppercase;letter-spacing:.12em;font-size:13px;text-align:center}
+.label span{color:var(--red)}
+
+/* ---- A4 page ---- */
+.poster{
+  width:210mm;height:297mm;position:relative;overflow:hidden;
+  background:var(--paper);color:var(--ink);
+  box-shadow:0 30px 80px rgba(0,0,0,.28);
+}
+.grain{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");}
+
+/* ---- shared atoms ---- */
+.brand{font-family:var(--disp);font-weight:800;font-size:19px;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;gap:9px;color:var(--ink);line-height:1}
+.brand .mark{color:var(--red);font-size:15px;transform:translateY(-1px)}
+.brand.on-dark{color:#fff}
+.brand.on-dark .mark{color:#ff7a5c}
+.eyebrow{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.22em;font-size:13px}
+.price-num{font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+
+.qr-card{background:#fff;border-radius:14px;padding:14px 14px 10px;display:flex;flex-direction:column;align-items:center;gap:6px;box-shadow:0 6px 22px rgba(20,18,16,.16)}
+.qr-card img{width:100%;height:auto;display:block}
+.qr-card .qr-lang{font-family:var(--disp);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:6px}
+.qr-card .qr-lang i{font-style:normal}
+
+/* photo placeholder — looks like moody golden-hour photography until swapped */
+.photo{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 20% 12%, rgba(255,221,170,.9), transparent 55%),
+  radial-gradient(120% 120% at 88% 18%, rgba(214,59,31,.55), transparent 60%),
+  linear-gradient(160deg,#3a2c22 0%,#241a14 45%,#120c08 100%);}
+.photo::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(80% 60% at 50% 120%, rgba(0,0,0,.55), transparent 70%);}
+.photo-tag{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;text-align:center;color:rgba(255,255,255,.85)}
+.v2 .photo-tag{top:15.5%;display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(4px);padding:7px 14px;border-radius:100px;white-space:nowrap}
+.v2 .photo-tag svg{width:18px;height:18px;margin:0}
+.v2 .photo-tag .t1{font-size:11px}
+.v2 .photo-tag .t2{display:none}
+.photo-tag svg{width:46px;height:46px;opacity:.8;margin-bottom:10px}
+.photo-tag .t1{font-family:var(--disp);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:13px}
+.photo-tag .t2{font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.55);margin-top:4px}
+
+/* ════════════════════════════════════════════
+   VARIANT 1 — EDITORIAL / ON-BRAND
+   ════════════════════════════════════════════ */
+.v1{padding:26mm 22mm 20mm;display:flex;flex-direction:column}
+.v1 .top{display:flex;justify-content:space-between;align-items:flex-start}
+.v1 .top .eyebrow{color:var(--red);max-width:46mm;line-height:1.7}
+.v1 .rule{height:1px;background:var(--line2);margin:13mm 0 11mm}
+.v1 h1{font-family:var(--disp);font-weight:700;font-size:62px;line-height:.96;letter-spacing:-.025em}
+.v1 h1 em{font-style:normal;color:var(--red)}
+.v1 .sub{font-size:17px;line-height:1.5;color:var(--ink2);max-width:130mm;margin-top:9mm;font-weight:300}
+.v1 .sub b{color:var(--ink);font-weight:600}
+
+.v1 .mid{display:flex;gap:14mm;margin-top:12mm;align-items:flex-start}
+.v1 .price-block{flex:0 0 auto}
+.v1 .price-label{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:var(--ink3)}
+.v1 .price{font-family:var(--disp);font-weight:800;font-size:104px;line-height:.85;color:var(--ink);margin-top:4px}
+.v1 .price .cur{color:var(--red);font-size:54px;vertical-align:super}
+.v1 .price-foot{font-size:13px;color:var(--ink2);margin-top:7px;letter-spacing:.02em}
+.v1 .incl{flex:1;border-left:1px solid var(--line2);padding-left:14mm}
+.v1 .incl li{list-style:none;display:flex;gap:11px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.35}
+.v1 .incl li:last-child{border-bottom:none}
+.v1 .incl .n{font-family:var(--disp);font-weight:700;color:var(--red);font-size:13px;flat:0 0 auto;min-width:22px}
+.v1 .incl .es{font-weight:600;color:var(--ink)}
+.v1 .incl .en{color:var(--ink3);font-weight:300}
+
+.v1 .bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:10mm;padding-top:12mm}
+.v1 .cta-copy .k{font-family:var(--disp);font-weight:700;font-size:22px;line-height:1.1;letter-spacing:-.01em}
+.v1 .cta-copy .k .red{color:var(--red)}
+.v1 .cta-copy .s{font-size:13px;color:var(--ink2);margin-top:6px}
+.v1 .cta-copy .site{font-family:var(--disp);font-weight:700;font-size:15px;margin-top:14px;letter-spacing:.02em}
+.v1 .qr-row{display:flex;gap:11px}
+.v1 .qr-card{width:42mm}
+
+/* ════════════════════════════════════════════
+   VARIANT 2 — BOLD & PHOTOGRAPHIC (full bleed)
+   ════════════════════════════════════════════ */
+.v2{color:#fff}
+.v2 .photo{position:absolute;inset:0}
+.v2 .scrim{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(180deg, rgba(10,7,5,.55) 0%, rgba(10,7,5,.15) 32%, rgba(10,7,5,.45) 62%, rgba(10,7,5,.92) 100%);}
+.v2 .inner{position:absolute;inset:0;z-index:3;padding:24mm 22mm 20mm;display:flex;flex-direction:column}
+.v2 .top{display:flex;justify-content:space-between;align-items:center}
+.v2 .badge{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:12px;border:1px solid rgba(255,255,255,.4);padding:7px 13px;border-radius:100px;backdrop-filter:blur(4px)}
+.v2 .eyebrow{color:#ffd9b0;margin-top:auto}
+.v2 h1{font-family:var(--disp);font-weight:800;font-size:78px;line-height:.92;letter-spacing:-.03em;margin-top:10px;text-shadow:0 2px 30px rgba(0,0,0,.4)}
+.v2 h1 em{font-style:normal;color:#ff7a5c}
+.v2 .sub{font-size:17px;line-height:1.5;color:rgba(255,255,255,.82);max-width:120mm;margin-top:7mm;font-weight:300}
+.v2 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:9mm}
+.v2 .chip{font-size:13px;font-weight:500;padding:7px 14px;border-radius:100px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px)}
+.v2 .chip b{color:#ffd9b0;font-weight:600}
+.v2 .deal{display:flex;align-items:flex-end;gap:18px;margin-top:11mm}
+.v2 .price{font-family:var(--disp);font-weight:800;font-size:96px;line-height:.82;letter-spacing:-.02em}
+.v2 .price .cur{color:#ff7a5c;font-size:50px;vertical-align:super}
+.v2 .price-tag{background:var(--red);color:#fff;font-family:var(--disp);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.1em;padding:8px 14px;border-radius:8px;margin-bottom:14px}
+.v2 .bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:10mm;padding-top:11mm}
+.v2 .cta-copy .k{font-family:var(--disp);font-weight:700;font-size:20px;line-height:1.15}
+.v2 .cta-copy .s{font-size:13px;color:rgba(255,255,255,.7);margin-top:6px}
+.v2 .cta-copy .site{font-family:var(--disp);font-weight:700;font-size:15px;margin-top:13px;color:#ffd9b0}
+.v2 .qr-row{display:flex;gap:11px}
+.v2 .qr-card{width:40mm}
+
+/* ════════════════════════════════════════════
+   VARIANT 3 — SPLIT 50/50
+   ════════════════════════════════════════════ */
+.v3{display:flex}
+.v3 .left{width:48%;position:relative}
+.v3 .left .photo{position:absolute;inset:0}
+.v3 .left .stamp{position:absolute;left:16mm;bottom:16mm;z-index:3;color:#fff}
+.v3 .left .stamp .eyebrow{color:#ffd9b0}
+.v3 .left .stamp .big{font-family:var(--disp);font-weight:800;font-size:38px;line-height:.95;letter-spacing:-.02em;margin-top:8px;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.v3 .left .scrim{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(10,7,5,.25),rgba(10,7,5,.1) 40%,rgba(10,7,5,.8));}
+.v3 .right{width:52%;padding:24mm 18mm 18mm;display:flex;flex-direction:column;position:relative}
+.v3 .right .logo{margin-bottom:14mm}
+.v3 .right .eyebrow{color:var(--red)}
+.v3 .right h1{font-family:var(--disp);font-weight:700;font-size:40px;line-height:1;letter-spacing:-.025em;margin-top:10px}
+.v3 .right h1 em{font-style:normal;color:var(--red)}
+.v3 .right .sub{font-size:14.5px;line-height:1.5;color:var(--ink2);margin-top:6mm;font-weight:300}
+.v3 .price-wrap{margin-top:9mm;display:flex;align-items:baseline;gap:12px}
+.v3 .price{font-family:var(--disp);font-weight:800;font-size:72px;line-height:.85;letter-spacing:-.02em}
+.v3 .price .cur{color:var(--red);font-size:38px;vertical-align:super}
+.v3 .price-foot{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.1em;color:var(--ink3)}
+.v3 .incl{margin-top:9mm}
+.v3 .incl li{list-style:none;display:flex;gap:10px;align-items:flex-start;padding:8px 0;font-size:13.5px;line-height:1.3;border-bottom:1px solid var(--line)}
+.v3 .incl li:last-child{border-bottom:none}
+.v3 .incl .dot{color:var(--red);font-weight:700;margin-top:1px}
+.v3 .incl .es{font-weight:600;color:var(--ink)}
+.v3 .incl .en{color:var(--ink3);font-weight:300}
+.v3 .bottom{margin-top:auto;padding-top:11mm;display:flex;align-items:flex-end;justify-content:space-between;gap:8mm}
+.v3 .cta-copy .k{font-family:var(--disp);font-weight:700;font-size:16px;line-height:1.2}
+.v3 .cta-copy .k .red{color:var(--red)}
+.v3 .cta-copy .site{font-family:var(--disp);font-weight:700;font-size:14px;margin-top:10px}
+.v3 .qr-row{display:flex;gap:9px}
+.v3 .qr-card{width:36mm;padding:11px 11px 8px}
+
+/* ---- print ---- */
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff;padding:0;gap:0}
+  .label{display:none}
+  .poster{box-shadow:none;page-break-after:always}
+}
+</style>
+</head>
+<body>
+
+<!-- ───────────── VARIANT 1 ───────────── -->
+<div class="label">Variante 1 — <span>Editorial / On-brand</span></div>
+<section class="poster v1">
+  <div class="grain"></div>
+  <div class="top">
+    <div class="brand"><span class="mark">▲</span>Studio North</div>
+    <div class="eyebrow">Web design<br>+ Professional<br>photography</div>
+  </div>
+  <div class="rule"></div>
+
+  <h1>A real website.<br>Your own photos.<br><em>One package.</em></h1>
+  <p class="sub"><b>A custom website built from scratch + your own professional photo shoot.</b> Everything your business needs to look the part online — done together, in one go.</p>
+
+  <div class="mid">
+    <div class="price-block">
+      <div class="price-label">From</div>
+      <div class="price"><span class="cur">S/</span>1,000</div>
+      <div class="price-foot">Website + photography · all included</div>
+    </div>
+    <ul class="incl">
+      <li><span class="n">01</span><span class="es">Custom, fast, mobile-first website.</span></li>
+      <li><span class="n">02</span><span class="es">On-location photo shoot at your business.</span></li>
+      <li><span class="n">03</span><span class="es">Edited, web-ready photo set.</span></li>
+      <li><span class="n">04</span><span class="es">Owner &amp; team headshots.</span></li>
+      <li><span class="n">05</span><span class="es">No templates. Built from scratch.</span></li>
+    </ul>
+  </div>
+
+  <div class="bottom">
+    <div class="cta-copy">
+      <div class="k">Scan to <span class="red">message us</span><br>on WhatsApp.</div>
+      <div class="s">Say hello — we'll reply fast.</div>
+      <div class="site">studio-north.uk · Leeds × Perú</div>
+    </div>
+    <div class="qr-row">
+      <div class="qr-card"><img src="qr-en.svg" alt="WhatsApp"><span class="qr-lang"><i>▲</i>WhatsApp</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── VARIANT 2 ───────────── -->
+<div class="label">Variante 2 — <span>Bold &amp; Photographic</span></div>
+<section class="poster v2">
+  <div class="photo">
+    <div class="photo-tag">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.2l1-1.6A1 1 0 0 1 8.6 4h6.8a1 1 0 0 1 .9.4l1 1.6h1.2A2.5 2.5 0 0 1 21 8.5v8A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5z"/><circle cx="12" cy="12" r="3.4"/></svg>
+      <div class="t1">Your photo here</div>
+      <div class="t2">PLACEHOLDER — replace with a hero photograph</div>
+    </div>
+  </div>
+  <div class="scrim"></div>
+  <div class="inner">
+    <div class="top">
+      <div class="brand on-dark"><span class="mark">▲</span>Studio North</div>
+      <div class="badge">Leeds × Perú</div>
+    </div>
+
+    <div class="eyebrow">Web design + Professional photography</div>
+    <h1>A website that<br>sells. Photos that<br><em>win them over.</em></h1>
+    <p class="sub">We build your custom website <b>and</b> shoot the professional photos to fill it — together, in one package. Built from scratch, made to convert.</p>
+
+    <div class="chips">
+      <div class="chip"><b>✓</b> Custom build</div>
+      <div class="chip"><b>✓</b> Photo shoot</div>
+      <div class="chip"><b>✓</b> Edited photo set</div>
+      <div class="chip"><b>✓</b> Team headshots</div>
+    </div>
+
+    <div class="deal">
+      <div class="price-tag">From</div>
+      <div class="price"><span class="cur">S/</span>1,000</div>
+    </div>
+
+    <div class="bottom">
+      <div class="cta-copy">
+        <div class="k">Scan to start a<br>WhatsApp chat.</div>
+        <div class="s">We'll reply fast.</div>
+        <div class="site">studio-north.uk</div>
+      </div>
+      <div class="qr-row">
+        <div class="qr-card"><img src="qr-en.svg" alt="WhatsApp"><span class="qr-lang"><i>▲</i>WhatsApp</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── VARIANT 3 ───────────── -->
+<div class="label">Variante 3 — <span>Split 50 / 50</span></div>
+<section class="poster v3">
+  <div class="left">
+    <div class="photo">
+      <div class="photo-tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.2l1-1.6A1 1 0 0 1 8.6 4h6.8a1 1 0 0 1 .9.4l1 1.6h1.2A2.5 2.5 0 0 1 21 8.5v8A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5z"/><circle cx="12" cy="12" r="3.4"/></svg>
+        <div class="t1">Your photo here</div>
+        <div class="t2">PLACEHOLDER</div>
+      </div>
+    </div>
+    <div class="scrim"></div>
+    <div class="stamp">
+      <div class="eyebrow">Photography included</div>
+      <div class="big">Photos we<br>shoot for<br>you.</div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="grain"></div>
+    <div class="brand" style="margin-bottom:14mm"><span class="mark">▲</span>Studio North</div>
+    <div class="eyebrow">Web design + Photography</div>
+    <h1>A custom website,<br>with your own<br><em>photo shoot.</em></h1>
+    <p class="sub">Built from scratch + a professional photo shoot to fill it. Everything your business needs online, in one package.</p>
+
+    <div class="price-wrap">
+      <div class="price"><span class="cur">S/</span>1,000</div>
+      <div class="price-foot">From</div>
+    </div>
+
+    <ul class="incl">
+      <li><span class="dot">›</span><span class="es">Custom, fast, mobile-first website.</span></li>
+      <li><span class="dot">›</span><span class="es">On-location photo shoot.</span></li>
+      <li><span class="dot">›</span><span class="es">Edited, web-ready photos.</span></li>
+      <li><span class="dot">›</span><span class="es">Owner &amp; team headshots.</span></li>
+    </ul>
+
+    <div class="bottom">
+      <div class="cta-copy">
+        <div class="k">Message us on <span class="red">WhatsApp</span> →</div>
+        <div class="site">studio-north.uk</div>
+      </div>
+      <div class="qr-row">
+        <div class="qr-card"><img src="qr-en.svg" alt="WhatsApp"><span class="qr-lang"><i>▲</i>WhatsApp</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

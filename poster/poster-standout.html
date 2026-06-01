@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio North — Standout Pósters A4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0c0a09; --paper:#ffffff;
+  --red:#d63b1f; --coral:#ff6a45; --cobalt:#1733e6;
+  --disp:'Bricolage Grotesque',sans-serif;
+  --body:'Outfit',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+body{background:#d9d4cc;font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;align-items:center;gap:56px}
+.label{font-family:var(--disp);font-weight:700;color:#5b554e;text-transform:uppercase;letter-spacing:.12em;font-size:13px;text-align:center}
+.label span{color:var(--red)}
+
+/* ---- A4 page ---- */
+.poster{
+  width:210mm;height:297mm;position:relative;overflow:hidden;
+  background:var(--paper);color:var(--ink);
+  box-shadow:0 30px 80px rgba(0,0,0,.28);
+  display:flex;flex-direction:column;
+}
+.grain{position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");}
+
+/* ---- shared atoms ---- */
+.brand{font-family:var(--disp);font-weight:800;font-size:21px;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;line-height:1}
+.brand .mark{font-size:16px;transform:translateY(-1px)}
+.eyebrow{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.24em;font-size:13px}
+
+.qr-card{background:#fff;border-radius:14px;padding:13px 13px 9px;display:flex;flex-direction:column;align-items:center;gap:5px;box-shadow:0 8px 26px rgba(0,0,0,.22)}
+.qr-card img{width:100%;height:auto;display:block}
+.qr-card .qr-lang{font-family:var(--disp);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);display:flex;align-items:center;gap:6px}
+.qr-card .qr-lang i{font-style:normal;color:var(--red)}
+
+/* ════════════════════════════════════════════
+   A — STARK BLACK + ELECTRIC CORAL
+   ════════════════════════════════════════════ */
+.sa{background:var(--ink);color:#fff;padding:26mm 22mm 20mm}
+.sa .brand{color:#fff}
+.sa .brand .mark{color:var(--coral)}
+.sa .top{display:flex;justify-content:space-between;align-items:flex-start}
+.sa .top .eyebrow{color:var(--coral);text-align:right;line-height:1.7;max-width:48mm}
+.sa .h{margin-top:auto}
+.sa h1{font-family:var(--disp);font-weight:800;font-size:88px;line-height:.94;letter-spacing:-.035em}
+.sa h1 .red{color:var(--coral)}
+.sa .es{font-family:var(--disp);font-weight:500;font-size:21px;line-height:1.25;color:rgba(255,255,255,.5);margin-top:9mm;letter-spacing:-.01em}
+.sa .sub{font-size:17px;line-height:1.5;color:rgba(255,255,255,.78);max-width:120mm;margin-top:8mm;font-weight:300}
+.sa .sub b{color:#fff;font-weight:600}
+.sa .bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:10mm;padding-top:14mm;border-top:1px solid rgba(255,255,255,.16)}
+.sa .deal{display:flex;align-items:flex-end;gap:16px}
+.sa .price{font-family:var(--disp);font-weight:800;font-size:80px;line-height:.82;letter-spacing:-.02em}
+.sa .price .cur{color:var(--coral);font-size:42px;vertical-align:super}
+.sa .price-tag{background:var(--coral);color:var(--ink);font-family:var(--disp);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.1em;padding:7px 12px;border-radius:7px;margin-bottom:12px}
+.sa .cta{font-size:13px;color:rgba(255,255,255,.62);margin-top:9px;letter-spacing:.02em}
+.sa .site{font-family:var(--disp);font-weight:700;font-size:14px;margin-top:3px;color:#fff}
+.sa .qr-card{width:42mm}
+
+/* ════════════════════════════════════════════
+   B — ELECTRIC COBALT COLOUR BLOCK
+   ════════════════════════════════════════════ */
+.sb{background:var(--cobalt);color:#fff;padding:26mm 22mm 20mm}
+.sb .brand{color:#fff}
+.sb .brand .mark{color:#fff}
+.sb .top{display:flex;justify-content:space-between;align-items:flex-start}
+.sb .top .badge{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:12px;border:1.5px solid rgba(255,255,255,.5);padding:7px 13px;border-radius:100px}
+.sb .h{margin-top:auto}
+.sb .eyebrow{color:rgba(255,255,255,.7)}
+.sb h1{font-family:var(--disp);font-weight:800;font-size:84px;line-height:.92;letter-spacing:-.035em;margin-top:12px}
+.sb h1 em{font-style:normal;color:#ffe14d}
+.sb .es{font-family:var(--disp);font-weight:500;font-size:21px;line-height:1.25;color:rgba(255,255,255,.62);margin-top:8mm;letter-spacing:-.01em}
+.sb .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:9mm}
+.sb .chip{font-family:var(--body);font-size:14px;font-weight:500;padding:8px 15px;border-radius:100px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3)}
+.sb .chip b{color:#ffe14d;font-weight:700}
+.sb .bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:10mm;padding-top:14mm;border-top:1px solid rgba(255,255,255,.22)}
+.sb .deal{display:flex;align-items:flex-end;gap:16px}
+.sb .price{font-family:var(--disp);font-weight:800;font-size:80px;line-height:.82;letter-spacing:-.02em}
+.sb .price .cur{color:#ffe14d;font-size:42px;vertical-align:super}
+.sb .price-tag{background:#ffe14d;color:var(--cobalt);font-family:var(--disp);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.1em;padding:7px 12px;border-radius:7px;margin-bottom:12px}
+.sb .cta{font-size:13px;color:rgba(255,255,255,.72);margin-top:9px}
+.sb .site{font-family:var(--disp);font-weight:700;font-size:14px;margin-top:3px;color:#fff}
+.sb .qr-card{width:42mm}
+.sb .qr-card .qr-lang{color:var(--cobalt)}
+.sb .qr-card .qr-lang i{color:var(--cobalt)}
+
+/* ════════════════════════════════════════════
+   C — CRISP WHITE + BOLD RED
+   ════════════════════════════════════════════ */
+.sc{background:#fff;color:var(--ink);padding:26mm 22mm 20mm}
+.sc .brand{color:var(--ink)}
+.sc .brand .mark{color:var(--red)}
+.sc .top{display:flex;justify-content:space-between;align-items:flex-start}
+.sc .top .eyebrow{color:var(--red);text-align:right;line-height:1.7;max-width:48mm}
+.sc .tri{position:absolute;right:-30mm;top:78mm;width:0;height:0;
+  border-left:46mm solid transparent;border-right:46mm solid transparent;
+  border-bottom:80mm solid rgba(214,59,31,.07);transform:rotate(20deg);pointer-events:none}
+.sc .h{margin-top:auto;position:relative;z-index:1}
+.sc h1{font-family:var(--disp);font-weight:800;font-size:96px;line-height:.9;letter-spacing:-.04em;color:var(--red)}
+.sc h1 .ink{color:var(--ink)}
+.sc .es{font-family:var(--disp);font-weight:500;font-size:21px;line-height:1.25;color:#9a9490;margin-top:9mm;letter-spacing:-.01em}
+.sc .sub{font-size:17px;line-height:1.5;color:#4a4642;max-width:120mm;margin-top:8mm;font-weight:300}
+.sc .sub b{color:var(--ink);font-weight:600}
+.sc .bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:10mm;padding-top:14mm;border-top:1px solid rgba(20,18,16,.14);position:relative;z-index:1}
+.sc .deal{display:flex;align-items:flex-end;gap:16px}
+.sc .price{font-family:var(--disp);font-weight:800;font-size:80px;line-height:.82;letter-spacing:-.02em}
+.sc .price .cur{color:var(--red);font-size:42px;vertical-align:super}
+.sc .price-tag{background:var(--red);color:#fff;font-family:var(--disp);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.1em;padding:7px 12px;border-radius:7px;margin-bottom:12px}
+.sc .cta{font-size:13px;color:#4a4642;margin-top:9px}
+.sc .site{font-family:var(--disp);font-weight:700;font-size:14px;margin-top:3px}
+.sc .qr-card{width:42mm;box-shadow:0 8px 26px rgba(20,18,16,.16)}
+
+/* ---- print ---- */
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff;padding:0;gap:0}
+  .label{display:none}
+  .poster{box-shadow:none;page-break-after:always}
+}
+</style>
+</head>
+<body>
+
+<!-- ───────────── A — STARK BLACK + CORAL ───────────── -->
+<div class="label">Standout A — <span>Stark Black + Coral</span></div>
+<section class="poster sa">
+  <div class="grain"></div>
+  <div class="top">
+    <div class="brand"><span class="mark">▲</span>Studio North</div>
+    <div class="eyebrow">Web design<br>+ Professional<br>photography</div>
+  </div>
+
+  <div class="h">
+    <h1>You made<br>a flyer.<br><span class="red">Now make<br>a website.</span></h1>
+    <div class="es">Hiciste un volante. Ahora hagamos tu web.</div>
+    <p class="sub"><b>A custom website built from scratch + your own professional photo shoot.</b> Everything your business needs to look the part online — done together, in one go.</p>
+  </div>
+
+  <div class="bottom">
+    <div>
+      <div class="deal">
+        <div class="price-tag">From</div>
+        <div class="price"><span class="cur">S/</span>1,000</div>
+      </div>
+      <div class="cta">Website + photography · all included</div>
+      <div class="site">studio-north.uk · Leeds × Perú</div>
+    </div>
+    <div class="qr-card"><img src="qr-en.svg" alt="WhatsApp"><span class="qr-lang"><i>▲</i>WhatsApp</span></div>
+  </div>
+</section>
+
+<!-- ───────────── B — ELECTRIC COBALT ───────────── -->
+<div class="label">Standout B — <span>Electric Cobalt Block</span></div>
+<section class="poster sb">
+  <div class="grain"></div>
+  <div class="top">
+    <div class="brand"><span class="mark">▲</span>Studio North</div>
+    <div class="badge">Leeds × Perú</div>
+  </div>
+
+  <div class="h">
+    <div class="eyebrow">Web design + Professional photography</div>
+    <h1>A real website.<br>Your own<br><em>photos.</em></h1>
+    <div class="es">Una web de verdad. Tus propias fotos. Un solo paquete.</div>
+    <div class="chips">
+      <div class="chip"><b>✓</b> Custom build</div>
+      <div class="chip"><b>✓</b> Photo shoot</div>
+      <div class="chip"><b>✓</b> Edited photo set</div>
+      <div class="chip"><b>✓</b> Team headshots</div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div>
+      <div class="deal">
+        <div class="price-tag">From</div>
+        <div class="price"><span class="cur">S/</span>1,000</div>
+      </div>
+      <div class="cta">No templates. Built from scratch.</div>
+      <div class="site">studio-north.uk</div>
+    </div>
+    <div class="qr-card"><img src="qr-en.svg" alt="WhatsApp"><span class="qr-lang"><i>▲</i>WhatsApp</span></div>
+  </div>
+</section>
+
+<!-- ───────────── C — CRISP WHITE + RED ───────────── -->
+<div class="label">Standout C — <span>Crisp White + Bold Red</span></div>
+<section class="poster sc">
+  <div class="grain"></div>
+  <div class="tri"></div>
+  <div class="top">
+    <div class="brand"><span class="mark">▲</span>Studio North</div>
+    <div class="eyebrow">Web design<br>+ Professional<br>photography</div>
+  </div>
+
+  <div class="h">
+    <h1>Get found.<br><span class="ink">Get booked.</span></h1>
+    <div class="es">Que te encuentren. Que te reserven.</div>
+    <p class="sub"><b>A custom website + a professional photo shoot</b>, built together so people find you, trust you, and book you — all from one package.</p>
+  </div>
+
+  <div class="bottom">
+    <div>
+      <div class="deal">
+        <div class="price-tag">From</div>
+        <div class="price"><span class="cur">S/</span>1,000</div>
+      </div>
+      <div class="cta">Website + photography · all included</div>
+      <div class="site">studio-north.uk · Leeds × Perú</div>
+    </div>
+    <div class="qr-card"><img src="qr-en.svg" alt="WhatsApp"><span class="qr-lang"><i>▲</i>WhatsApp</span></div>
+  </div>
+</section>
+
+</body>
+</html>
