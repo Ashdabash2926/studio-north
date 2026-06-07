@@ -29,12 +29,13 @@ Three print-ready A4 poster variants advertising **website + photography package
 
 ## Photography posters — before printing
 
-`poster-photography.html` holds all 3 variants and ships with **tagged placeholder tiles**. To finish them:
+Real photos are now wired in (sources in `photos/`, ~2200px web-ready). Two things still to set:
 
-1. **Drop in real photos** → give each `.cell` a `background-image` (or an absolutely-positioned `<img>` filling the cell) and remove that cell's `.hint` block. Keep the `.chip` + `.frame` labels on top. Use ≈2500px-long-edge images so they stay crisp at A4. The `.feature` tile is the hero — use your strongest shot.
-2. **Set the price** → replace the dashed `.ghost` box in the footer, e.g. `<span class="big"><span class="cur">£</span>250</span>`.
-3. **Set the WhatsApp number** → see below (current `447428…` is a UK placeholder).
-4. **Re-render** → `node poster/render-photography.mjs`
+1. **Set the price** → replace the dashed `.ghost` box in the footer, e.g. `<span class="big"><span class="cur">£</span>250</span>`.
+2. **Set the WhatsApp number** → see *Common edits* below (current `447428…` is a UK placeholder).
+3. **Re-render** → `node poster/render-photography.mjs` (posters) and `node poster/render-social.mjs` (story).
+
+**Swapping a photo** → each tile is a `<div class="… has-photo" style="background-image:linear-gradient(<scrim>),url('photos/<name>.jpg');background-position:center 30%">`. Change the filename to swap the shot; nudge `background-position` to keep faces in frame. Drop new files into `photos/` (≈2500px long edge keeps print sharp).
 
 ## Common edits
 

@@ -187,6 +187,12 @@ body{font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;a
 .v3 .strip b{font-family:var(--disp);font-weight:700;color:var(--ink)}
 .v3 .strip .url{color:var(--red);font-weight:700}
 
+/* ── photo fills (real images dropped into placeholders) ── */
+.tile.has-photo,.cell.has-photo{background-size:cover;background-repeat:no-repeat;background-position:center}
+.has-photo::before{display:none!important}
+.tile.has-photo .chip{background:rgba(20,18,16,.5);border-color:rgba(255,255,255,.28);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.tile.has-photo .frame{color:rgba(255,255,255,.72)}
+
 @page{size:A4;margin:0}
 @media print{
   body{padding:0;gap:0;background:#fff}
@@ -214,14 +220,14 @@ body{font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;a
     </div>
   </header>
   <section class="wall">
-    <div class="tile feature"><span class="chip">Brand &amp; Business</span><span class="frame">FRAME 01</span><div class="hint"><div class="ph">Headshots, team &amp; branding shoots</div><div class="sub">Your strongest frame goes here</div></div></div>
-    <div class="tile"><span class="chip">Portrait</span><span class="frame">02</span><div class="hint"><div class="ph">Your shot here</div><div class="sub">Portrait / lifestyle</div></div></div>
-    <div class="tile"><span class="chip">Events</span><span class="frame">03</span><div class="hint"><div class="ph">Your shot here</div><div class="sub">Events coverage</div></div></div>
-    <div class="tile wide"><span class="chip">Lifestyle</span><span class="frame">04</span><div class="hint"><div class="ph">Your shot here</div><div class="sub">Lifestyle session</div></div></div>
-    <div class="tile"><span class="chip">Product</span><span class="frame">05</span><div class="hint"><div class="ph">Your shot here</div><div class="sub">Product</div></div></div>
-    <div class="tile"><span class="chip">Property</span><span class="frame">06</span><div class="hint"><div class="ph">Your shot here</div><div class="sub">Property / interiors</div></div></div>
-    <div class="tile"><span class="chip">Portrait</span><span class="frame">07</span><div class="hint"><div class="ph">Your shot here</div><div class="sub">Portrait</div></div></div>
-    <div class="tile"><span class="chip">Events</span><span class="frame">08</span><div class="hint"><div class="ph">Your shot here</div><div class="sub">Events</div></div></div>
+    <div class="tile feature has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.12),rgba(20,18,16,.5)),url('photos/couple.jpg');background-position:center 22%"><span class="chip">Portrait · Lifestyle</span><span class="frame">FRAME 01</span></div>
+    <div class="tile has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.08),rgba(20,18,16,.42)),url('photos/woman-rocks.jpg');background-position:center 30%"><span class="chip">Portrait</span><span class="frame">02</span></div>
+    <div class="tile has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.1),rgba(20,18,16,.45)),url('photos/dancing.jpg')"><span class="chip">Events</span><span class="frame">03</span></div>
+    <div class="tile wide has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.08),rgba(20,18,16,.4)),url('photos/salt-flats.jpg')"><span class="chip">Lifestyle · Travel</span><span class="frame">04</span></div>
+    <div class="tile has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.08),rgba(20,18,16,.42)),url('photos/food.jpg')"><span class="chip">Product</span><span class="frame">05</span></div>
+    <div class="tile has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.1),rgba(20,18,16,.45)),url('photos/cafe-interior.jpg')"><span class="chip">Property · Interiors</span><span class="frame">06</span></div>
+    <div class="tile has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.08),rgba(20,18,16,.42)),url('photos/dad-son.jpg');background-position:center 20%"><span class="chip">Portrait · Family</span><span class="frame">07</span></div>
+    <div class="tile has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.1),rgba(20,18,16,.45)),url('photos/ceremony.jpg');background-position:center 40%"><span class="chip">Events</span><span class="frame">08</span></div>
   </section>
   <footer class="foot">
     <div class="deal">
@@ -238,14 +244,10 @@ body{font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;a
 <div class="poster v2">
   <div class="grain"></div>
   <span class="tick tl light"></span><span class="tick tr light"></span><span class="tick bl"></span><span class="tick br"></span>
-  <div class="hero">
+  <div class="hero" style="background-image:linear-gradient(to top,rgba(10,9,8,.9) 0%,rgba(10,9,8,.2) 48%,rgba(10,9,8,.5) 100%),url('photos/ceremony.jpg');background-size:cover;background-position:center 42%">
     <div class="htop">
       <div class="brand"><span class="dot"></span>Studio North</div>
       <div class="eyebrow">Leeds-based<br>Photography <i>·</i> est. for business</div>
-    </div>
-    <div class="center">
-      <div class="ap"></div>
-      <span>Your hero shot here</span>
     </div>
     <div class="hbot">
       <span class="hchip">Brand · Portrait · Events · Product</span>
@@ -255,10 +257,10 @@ body{font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;a
   <div class="body">
     <p class="lede"><b>Full-service photography for businesses and people who want to look the part.</b> Shot with intent, edited properly, delivered ready to use — on your site, your socials and in print.</p>
     <div class="strip-film">
-      <div class="tile"><span class="chip">Brand</span><span class="frame">01</span><div class="hint"><div class="ph">Your shot</div><div class="sub">Business</div></div></div>
-      <div class="tile"><span class="chip">Portrait</span><span class="frame">02</span><div class="hint"><div class="ph">Your shot</div><div class="sub">Lifestyle</div></div></div>
-      <div class="tile"><span class="chip">Events</span><span class="frame">03</span><div class="hint"><div class="ph">Your shot</div><div class="sub">Coverage</div></div></div>
-      <div class="tile"><span class="chip">Product</span><span class="frame">04</span><div class="hint"><div class="ph">Your shot</div><div class="sub">Property</div></div></div>
+      <div class="tile has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.1),rgba(20,18,16,.45)),url('photos/barista.jpg');background-position:center 30%"><span class="chip">Brand</span><span class="frame">01</span></div>
+      <div class="tile has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.08),rgba(20,18,16,.42)),url('photos/woman-rocks.jpg');background-position:center 30%"><span class="chip">Portrait</span><span class="frame">02</span></div>
+      <div class="tile has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.1),rgba(20,18,16,.45)),url('photos/dancing.jpg')"><span class="chip">Events</span><span class="frame">03</span></div>
+      <div class="tile has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.08),rgba(20,18,16,.42)),url('photos/food.jpg')"><span class="chip">Product</span><span class="frame">04</span></div>
     </div>
     <footer class="foot">
       <div class="deal">
@@ -277,9 +279,9 @@ body{font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;a
   <div class="grain"></div>
   <span class="tick tl light"></span><span class="tick bl light"></span><span class="tick tr"></span><span class="tick br"></span>
   <div class="left">
-    <div class="tile lead"><span class="chip">Brand &amp; Business</span><span class="frame">01</span><div class="hint"><div class="ph">Your hero shot here</div><div class="sub">Headshots · team · branding</div></div></div>
-    <div class="tile"><span class="chip">Portrait</span><span class="frame">02</span><div class="hint"><div class="ph">Your shot here</div><div class="sub">Portrait / lifestyle</div></div></div>
-    <div class="tile"><span class="chip">Events</span><span class="frame">03</span><div class="hint"><div class="ph">Your shot here</div><div class="sub">Events / product</div></div></div>
+    <div class="tile lead has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.12),rgba(20,18,16,.48)),url('photos/woman-rocks.jpg');background-position:center 28%"><span class="chip">Portrait · Lifestyle</span><span class="frame">01</span></div>
+    <div class="tile has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.08),rgba(20,18,16,.42)),url('photos/family.jpg');background-position:center 32%"><span class="chip">Portrait · Family</span><span class="frame">02</span></div>
+    <div class="tile has-photo" style="background-image:linear-gradient(160deg,rgba(20,18,16,.1),rgba(20,18,16,.45)),url('photos/ceremony.jpg');background-position:center 40%"><span class="chip">Events</span><span class="frame">03</span></div>
   </div>
   <div class="right">
     <div class="rtop">

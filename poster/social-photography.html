@@ -85,6 +85,11 @@ body{font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;a
 .foot .l b{font-family:var(--disp);font-weight:700;color:var(--ink)}
 .foot .url{font-family:var(--disp);font-weight:800;font-size:30px;color:var(--ink)}
 .foot .url .red{color:var(--red)}
+/* ── photo fills ── */
+.tile.has-photo{background-size:cover;background-position:center;background-repeat:no-repeat}
+.tile.has-photo::before{display:none}
+.tile.has-photo .chip{background:rgba(20,18,16,.5);padding:7px 15px;border-radius:999px;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.tile.has-photo .sub{color:rgba(255,255,255,.82)}
 </style>
 </head>
 <body>
@@ -94,14 +99,10 @@ body{font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;a
   <div class="grain"></div>
 
   <!-- HERO -->
-  <div class="hero">
+  <div class="hero" style="background-image:linear-gradient(to top,rgba(10,9,8,.92) 0%,rgba(10,9,8,.2) 50%,rgba(10,9,8,.5) 100%),url('photos/ceremony.jpg');background-size:cover;background-position:center 42%">
     <div class="htop">
       <div class="brand"><span class="dot"></span>Studio North</div>
       <div class="eyebrow">Leeds-based<br>Photography <i>·</i> for business</div>
-    </div>
-    <div class="center">
-      <div class="ap"></div>
-      <span>Your hero shot here</span>
     </div>
     <div class="hbot">
       <span class="hchip">Brand · Portrait · Events · Product</span>
@@ -114,10 +115,10 @@ body{font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;a
     <p class="lede"><b>Full-service photography for businesses and people who want to look the part.</b> Shot with intent, edited properly, delivered ready to use.</p>
 
     <div class="film">
-      <div class="tile"><span class="chip">Brand</span><span class="sub">Business</span></div>
-      <div class="tile"><span class="chip">Portrait</span><span class="sub">Lifestyle</span></div>
-      <div class="tile"><span class="chip">Events</span><span class="sub">Coverage</span></div>
-      <div class="tile"><span class="chip">Product</span><span class="sub">Property</span></div>
+      <div class="tile has-photo" style="background-image:linear-gradient(to top,rgba(20,18,16,.6),rgba(20,18,16,.1)),url('photos/barista.jpg');background-position:center 30%"><span class="chip">Brand</span><span class="sub">Business</span></div>
+      <div class="tile has-photo" style="background-image:linear-gradient(to top,rgba(20,18,16,.6),rgba(20,18,16,.1)),url('photos/woman-rocks.jpg');background-position:center 30%"><span class="chip">Portrait</span><span class="sub">Lifestyle</span></div>
+      <div class="tile has-photo" style="background-image:linear-gradient(to top,rgba(20,18,16,.6),rgba(20,18,16,.1)),url('photos/dancing.jpg')"><span class="chip">Events</span><span class="sub">Coverage</span></div>
+      <div class="tile has-photo" style="background-image:linear-gradient(to top,rgba(20,18,16,.6),rgba(20,18,16,.1)),url('photos/food.jpg')"><span class="chip">Product</span><span class="sub">Property</span></div>
     </div>
 
     <div class="cta">
