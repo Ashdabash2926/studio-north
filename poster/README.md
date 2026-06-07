@@ -19,6 +19,13 @@ Three print-ready A4 poster variants advertising **website + photography package
 | `studio-north-photography-2-hero.png` | Variant 2 — hero + filmstrip |
 | `studio-north-photography-3-split.png` | Variant 3 — editorial split 50/50 |
 | `studio-north-photography-posters.pdf` | All three, true A4, for the print shop |
+| `social-photography.html` | **Phone-share version** of the hero (variant 2) styled — 9:16 for WhatsApp Status / IG & FB Stories |
+| `render-social.mjs` | Renders the 9:16 graphic to a crisp 2160×3840 PNG |
+| `studio-north-photography-story.png` | Phone-share graphic (post to a story / status as-is) |
+
+## Phone-share graphic
+
+`social-photography.html` is the hero design re-composed for a **9:16 screen** (1080×1920). It swaps the print QR-first CTA for a tappable-looking **"Book on WhatsApp"** button (with a small QR kept for cross-device scanning). Same placeholder rules as the posters — drop a real hero photo behind `.hero`, set the price, set the WhatsApp number. Re-render with `node poster/render-social.mjs`.
 
 ## Photography posters — before printing
 

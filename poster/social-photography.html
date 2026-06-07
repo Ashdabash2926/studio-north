@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio North — Photography Story (9:16)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f4ef; --ink:#141210; --ink-2:#4a4642; --ink-3:#8c857d;
+  --red:#d63b1f; --red-deep:#b32e15; --tile:#1a1714; --tile-2:#241f1a;
+  --disp:'Bricolage Grotesque',sans-serif; --body:'Outfit',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfc9bf}
+body{font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;align-items:center;gap:36px;-webkit-font-smoothing:antialiased}
+.label{font-family:var(--disp);font-weight:700;color:#5b554e;text-transform:uppercase;letter-spacing:.14em;font-size:13px}
+.label span{color:var(--red)}
+
+/* ════ 9:16 STORY FRAME (1080×1920) ════ */
+.story{
+  width:1080px;height:1920px;position:relative;overflow:hidden;
+  background:var(--paper);color:var(--ink);display:flex;flex-direction:column;
+  box-shadow:0 30px 80px rgba(0,0,0,.30);
+}
+.grain{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.06;z-index:5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* ── HERO (dark, top ~58%) ── */
+.hero{position:relative;height:1040px;flex:0 0 auto;overflow:hidden;color:#fff;
+  background:radial-gradient(130% 90% at 72% 0%, rgba(214,59,31,.34), transparent 55%),linear-gradient(160deg,var(--tile-2),#0e0c0a)}
+.hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(10,9,8,.88) 0%, rgba(10,9,8,.15) 46%, transparent 72%)}
+.hero .htop{position:absolute;top:96px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-start;z-index:3}
+.brand{font-family:var(--disp);font-weight:800;font-size:38px;letter-spacing:.02em;text-transform:uppercase;display:inline-flex;align-items:center;gap:16px;line-height:1;color:#fff}
+.brand .dot{width:17px;height:17px;background:var(--red);border-radius:50%;transform:translateY(2px)}
+.eyebrow{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:20px;color:rgba(255,255,255,.78);text-align:right;line-height:1.6}
+.eyebrow i{font-style:normal;color:var(--red)}
+.hero .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;opacity:.55;transform:translateY(-110px)}
+.hero .center .ap{width:200px;height:200px;border-radius:50%;border:2px solid rgba(255,255,255,.25);box-shadow:0 0 0 16px rgba(255,255,255,.04);position:relative}
+.hero .center .ap::before{content:"";position:absolute;inset:34%;border-radius:50%;border:2px solid rgba(255,255,255,.3)}
+.hero .center span{font-family:var(--disp);font-weight:600;font-size:24px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:46px}
+.hero .hbot{position:absolute;left:80px;right:80px;bottom:84px;z-index:3}
+.hchip{display:inline-block;font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--red);padding:11px 24px;border-radius:999px}
+.hero h1{font-family:var(--disp);font-weight:800;font-size:120px;line-height:.88;letter-spacing:-.035em;margin-top:36px}
+.hero h1 .red{color:var(--red)}
+
+/* ── BODY (cream, bottom ~42%) ── */
+.body{flex:1 1 auto;padding:56px 80px 70px;display:flex;flex-direction:column}
+.lede{font-size:30px;line-height:1.45;color:var(--ink-2);max-width:920px}
+.lede b{color:var(--ink);font-weight:600}
+.film{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;flex:0 0 auto}
+.tile{position:relative;overflow:hidden;border-radius:10px;color:#fff;height:180px;
+  background:radial-gradient(120% 90% at 30% 15%, rgba(255,255,255,.07), transparent 55%),linear-gradient(150deg,var(--tile-2),var(--tile));
+  box-shadow:0 8px 22px rgba(20,18,16,.18), inset 0 0 0 1px rgba(255,255,255,.05);
+  display:flex;flex-direction:column;justify-content:space-between;padding:18px 18px}
+.tile::before{content:"";position:absolute;right:-16%;bottom:-22%;width:58%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.10)}
+.tile .chip{align-self:flex-start;font-family:var(--disp);font-weight:700;font-size:17px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.92);position:relative;z-index:2}
+.tile .sub{position:relative;z-index:2;font-size:16px;color:rgba(255,255,255,.34);letter-spacing:.06em;text-transform:uppercase}
+
+/* CTA row */
+.cta{margin-top:auto;padding-top:36px;display:flex;align-items:center;justify-content:space-between;gap:34px}
+.cta .left{display:flex;flex-direction:column;gap:26px}
+.price{display:flex;align-items:baseline;gap:16px;font-family:var(--disp);line-height:.85}
+.price .from{font-weight:700;font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.price .big{font-weight:800;font-size:96px;letter-spacing:-.02em;display:inline-flex;align-items:center;gap:12px}
+.price .big .cur{color:var(--red);font-size:50px;vertical-align:super;font-weight:700}
+.price .big .ghost{display:inline-block;width:84px;height:50px;border:3px dashed var(--ink-3);border-radius:9px;opacity:.55}
+.wa{display:inline-flex;align-items:center;gap:18px;background:var(--red);color:#fff;
+  font-family:var(--disp);font-weight:800;font-size:32px;letter-spacing:.01em;
+  padding:24px 38px;border-radius:999px;box-shadow:0 14px 34px rgba(179,46,21,.34);width:max-content}
+.wa svg{width:38px;height:38px;flex:0 0 auto}
+.wa small{display:block;font-family:var(--body);font-weight:500;font-size:18px;letter-spacing:.02em;opacity:.85;margin-top:2px}
+.qr-card{background:#fff;border-radius:18px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:10px;
+  box-shadow:0 14px 34px rgba(20,18,16,.18);border:1px solid rgba(20,18,16,.06)}
+.qr-card img{width:188px;height:188px;display:block}
+.qr-card .cap{font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+
+/* cross-sell footer line */
+.foot{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:30px;
+  border-top:1px solid rgba(20,18,16,.12);padding-top:26px}
+.foot .l{font-size:24px;color:var(--ink-2)}
+.foot .l b{font-family:var(--disp);font-weight:700;color:var(--ink)}
+.foot .url{font-family:var(--disp);font-weight:800;font-size:30px;color:var(--ink)}
+.foot .url .red{color:var(--red)}
+</style>
+</head>
+<body>
+<div class="label">Phone share — <span>9:16 story / status</span> · 1080×1920</div>
+
+<div class="story">
+  <div class="grain"></div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="htop">
+      <div class="brand"><span class="dot"></span>Studio North</div>
+      <div class="eyebrow">Leeds-based<br>Photography <i>·</i> for business</div>
+    </div>
+    <div class="center">
+      <div class="ap"></div>
+      <span>Your hero shot here</span>
+    </div>
+    <div class="hbot">
+      <span class="hchip">Brand · Portrait · Events · Product</span>
+      <h1>Photography<br>that earns<br>its place<span class="red">.</span></h1>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+    <p class="lede"><b>Full-service photography for businesses and people who want to look the part.</b> Shot with intent, edited properly, delivered ready to use.</p>
+
+    <div class="film">
+      <div class="tile"><span class="chip">Brand</span><span class="sub">Business</span></div>
+      <div class="tile"><span class="chip">Portrait</span><span class="sub">Lifestyle</span></div>
+      <div class="tile"><span class="chip">Events</span><span class="sub">Coverage</span></div>
+      <div class="tile"><span class="chip">Product</span><span class="sub">Property</span></div>
+    </div>
+
+    <div class="cta">
+      <div class="left">
+        <div class="price"><span class="from">Shoots from</span><span class="big"><span class="cur">£</span><span class="ghost"></span></span></div>
+        <a class="wa">
+          <svg viewBox="0 0 24 24" fill="#fff"><path d="M.06 24l1.68-6.13A11.8 11.8 0 0 1 .16 11.9C.16 5.34 5.5 0 12.06 0a11.8 11.8 0 0 1 8.4 3.49 11.8 11.8 0 0 1 3.48 8.42c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.69-1.45L.06 24zM6.6 20.2a9.9 9.9 0 0 0 5.04 1.38h.01c5.45 0 9.89-4.43 9.89-9.88a9.83 9.83 0 0 0-2.9-6.99 9.82 9.82 0 0 0-6.98-2.9c-5.46 0-9.9 4.43-9.9 9.88a9.85 9.85 0 0 0 1.51 5.26l.24.38-1 3.64 3.74-.98.35.21zm10.96-5.66c-.07-.12-.27-.2-.56-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42z"/></svg>
+          <span>Book on WhatsApp<small>Tap or scan — we reply fast</small></span>
+        </a>
+      </div>
+      <div class="qr-card"><img src="qr-en.svg" alt="WhatsApp QR"><span class="cap">Scan to chat</span></div>
+    </div>
+
+    <div class="foot">
+      <div class="l"><b>Need a website too?</b> Shoot &amp; site, one studio.</div>
+      <div class="url">studio-north<span class="red">.uk</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
