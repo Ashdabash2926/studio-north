@@ -27,6 +27,19 @@ Three print-ready A4 poster variants advertising **website + photography package
 
 `social-photography.html` is the hero design re-composed for a **9:16 screen** (1080×1920). It swaps the print QR-first CTA for a tappable-looking **"Book on WhatsApp"** button (with a small QR kept for cross-device scanning). Same placeholder rules as the posters — drop a real hero photo behind `.hero`, set the price, set the WhatsApp number. Re-render with `node poster/render-social.mjs`.
 
+## Editing in Adobe Illustrator
+
+`render-illustrator.mjs` outputs a **single-page vector PDF per design** (3 posters + the story):
+
+```bash
+node poster/render-illustrator.mjs
+```
+→ `studio-north-photography-1-contact-sheet.pdf`, `-2-hero.pdf`, `-3-split.pdf`, `-story.pdf`
+
+Open any of these in Illustrator, then **File ▸ Save As ▸ Adobe Illustrator (.ai)**. Text comes in as **live, editable type**, shapes/gradients/QR as **vector**; photos stay **embedded raster** (they're photographs — can't be vectorised). The fonts are embedded in the PDF, but to re-type/edit cleanly install the two free Google fonts locally: **Bricolage Grotesque** and **Outfit**.
+
+> These differ from the print PNG/PDF renders, which are flat raster. Use the Illustrator PDFs when you want to *edit*; use the PNGs / `…-posters.pdf` to *print/post as-is*.
+
 ## Photography posters — before printing
 
 Real photos are now wired in (sources in `photos/`, ~2200px web-ready). Two things still to set:
