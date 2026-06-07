@@ -13,13 +13,16 @@ Three print-ready A4 poster variants advertising **website + photography package
 | `studio-north-poster-2-photographic.png` | Variant 2 — bold, full-bleed photo |
 | `studio-north-poster-3-split.png` | Variant 3 — split 50/50 |
 | `studio-north-posters.pdf` | All three, true A4, for the print shop |
-| `poster-photography.html` | **Photography poster** — contact-sheet / gallery-wall layout advertising full-service photo shoots (brand · portrait · events · product) |
-| `render-photography.mjs` | Renders the photography poster to a 300 DPI PNG + A4 PDF |
-| `studio-north-photography.png` / `.pdf` | Print-ready photography poster |
+| `poster-photography.html` | **Photography posters** — 3 variants in one page advertising full-service photo shoots (brand · portrait · events · product) |
+| `render-photography.mjs` | Renders all 3 variants to 300 DPI PNGs + a combined 3-page A4 PDF |
+| `studio-north-photography-1-contact-sheet.png` | Variant 1 — contact-sheet / gallery wall |
+| `studio-north-photography-2-hero.png` | Variant 2 — hero + filmstrip |
+| `studio-north-photography-3-split.png` | Variant 3 — editorial split 50/50 |
+| `studio-north-photography-posters.pdf` | All three, true A4, for the print shop |
 
-## Photography poster — before printing
+## Photography posters — before printing
 
-`poster-photography.html` ships with **tagged placeholder tiles**. To finish it:
+`poster-photography.html` holds all 3 variants and ships with **tagged placeholder tiles**. To finish them:
 
 1. **Drop in real photos** → give each `.cell` a `background-image` (or an absolutely-positioned `<img>` filling the cell) and remove that cell's `.hint` block. Keep the `.chip` + `.frame` labels on top. Use ≈2500px-long-edge images so they stay crisp at A4. The `.feature` tile is the hero — use your strongest shot.
 2. **Set the price** → replace the dashed `.ghost` box in the footer, e.g. `<span class="big"><span class="cur">£</span>250</span>`.
