@@ -32,12 +32,13 @@ Three print-ready A4 poster variants advertising **website + photography package
 The PDF route imports as anonymous `<Path>` objects. For a **properly named, layered** file, use the SVG instead:
 
 ```bash
-node poster/build-svg.mjs   →   studio-north-photography-2-hero.svg
+node poster/build-svg.mjs
 ```
+→ `studio-north-photography-1-contact-sheet.svg`, `-2-hero.svg`, `-3-split.svg`, `-story.svg`
 
-It rebuilds the hero poster (variant 2) as an SVG with **named groups** (`Hero ▸ Headline`, `Filmstrip ▸ Brand tile`, `Footer ▸ QR code`, …), **live editable text**, **embedded clipped photos**, and the **QR + gradients as native vector**. Open it in Illustrator → **File ▸ Save As ▸ Adobe Illustrator (.ai)**. Install **Bricolage Grotesque** + **Outfit** first so the text displays correctly.
+Each opens in Illustrator with **named groups** (`Hero ▸ Headline`, `Filmstrip ▸ Brand tile`, `Footer ▸ QR code`, …), **live editable text**, **embedded clipped photos**, and the **QR + gradients as native vector**. Open one → **File ▸ Save As ▸ Adobe Illustrator (.ai)**. Install **Bricolage Grotesque** + **Outfit** first so the text displays correctly.
 
-`build-svg.mjs` extracts the exact layout from `poster-photography.html`, so re-run it after any design change. (Currently builds variant 2 only — change the `.v2` selector inside to target `.v1` / `.v3`.)
+`build-svg.mjs` extracts the exact layout from the source HTML, so re-run it after any design change.
 
 ## Editing in Adobe Illustrator (flat PDF route)
 
