@@ -27,7 +27,19 @@ Three print-ready A4 poster variants advertising **website + photography package
 
 `social-photography.html` is the hero design re-composed for a **9:16 screen** (1080×1920). It swaps the print QR-first CTA for a tappable-looking **"Book on WhatsApp"** button (with a small QR kept for cross-device scanning). Same placeholder rules as the posters — drop a real hero photo behind `.hero`, set the price, set the WhatsApp number. Re-render with `node poster/render-social.mjs`.
 
-## Editing in Adobe Illustrator
+## Named, layered Illustrator file (SVG → .ai)
+
+The PDF route imports as anonymous `<Path>` objects. For a **properly named, layered** file, use the SVG instead:
+
+```bash
+node poster/build-svg.mjs   →   studio-north-photography-2-hero.svg
+```
+
+It rebuilds the hero poster (variant 2) as an SVG with **named groups** (`Hero ▸ Headline`, `Filmstrip ▸ Brand tile`, `Footer ▸ QR code`, …), **live editable text**, **embedded clipped photos**, and the **QR + gradients as native vector**. Open it in Illustrator → **File ▸ Save As ▸ Adobe Illustrator (.ai)**. Install **Bricolage Grotesque** + **Outfit** first so the text displays correctly.
+
+`build-svg.mjs` extracts the exact layout from `poster-photography.html`, so re-run it after any design change. (Currently builds variant 2 only — change the `.v2` selector inside to target `.v1` / `.v3`.)
+
+## Editing in Adobe Illustrator (flat PDF route)
 
 `render-illustrator.mjs` outputs a **single-page vector PDF per design** (3 posters + the story):
 
