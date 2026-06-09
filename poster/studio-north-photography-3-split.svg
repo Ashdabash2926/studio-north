@@ -3,6 +3,8 @@
     <style>@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap');</style>
     <linearGradient id="heroGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgb(10,9,8)" stop-opacity="0.5"/><stop offset="0.52" stop-color="rgb(10,9,8)" stop-opacity="0.2"/><stop offset="1" stop-color="rgb(10,9,8)" stop-opacity="0.9"/></linearGradient>
     <linearGradient id="tileGrad" x1="0" y1="0" x2="0.7" y2="1"><stop offset="0" stop-color="rgb(20,18,16)" stop-opacity="0.1"/><stop offset="1" stop-color="rgb(20,18,16)" stop-opacity="0.45"/></linearGradient>
+    <linearGradient id="hsHeroGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgb(10,9,8)" stop-opacity="0.62"/><stop offset="0.24" stop-color="rgb(10,9,8)" stop-opacity="0.08"/><stop offset="0.42" stop-color="rgb(10,9,8)" stop-opacity="0"/><stop offset="0.84" stop-color="rgb(10,9,8)" stop-opacity="0.8"/><stop offset="1" stop-color="rgb(10,9,8)" stop-opacity="0.93"/></linearGradient>
+    <linearGradient id="boxGrad" x1="0.15" y1="0" x2="0.5" y2="1"><stop offset="0" stop-color="rgb(20,18,16)" stop-opacity="0.05"/><stop offset="0.42" stop-color="rgb(20,18,16)" stop-opacity="0.14"/><stop offset="1" stop-color="rgb(20,18,16)" stop-opacity="0.74"/></linearGradient>
     <clipPath id="clip1"><rect x="26.45" y="26.45" width="279.69" height="406.47" rx="3"/></clipPath>
     <clipPath id="clip2"><rect x="26.45" y="451.81" width="279.69" height="312.67" rx="3"/></clipPath>
     <clipPath id="clip3"><rect x="26.45" y="783.38" width="279.69" height="312.69" rx="3"/></clipPath>
@@ -40,14 +42,14 @@
     <text x="403.5" y="77.47" fill="rgb(20,18,16)" font-family="Bricolage Grotesque" font-size="20" font-weight="800" text-anchor="start" dominant-baseline="central" letter-spacing="0.4">STUDIO NORTH</text>
   </g>
   <g id="Right ▸ Eyebrow">
-    <text x="740.78" y="68.47" fill="rgb(214,59,31)" font-family="Bricolage Grotesque" font-size="10" font-weight="700" text-anchor="end" dominant-baseline="central" letter-spacing="2.2">LEEDS</text>
+    <text x="740.78" y="68.47" fill="rgb(214,59,31)" font-family="Bricolage Grotesque" font-size="10" font-weight="700" text-anchor="end" dominant-baseline="central" letter-spacing="2.2">PISAC</text>
     <text x="740.78" y="85.47" fill="rgb(214,59,31)" font-family="Bricolage Grotesque" font-size="10" font-weight="700" text-anchor="end" dominant-baseline="central" letter-spacing="2.2">PHOTOGRAPHY</text>
   </g>
   <g id="Right ▸ Headline">
     <text x="385.5" y="151.48" fill="rgb(20,18,16)" font-family="Bricolage Grotesque" font-size="50" font-weight="800" text-anchor="start" dominant-baseline="central" letter-spacing="-1.75">Photography</text>
     <text x="385.5" y="197.48" fill="rgb(20,18,16)" font-family="Bricolage Grotesque" font-size="50" font-weight="800" text-anchor="start" dominant-baseline="central" letter-spacing="-1.75">that</text>
-    <text x="385.5" y="243.48" fill="rgb(20,18,16)" font-family="Bricolage Grotesque" font-size="50" font-weight="800" text-anchor="start" dominant-baseline="central" letter-spacing="-1.75">earns its</text>
-    <text x="385.5" y="289.48" fill="rgb(20,18,16)" font-family="Bricolage Grotesque" font-size="50" font-weight="800" text-anchor="start" dominant-baseline="central" letter-spacing="-1.75">place<tspan fill="rgb(214,59,31)" fill-opacity="1">.</tspan></text>
+    <text x="385.5" y="243.48" fill="rgb(20,18,16)" font-family="Bricolage Grotesque" font-size="50" font-weight="800" text-anchor="start" dominant-baseline="central" letter-spacing="-1.75">showcases,</text>
+    <text x="385.5" y="289.48" fill="rgb(20,18,16)" font-family="Bricolage Grotesque" font-size="50" font-weight="800" text-anchor="start" dominant-baseline="central" letter-spacing="-1.75">you<tspan fill="rgb(214,59,31)" fill-opacity="1">.</tspan></text>
   </g>
   <g id="Right ▸ Lede">
     <text x="385.5" y="341.38" fill="rgb(74,70,66)" font-family="Outfit" font-size="14" font-weight="400" text-anchor="start" dominant-baseline="central">Full-service photography for businesses and people who</text>

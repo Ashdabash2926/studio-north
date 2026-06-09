@@ -14,11 +14,15 @@ const DESIGNS = [
   { key: 'v2', file: 'poster-photography.html', out: 'studio-north-photography-2-hero.svg', w: '210mm', h: '297mm' },
   { key: 'v3', file: 'poster-photography.html', out: 'studio-north-photography-3-split.svg', w: '210mm', h: '297mm' },
   { key: 'story', file: 'social-photography.html', out: 'studio-north-photography-story.svg', w: '1080', h: '1920' },
+  { key: 'hs', file: 'poster-hero-split.html', out: 'studio-north-photography-2b-hero-split.svg', w: '210mm', h: '297mm' },
+  { key: 'wa', file: 'social-wa-hero.html', out: 'studio-north-photography-whatsapp.svg', w: '1080', h: '1350' },
+  { key: 'wav', file: 'social-wa-split.html', out: 'studio-north-photography-whatsapp-split.svg', w: '1080', h: '1350' },
+  { key: 'arty', file: 'poster-arty.html', out: 'studio-north-photography-4-arty.svg', w: '210mm', h: '297mm' },
 ];
 
 // ───────────────────────── extraction (runs in the page) ─────────────────────────
 function extract(key) {
-  const sel = { v1: '.v1', v2: '.v2', v3: '.v3', story: '.story' }[key];
+  const sel = { v1: '.v1', v2: '.v2', v3: '.v3', story: '.story', hs: '.hs', wa: '.wa45', wav: '.wa-split', arty: '.arty' }[key];
   const poster = document.querySelector(sel);
   const P = poster.getBoundingClientRect();
   const items = [];
@@ -199,6 +203,185 @@ function extract(key) {
     pushText('Footer ▸ Website URL', Q('.foot .url'), 'end');
   }
 
+  if (key === 'hs') {
+    ticks();
+    const hero = Q('.hero'), hr = rel(hero.getBoundingClientRect());
+    items.push({ group: 'Hero ▸ Photo', type: 'image', ...hr, file: photoOf(hero), rx: 0 });
+    items.push({ group: 'Hero ▸ Scrim', type: 'rect', ...hr, grad: 'hsHero', rx: 0 });
+    brand('Hero ▸ Brand', Q('.brand', hero));
+    pushText('Hero ▸ Eyebrow', Q('.eyebrow', hero), 'end');
+    const hchip = Q('.hchip', hero), hcr = rel(hchip.getBoundingClientRect());
+    items.push({ group: 'Hero ▸ Category chip', type: 'rect', ...hcr, rx: hcr.h / 2, fill: 'rgb(214,59,31)', op: 1 });
+    pushText('Hero ▸ Category chip', hchip, 'middle', { fill: 'rgb(255,255,255)', op: 1 });
+    pushText('Hero ▸ Headline', Q('h1', hero), 'start');
+
+    // editorial kicker = red dash + label
+    const kickerDash = (group, el) => {
+      const r = rel(el.getBoundingClientRect());
+      items.push({ group, type: 'rect', x: r.x, y: r.y + r.h / 2 - 1, w: 16, h: 2, rx: 1, fill: 'rgb(214,59,31)', op: 1 });
+      pushText(group, el, 'start');
+    };
+
+    // ── left: two named photo boxes ──
+    const gallery = Q('.gallery');
+    kickerDash('Selected work ▸ Kicker', Q('.kicker', gallery));
+    QA('.box', gallery).forEach((box) => {
+      const label = Q('.chip', box).textContent.trim();
+      const g = `Selected work ▸ ${label} tile`;
+      const br = rel(box.getBoundingClientRect());
+      items.push({ group: g, type: 'image', ...br, file: photoOf(box), rx: 5 });
+      items.push({ group: g, type: 'rect', ...br, grad: 'box', rx: 5 });
+      const chipEl = Q('.chip', box), ch = rel(chipEl.getBoundingClientRect());
+      items.push({ group: g, type: 'rect', ...ch, rx: ch.h / 2, fill: 'rgb(20,18,16)', op: 0.5 });
+      pushText(g, chipEl, 'start', { fill: 'rgb(255,255,255)', op: 0.95 });
+      pushText(g, Q('.frame', box), 'end', { fill: 'rgb(255,255,255)', op: 0.78 });
+      // caption = bold title line (cap style) + lighter sub line (i style)
+      const cap = Q('.cap', box), sub = Q('i', cap), capLine = textLines(cap)[0];
+      if (capLine) {
+        const cs = getComputedStyle(cap), ff = cs.fontFamily.replace(/["']/g, '').split(',')[0].trim();
+        items.push({ group: g, type: 'text', x: capLine.left - P.left, y: (capLine.top + capLine.bottom) / 2 - P.top, anchor: 'start',
+          text: capLine.text, fill: 'rgb(255,255,255)', op: 1, ff, size: parseFloat(cs.fontSize), weight: cs.fontWeight, ls: parseFloat(cs.letterSpacing) || 0, line: 0 });
+      }
+      if (sub) pushText(g, sub, 'start', { fill: 'rgb(255,255,255)', op: 0.84 });
+    });
+
+    // ── right: editorial column ──
+    const content = Q('.content');
+    kickerDash('The studio ▸ Kicker', Q('.kicker', content));
+    pushText('The studio ▸ Lede', Q('.lede', content), 'start');
+    const rule = Q('.rule', content), rr = rel(rule.getBoundingClientRect());
+    items.push({ group: 'The studio ▸ Rule', type: 'line', x1: rr.x, y1: rr.y + rr.h / 2, x2: rr.x + rr.w, y2: rr.y + rr.h / 2, stroke: 'rgb(20,18,16)', op: 0.12 });
+    items.push({ group: 'The studio ▸ Rule', type: 'rect', x: rr.x, y: rr.y + rr.h / 2 - 1, w: 22, h: 2, rx: 1, fill: 'rgb(214,59,31)', op: 1 });
+    priceBlock('The studio ▸ Price', content);
+    QA('.points div', content).forEach(pt => {
+      const ln = textLines(pt)[0];
+      if (ln) {
+        items.push({ group: 'The studio ▸ Value points', type: 'circle', cx: ln.left - P.left - 12, cy: (ln.top + ln.bottom) / 2 - P.top, r: 3, fill: 'rgb(214,59,31)', op: 1 });
+        pushText('The studio ▸ Value points', pt, 'start');
+      }
+    });
+    scanQR('Footer ▸ Scan label', 'Footer ▸ QR code', Q('.cta .scan', content), Q('.cta .qr-card', content));
+    pushText('Footer ▸ Cross-sell', Q('.websell .l', content), 'start');
+    pushText('Footer ▸ Website URL', Q('.websell .url', content), 'end');
+  }
+
+  if (key === 'wa') {
+    const frame = poster;
+    const hero = Q('.hero', frame), hr = rel(hero.getBoundingClientRect());
+    items.push({ group: 'Hero ▸ Photo', type: 'image', ...hr, file: photoOf(hero), rx: 0 });
+    items.push({ group: 'Hero ▸ Scrim', type: 'rect', ...hr, grad: 'hsHero', rx: 0 });
+    brand('Hero ▸ Brand', Q('.brand', hero));
+    pushText('Hero ▸ Eyebrow', Q('.eyebrow', hero), 'end');
+    const hchip = Q('.hchip', hero), hcr = rel(hchip.getBoundingClientRect());
+    items.push({ group: 'Hero ▸ Category chip', type: 'rect', ...hcr, rx: hcr.h / 2, fill: 'rgb(214,59,31)', op: 1 });
+    pushText('Hero ▸ Category chip', hchip, 'middle', { fill: 'rgb(255,255,255)', op: 1 });
+    pushText('Hero ▸ Headline', Q('h1', hero), 'start');
+
+    const body = Q('.body', frame);
+    pushText('Body ▸ Lede', Q('.lede', body), 'start');
+    QA('.feat span', body).forEach(sp => {
+      const ln = textLines(sp)[0];
+      if (ln) {
+        items.push({ group: 'Body ▸ Features', type: 'circle', cx: ln.left - P.left - 16, cy: (ln.top + ln.bottom) / 2 - P.top, r: 4.5, fill: 'rgb(214,59,31)', op: 1 });
+        pushText('Body ▸ Features', sp, 'start');
+      }
+    });
+    const ml = Q('.midline', body), mr = rel(ml.getBoundingClientRect());
+    items.push({ group: 'Body ▸ Rule', type: 'line', x1: mr.x, y1: mr.y + mr.h / 2, x2: mr.x + mr.w, y2: mr.y + mr.h / 2, stroke: 'rgb(20,18,16)', op: 0.12 });
+    items.push({ group: 'Body ▸ Rule', type: 'rect', x: mr.x, y: mr.y + mr.h / 2 - 1, w: 34, h: 2, rx: 1, fill: 'rgb(214,59,31)', op: 1 });
+    priceBlock('Body ▸ Price', body);
+
+    const wa = Q('.wa', body), wr = rel(wa.getBoundingClientRect());
+    items.push({ group: 'Footer ▸ Book button', type: 'rect', ...wr, rx: 26, fill: 'rgb(214,59,31)', op: 1 });
+    const gsvg = Q('svg', wa), gpath = Q('svg path', wa);
+    if (gsvg && gpath) { const gr = rel(gsvg.getBoundingClientRect()); items.push({ group: 'Footer ▸ Book button', type: 'path', d: gpath.getAttribute('d'), x: gr.x, y: gr.y, s: gr.w / 24, fill: 'rgb(255,255,255)' }); }
+    const t = Q('.t', wa), small = Q('small', t), tl = textLines(t)[0];
+    if (tl) {
+      const cs = getComputedStyle(t), ff = cs.fontFamily.replace(/["']/g, '').split(',')[0].trim();
+      items.push({ group: 'Footer ▸ Book button', type: 'text', x: tl.left - P.left, y: (tl.top + tl.bottom) / 2 - P.top, anchor: 'start', text: tl.text, fill: 'rgb(255,255,255)', op: 1, ff, size: parseFloat(cs.fontSize), weight: cs.fontWeight, ls: 0, line: 0 });
+    }
+    if (small) pushText('Footer ▸ Book button', small, 'start', { fill: 'rgb(255,255,255)', op: 0.92 });
+
+    pushText('Footer ▸ Cross-sell', Q('.foot .l', body), 'start');
+    pushText('Footer ▸ Website URL', Q('.foot .url', body), 'end');
+  }
+
+  if (key === 'wav') {
+    const img = Q('.img'), ir = rel(img.getBoundingClientRect());
+    items.push({ group: 'Image ▸ Photo', type: 'image', ...ir, file: photoOf(img), rx: 0 });
+    items.push({ group: 'Image ▸ Scrim', type: 'rect', ...ir, grad: 'wavImg', rx: 0 });
+    brand('Image ▸ Brand', Q('.brand', img));
+    const tag = Q('.tag', img), tgr = rel(tag.getBoundingClientRect());
+    items.push({ group: 'Image ▸ Location tag', type: 'rect', x: tgr.x, y: tgr.y + tgr.h / 2 - 1, w: 24, h: 2, rx: 1, fill: 'rgb(214,59,31)', op: 1 });
+    pushText('Image ▸ Location tag', tag, 'start', { fill: 'rgb(255,255,255)', op: 1 });
+
+    const col = Q('.col');
+    const pill = Q('.pill', col), pr = rel(pill.getBoundingClientRect());
+    items.push({ group: 'Content ▸ Category pill', type: 'rect', ...pr, rx: pr.h / 2, fill: 'rgb(214,59,31)', op: 1 });
+    pushText('Content ▸ Category pill', pill, 'middle', { fill: 'rgb(255,255,255)', op: 1 });
+    pushText('Content ▸ Headline', Q('h1', col), 'start');
+    pushText('Content ▸ Lede', Q('.lede', col), 'start');
+    QA('.feat span', col).forEach(sp => {
+      const ln = textLines(sp)[0];
+      if (ln) {
+        items.push({ group: 'Content ▸ Features', type: 'circle', cx: ln.left - P.left - 16, cy: (ln.top + ln.bottom) / 2 - P.top, r: 4.5, fill: 'rgb(214,59,31)', op: 1 });
+        pushText('Content ▸ Features', sp, 'start');
+      }
+    });
+    priceBlock('Content ▸ Price', col);
+    const wa = Q('.wa', col), wr = rel(wa.getBoundingClientRect());
+    items.push({ group: 'Footer ▸ Book button', type: 'rect', ...wr, rx: 24, fill: 'rgb(214,59,31)', op: 1 });
+    const gsvg = Q('svg', wa), gpath = Q('svg path', wa);
+    if (gsvg && gpath) { const gr = rel(gsvg.getBoundingClientRect()); items.push({ group: 'Footer ▸ Book button', type: 'path', d: gpath.getAttribute('d'), x: gr.x, y: gr.y, s: gr.w / 24, fill: 'rgb(255,255,255)' }); }
+    const t = Q('.t', wa), small = Q('small', t), tl = textLines(t)[0];
+    if (tl) {
+      const cs = getComputedStyle(t), ff = cs.fontFamily.replace(/["']/g, '').split(',')[0].trim();
+      items.push({ group: 'Footer ▸ Book button', type: 'text', x: tl.left - P.left, y: (tl.top + tl.bottom) / 2 - P.top, anchor: 'start', text: tl.text, fill: 'rgb(255,255,255)', op: 1, ff, size: parseFloat(cs.fontSize), weight: cs.fontWeight, ls: 0, line: 0 });
+    }
+    if (small) pushText('Footer ▸ Book button', small, 'start', { fill: 'rgb(255,255,255)', op: 0.92 });
+    pushText('Footer ▸ Cross-sell', Q('.foot .l', col), 'start');
+    pushText('Footer ▸ Website URL', Q('.foot .url', col), 'end');
+  }
+
+  if (key === 'arty') {
+    const photo = Q('.photo'), pr = rel(photo.getBoundingClientRect());
+    items.push({ group: 'Photograph', type: 'image', ...pr, file: photoOf(photo), rx: 0 });
+    items.push({ group: 'Grade ▸ Scrim', type: 'rect', ...pr, grad: 'artyV', rx: 0 });
+    items.push({ group: 'Grade ▸ Vignette', type: 'rect', ...pr, grad: 'artyVig', rx: 0 });
+    items.push({ group: 'Grade ▸ Warm wash', type: 'rect', ...pr, grad: 'artyWarm', rx: 0, op: 0.35 });
+
+    const matte = Q('.matte'), mr = rel(matte.getBoundingClientRect());
+    items.push({ group: 'Matte border', type: 'frame', ...mr, stroke: 'rgb(247,244,239)', op: 0.42 });
+
+    pushText('Top ▸ Eyebrow left', Q('.top .eyebrow:not(.r)'), 'start');
+    pushText('Top ▸ Eyebrow right', Q('.top .eyebrow.r'), 'end');
+
+    pushText('Wordmark ▸ Headline', Q('.bot h1'), 'start');
+    pushText('Tagline', Q('.tag'), 'start');
+
+    const rule = Q('.rule'), rr = rel(rule.getBoundingClientRect());
+    items.push({ group: 'Rule', type: 'line', x1: rr.x, y1: rr.y + rr.h / 2, x2: rr.x + rr.w, y2: rr.y + rr.h / 2, stroke: 'rgb(247,244,239)', op: 0.28 });
+    items.push({ group: 'Rule', type: 'rect', x: rr.x, y: rr.y + rr.h / 2 - 1, w: 26, h: 2, rx: 1, fill: 'rgb(214,59,31)', op: 1 });
+
+    // scan label (white-on-image, two lines: main + uppercase sub)
+    const scanEl = Q('.foot .scan');
+    if (scanEl) {
+      const sub = Q('i', scanEl), subTop = sub ? sub.getBoundingClientRect().top : 1e9;
+      const cs = getComputedStyle(scanEl), ff = cs.fontFamily.replace(/["']/g, '').split(',')[0].trim();
+      textLines(scanEl).forEach(ln => {
+        const isSub = ln.top >= subTop - 3;
+        items.push({ group: 'Footer ▸ Scan label', type: 'text', x: ln.left - P.left, y: (ln.top + ln.bottom) / 2 - P.top, anchor: 'start',
+          text: isSub ? ln.text.toUpperCase() : ln.text, fill: isSub ? 'rgb(247,244,239)' : 'rgb(255,255,255)', op: isSub ? 0.66 : 1, ff, size: isSub ? 10.5 : 15, weight: 700, ls: isSub ? 1.26 : 0.3 });
+      });
+    }
+    const card = Q('.foot .qr-card');
+    if (card) {
+      const cr = rel(card.getBoundingClientRect());
+      items.push({ group: 'Footer ▸ QR code', type: 'rect', ...cr, rx: 13, fill: 'rgb(247,244,239)', op: 1 });
+      items.push({ group: 'Footer ▸ QR code', type: 'qr', ...rel(Q('img', card).getBoundingClientRect()) });
+    }
+  }
+
   return { w: P.width, h: P.height, items };
 }
 
@@ -220,6 +403,7 @@ function assemble(data, dim) {
         return `<image x="${f(it.x)}" y="${f(it.y)}" width="${f(it.w)}" height="${f(it.h)}" preserveAspectRatio="xMidYMid slice" clip-path="url(#${id})" xlink:href="${photos[it.file]}"/>`; }
       case 'rect': return `<rect x="${f(it.x)}" y="${f(it.y)}" width="${f(it.w)}" height="${f(it.h)}" rx="${it.rx || 0}" fill="${it.grad ? `url(#${it.grad}Grad)` : it.fill}"${op}/>`;
       case 'ghost': return `<rect x="${f(it.x)}" y="${f(it.y)}" width="${f(it.w)}" height="${f(it.h)}" rx="${it.rx || 0}" fill="none" stroke="rgb(140,133,125)" stroke-width="2" stroke-dasharray="5 4" opacity="0.55"/>`;
+      case 'frame': return `<rect x="${f(it.x)}" y="${f(it.y)}" width="${f(it.w)}" height="${f(it.h)}" rx="${it.rx || 0}" fill="none" stroke="${it.stroke}" stroke-width="1"${op}/>`;
       case 'circle': return `<circle cx="${f(it.cx)}" cy="${f(it.cy)}" r="${f(it.r)}" fill="${it.fill}"${op}/>`;
       case 'line': return `<line x1="${f(it.x1)}" y1="${f(it.y1)}" x2="${f(it.x2)}" y2="${f(it.y2)}" stroke="${it.stroke}"${op} stroke-width="1"/>`;
       case 'plus': return `<g opacity="0.5"><line x1="${f(it.x)}" y1="${f(it.y + it.h / 2)}" x2="${f(it.x + it.w)}" y2="${f(it.y + it.h / 2)}" stroke="${it.fill}" stroke-width="1"/><line x1="${f(it.x + it.w / 2)}" y1="${f(it.y)}" x2="${f(it.x + it.w / 2)}" y2="${f(it.y + it.h)}" stroke="${it.fill}" stroke-width="1"/></g>`;
@@ -240,6 +424,12 @@ function assemble(data, dim) {
     <style>@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap');</style>
     <linearGradient id="heroGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgb(10,9,8)" stop-opacity="0.5"/><stop offset="0.52" stop-color="rgb(10,9,8)" stop-opacity="0.2"/><stop offset="1" stop-color="rgb(10,9,8)" stop-opacity="0.9"/></linearGradient>
     <linearGradient id="tileGrad" x1="0" y1="0" x2="0.7" y2="1"><stop offset="0" stop-color="rgb(20,18,16)" stop-opacity="0.1"/><stop offset="1" stop-color="rgb(20,18,16)" stop-opacity="0.45"/></linearGradient>
+    <linearGradient id="hsHeroGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgb(10,9,8)" stop-opacity="0.62"/><stop offset="0.24" stop-color="rgb(10,9,8)" stop-opacity="0.08"/><stop offset="0.42" stop-color="rgb(10,9,8)" stop-opacity="0"/><stop offset="0.84" stop-color="rgb(10,9,8)" stop-opacity="0.8"/><stop offset="1" stop-color="rgb(10,9,8)" stop-opacity="0.93"/></linearGradient>
+    <linearGradient id="boxGrad" x1="0.15" y1="0" x2="0.5" y2="1"><stop offset="0" stop-color="rgb(20,18,16)" stop-opacity="0.05"/><stop offset="0.42" stop-color="rgb(20,18,16)" stop-opacity="0.14"/><stop offset="1" stop-color="rgb(20,18,16)" stop-opacity="0.74"/></linearGradient>
+    <linearGradient id="wavImgGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgb(10,9,8)" stop-opacity="0.66"/><stop offset="0.22" stop-color="rgb(10,9,8)" stop-opacity="0.04"/><stop offset="0.52" stop-color="rgb(10,9,8)" stop-opacity="0"/><stop offset="1" stop-color="rgb(10,9,8)" stop-opacity="0.62"/></linearGradient>
+    <linearGradient id="artyVGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgb(8,6,5)" stop-opacity="0.5"/><stop offset="0.2" stop-color="rgb(8,6,5)" stop-opacity="0.05"/><stop offset="0.4" stop-color="rgb(8,6,5)" stop-opacity="0"/><stop offset="0.7" stop-color="rgb(8,6,5)" stop-opacity="0.42"/><stop offset="1" stop-color="rgb(8,6,5)" stop-opacity="0.88"/></linearGradient>
+    <radialGradient id="artyVigGrad" cx="0.5" cy="0.3" r="0.62"><stop offset="0.5" stop-color="rgb(8,6,5)" stop-opacity="0"/><stop offset="1" stop-color="rgb(8,6,5)" stop-opacity="0.34"/></radialGradient>
+    <linearGradient id="artyWarmGrad" x1="0.15" y1="0" x2="0.7" y2="1"><stop offset="0" stop-color="rgb(214,59,31)" stop-opacity="0.4"/><stop offset="0.6" stop-color="rgb(20,14,10)" stop-opacity="0.3"/><stop offset="1" stop-color="rgb(8,6,5)" stop-opacity="0.5"/></linearGradient>
     ${defs.join('\n    ')}
   </defs>
   <g id="Background"><rect x="0" y="0" width="${f(data.w)}" height="${f(data.h)}" fill="rgb(247,244,239)"/></g>
@@ -252,8 +442,11 @@ function assemble(data, dim) {
 const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
 const page = await browser.newPage();
 await page.setViewport({ width: 1200, height: 2100, deviceScaleFactor: 1 });
+// Optional CLI filter: `node build-svg.mjs hs v1` builds only those keys.
+const ONLY = process.argv.slice(2);
 let loaded = '';
 for (const d of DESIGNS) {
+  if (ONLY.length && !ONLY.includes(d.key)) continue;
   if (loaded !== d.file) { await page.goto('file://' + join(__dirname, d.file), { waitUntil: 'networkidle0' }); await page.evaluateHandle('document.fonts.ready'); loaded = d.file; }
   const data = await page.evaluate(extract, d.key);
   const { svg, groups, count } = assemble(data, d);

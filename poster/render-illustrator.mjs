@@ -8,12 +8,15 @@ import { dirname, join } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const jobs = [
+// Optional CLI filter: `node render-illustrator.mjs v1 v3` renders only those (protects hand-edited v2).
+const ONLY = process.argv.slice(2).map(s => s.replace(/^\./, ''));
+const ALL = [
   { file: 'poster-photography.html', sel: '.v1', name: 'studio-north-photography-1-contact-sheet', a4: true },
   { file: 'poster-photography.html', sel: '.v2', name: 'studio-north-photography-2-hero',          a4: true },
   { file: 'poster-photography.html', sel: '.v3', name: 'studio-north-photography-3-split',         a4: true },
   { file: 'social-photography.html', sel: '.story', name: 'studio-north-photography-story',        a4: false, w: '1080px', h: '1920px' },
 ];
+const jobs = ONLY.length ? ALL.filter(j => ONLY.includes(j.sel.slice(1))) : ALL;
 
 const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
 

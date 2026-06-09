@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio North — Arty Gallery Poster (A4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f4ef; --ink:#141210;
+  --red:#d63b1f; --red-deep:#b32e15;
+  --disp:'Bricolage Grotesque',sans-serif;
+  --body:'Outfit',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfc9bf}
+body{font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;align-items:center;gap:30px;-webkit-font-smoothing:antialiased}
+.label{font-family:var(--disp);font-weight:700;color:#5b554e;text-transform:uppercase;letter-spacing:.14em;font-size:13px;text-align:center}
+.label span{color:var(--red)}
+
+/* ════ A4 FRAME ════ */
+.poster{
+  width:210mm;height:297mm;position:relative;overflow:hidden;
+  background:#0e0c0a;color:#fff;
+  box-shadow:0 30px 80px rgba(0,0,0,.30);
+}
+
+/* full-bleed photograph */
+.photo{position:absolute;inset:0;background-image:url('photos/dancing.jpg');
+  background-size:cover;background-position:center 46%;background-repeat:no-repeat;z-index:0}
+
+/* filmic grade — warm wash + legibility scrims + vignette */
+.grade{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(8,6,5,.50) 0%, rgba(8,6,5,.05) 20%, rgba(8,6,5,0) 40%, rgba(8,6,5,.42) 70%, rgba(8,6,5,.88) 100%),
+    radial-gradient(120% 80% at 50% 30%, transparent 50%, rgba(8,6,5,.34) 100%);}
+.warm{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:soft-light;opacity:.5;
+  background:linear-gradient(155deg, rgba(214,59,31,.40), rgba(20,14,10,.30) 60%, rgba(8,6,5,.50))}
+
+.grain{position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.10;z-index:2;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* fine-art matte: a hairline inset border like a framed gallery print */
+.matte{position:absolute;inset:7mm;z-index:3;pointer-events:none;
+  border:1px solid rgba(247,244,239,.42)}
+
+/* ── top marks ── */
+.top{position:absolute;top:13mm;left:14mm;right:14mm;z-index:4;display:flex;justify-content:space-between;align-items:flex-start;
+  text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.eyebrow{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.26em;font-size:10.5px;
+  color:rgba(247,244,239,.82);line-height:1.85}
+.eyebrow.r{text-align:right}
+.eyebrow i{font-style:normal;color:var(--red)}
+
+/* ── bottom block: wordmark + line + qr ── */
+.bot{position:absolute;left:14mm;right:14mm;bottom:13mm;z-index:4}
+.bot h1{font-family:var(--disp);font-weight:800;font-size:74px;line-height:.86;letter-spacing:-.04em;
+  text-shadow:0 2px 34px rgba(0,0,0,.4)}
+.bot h1 .dot{color:var(--red)}
+.tag{font-family:var(--disp);font-weight:600;font-size:16px;letter-spacing:.01em;color:rgba(247,244,239,.9);
+  margin-top:7mm;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.tag i{font-style:normal;color:var(--red);font-weight:700}
+
+.rule{height:1px;background:rgba(247,244,239,.28);margin:6mm 0;position:relative}
+.rule::before{content:"";position:absolute;left:0;top:0;width:26px;height:1px;background:var(--red)}
+
+.foot{display:flex;align-items:center;justify-content:space-between;gap:10mm}
+.foot .scan{font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.02em;line-height:1.25;
+  text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.foot .scan i{font-style:normal;display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(247,244,239,.66);margin-top:5px}
+.foot .scan .url{color:var(--red)}
+.qr-card{flex:0 0 auto;background:#f7f4ef;border-radius:13px;padding:9px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 34px rgba(0,0,0,.4)}
+.qr-card img{width:28mm;height:28mm;display:block}
+
+@page{size:A4;margin:0}
+@media print{
+  body{padding:0;gap:0;background:#fff}
+  .label{display:none}
+  .poster{box-shadow:none}
+}
+</style>
+</head>
+<body>
+
+<div class="label">Studio North — <span>Arty gallery poster (full-bleed · stripped furniture)</span></div>
+
+<div class="poster arty">
+  <div class="photo"></div>
+  <div class="grade"></div>
+  <div class="warm"></div>
+  <div class="grain"></div>
+  <div class="matte"></div>
+
+  <!-- top marks -->
+  <div class="top">
+    <div class="eyebrow">Photography<br><i>·</i> portraits &amp; stories</div>
+    <div class="eyebrow r">Pisac, Peru<br>Sacred Valley</div>
+  </div>
+
+  <!-- bottom block -->
+  <div class="bot">
+    <h1>Studio<br>North<span class="dot">.</span></h1>
+    <p class="tag">Portraits, movement &amp; light <i>·</i> shot in the Sacred Valley</p>
+    <div class="rule"></div>
+    <div class="foot">
+      <div class="scan">Scan to book a shoot<i>WhatsApp · <span class="url">studio-north.uk</span></i></div>
+      <div class="qr-card"><img src="qr-en.svg" alt="WhatsApp QR — book Studio North"></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
