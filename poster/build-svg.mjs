@@ -18,11 +18,12 @@ const DESIGNS = [
   { key: 'wa', file: 'social-wa-hero.html', out: 'studio-north-photography-whatsapp.svg', w: '1080', h: '1350' },
   { key: 'wav', file: 'social-wa-split.html', out: 'studio-north-photography-whatsapp-split.svg', w: '1080', h: '1350' },
   { key: 'arty', file: 'poster-arty.html', out: 'studio-north-photography-4-arty.svg', w: '210mm', h: '297mm' },
+  { key: 'ed', file: 'poster-editorial.html', out: 'studio-north-photography-5-editorial.svg', w: '210mm', h: '297mm' },
 ];
 
 // ───────────────────────── extraction (runs in the page) ─────────────────────────
 function extract(key) {
-  const sel = { v1: '.v1', v2: '.v2', v3: '.v3', story: '.story', hs: '.hs', wa: '.wa45', wav: '.wa-split', arty: '.arty' }[key];
+  const sel = { v1: '.v1', v2: '.v2', v3: '.v3', story: '.story', hs: '.hs', wa: '.wa45', wav: '.wa-split', arty: '.arty', ed: '.ed' }[key];
   const poster = document.querySelector(sel);
   const P = poster.getBoundingClientRect();
   const items = [];
@@ -59,11 +60,12 @@ function extract(key) {
     const ff = cs.fontFamily.replace(/["']/g, '').split(',')[0].trim();
     const size = parseFloat(cs.fontSize), weight = cs.fontWeight;
     const ls = parseFloat(cs.letterSpacing) || 0, up = cs.textTransform === 'uppercase';
+    const style = cs.fontStyle;
     const c = col(cs.color);
     textLines(el).forEach((ln, i) => {
       const x = anchor === 'end' ? ln.right : anchor === 'middle' ? (ln.left + ln.right) / 2 : ln.left;
       items.push({ group, type: 'text', x: x - P.left, y: (ln.top + ln.bottom) / 2 - P.top, anchor,
-        text: up ? ln.text.toUpperCase() : ln.text, fill: c.fill, op: c.op, ff, size, weight, ls, line: i, ...ov });
+        text: up ? ln.text.toUpperCase() : ln.text, fill: c.fill, op: c.op, ff, size, weight, ls, style, line: i, ...ov });
     });
   }
   const photoOf = (el) => { const m = getComputedStyle(el).backgroundImage.match(/photos\/([^"')]+)/); return m ? m[1] : null; };
@@ -382,19 +384,70 @@ function extract(key) {
     }
   }
 
+  if (key === 'ed') {
+    // paper washes (sand base + warm radial glows)
+    items.push({ group: 'Paper', type: 'rect', x: 0, y: 0, w: P.width, h: P.height, grad: 'edSand', rx: 0 });
+    items.push({ group: 'Paper', type: 'rect', x: 0, y: 0, w: P.width, h: P.height, grad: 'edGlowTop', rx: 0 });
+    items.push({ group: 'Paper', type: 'rect', x: 0, y: 0, w: P.width, h: P.height, grad: 'edGlowBot', rx: 0 });
+
+    const sun = Q('.sun'), sr = rel(sun.getBoundingClientRect());
+    items.push({ group: 'Sun motif', type: 'sun', x: sr.x, y: sr.y, s: sr.w / 100, stroke: 'rgb(194,135,47)' });
+
+    // masthead — two-tone: "Studio" (ink) + "North" (clay italic)
+    const mh = Q('.masthead'), itEl = Q('.it', mh), mhLine = textLines(mh)[0];
+    const csm = getComputedStyle(mh), mhY = (mhLine.top + mhLine.bottom) / 2 - P.top, itr = itEl.getBoundingClientRect();
+    items.push({ group: 'Masthead', type: 'text', x: itr.left - P.left, y: mhY, anchor: 'start', text: 'North', fill: 'rgb(177,74,43)', op: 1, ff: 'Fraunces', size: parseFloat(csm.fontSize), weight: getComputedStyle(itEl).fontWeight, ls: 0, style: 'italic' });
+    items.push({ group: 'Masthead', type: 'text', x: itr.left - P.left - parseFloat(csm.fontSize) * 0.26, y: mhY, anchor: 'end', text: 'Studio', fill: 'rgb(44,33,24)', op: 1, ff: 'Fraunces', size: parseFloat(csm.fontSize), weight: csm.fontWeight, ls: 0, style: 'normal' });
+
+    // woven divider
+    const weave = Q('.weave');
+    QA('.ln', weave).forEach(ln => { const r = rel(ln.getBoundingClientRect()); items.push({ group: 'Divider', type: 'line', x1: r.x, y1: r.y + r.h / 2, x2: r.x + r.w, y2: r.y + r.h / 2, stroke: 'rgb(44,33,24)', op: 0.45 }); });
+    QA('.dia', weave).forEach(d => pushText('Divider', d, 'middle'));
+    pushText('Divider', Q('.tx', weave), 'middle');
+
+    // arched portal plate
+    const plate = Q('.plate'), plr = rel(plate.getBoundingClientRect());
+    items.push({ group: 'Photograph', type: 'archimage', ...plr, r: plr.w / 2, b: 7, file: photoOf(plate) });
+    items.push({ group: 'Photograph', type: 'archframe', ...plr, r: plr.w / 2, b: 7, stroke: 'rgb(177,74,43)', op: 0.55 });
+
+    // caption + seal
+    pushText('Caption', Q('.caption .q'), 'start');
+    const stamp = Q('.stamp'), str = rel(stamp.getBoundingClientRect());
+    items.push({ group: 'Caption ▸ Seal', type: 'ring', cx: str.x + str.w / 2, cy: str.y + str.h / 2, r: str.w / 2, stroke: 'rgb(125,127,91)', op: 1 });
+    pushText('Caption ▸ Seal', stamp, 'middle', { fill: 'rgb(125,127,91)' });
+
+    // footer
+    pushText('Footer ▸ Label', Q('.foot .k'), 'start');
+    pushText('Footer ▸ Studio', Q('.foot .big'), 'start');
+    pushText('Footer ▸ URL', Q('.foot .url'), 'start');
+    pushText('Footer ▸ Scan label', Q('.qr-wrap .sc'), 'end');
+    const card = Q('.qr-card');
+    if (card) {
+      const cr = rel(card.getBoundingClientRect());
+      items.push({ group: 'Footer ▸ QR code', type: 'rect', ...cr, rx: 3, fill: 'rgb(251,246,236)', op: 1 });
+      items.push({ group: 'Footer ▸ QR code', type: 'qr', ...rel(Q('img', card).getBoundingClientRect()) });
+    }
+  }
+
   return { w: P.width, h: P.height, items };
 }
 
 // ───────────────────────── assembly (runs in node) ─────────────────────────
 function assemble(data, dim) {
   const photos = {};
-  for (const it of data.items) if (it.type === 'image' && it.file && !photos[it.file]) {
+  for (const it of data.items) if ((it.type === 'image' || it.type === 'archimage') && it.file && !photos[it.file]) {
     photos[it.file] = `data:image/jpeg;base64,${readFileSync(join(__dirname, 'photos', it.file)).toString('base64')}`;
   }
   const qrInner = readFileSync(join(__dirname, 'qr-en.svg'), 'utf8').replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '');
   const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const f = (n) => (Math.round(n * 100) / 100);
   let clipN = 0; const defs = [];
+  // arched "portal" outline: semicircle top (radius r), small bottom corners (b)
+  const archPath = (it) => {
+    const x = it.x, y = it.y, w = it.w, h = it.h, r = it.r, b = it.b || 0;
+    return `M ${f(x)} ${f(y + r)} A ${f(r)} ${f(r)} 0 0 1 ${f(x + w)} ${f(y + r)} L ${f(x + w)} ${f(y + h - b)} Q ${f(x + w)} ${f(y + h)} ${f(x + w - b)} ${f(y + h)} L ${f(x + b)} ${f(y + h)} Q ${f(x)} ${f(y + h)} ${f(x)} ${f(y + h - b)} Z`;
+  };
+  const SUN_RAYS = [[70,50,80,50],[67.3,60,74.6,64.2],[60,67.3,64.2,74.6],[50,70,50,80],[40,67.3,35.8,74.6],[32.7,60,25.4,64.2],[30,50,20,50],[32.7,40,25.4,35.8],[40,32.7,35.8,25.4],[50,30,50,20],[60,32.7,64.2,25.4],[67.3,40,74.6,35.8]];
   const draw = (it) => {
     const op = it.op !== undefined && it.op < 1 ? ` opacity="${f(it.op)}"` : '';
     switch (it.type) {
@@ -404,15 +457,22 @@ function assemble(data, dim) {
       case 'rect': return `<rect x="${f(it.x)}" y="${f(it.y)}" width="${f(it.w)}" height="${f(it.h)}" rx="${it.rx || 0}" fill="${it.grad ? `url(#${it.grad}Grad)` : it.fill}"${op}/>`;
       case 'ghost': return `<rect x="${f(it.x)}" y="${f(it.y)}" width="${f(it.w)}" height="${f(it.h)}" rx="${it.rx || 0}" fill="none" stroke="rgb(140,133,125)" stroke-width="2" stroke-dasharray="5 4" opacity="0.55"/>`;
       case 'frame': return `<rect x="${f(it.x)}" y="${f(it.y)}" width="${f(it.w)}" height="${f(it.h)}" rx="${it.rx || 0}" fill="none" stroke="${it.stroke}" stroke-width="1"${op}/>`;
+      case 'ring': return `<circle cx="${f(it.cx)}" cy="${f(it.cy)}" r="${f(it.r)}" fill="none" stroke="${it.stroke}" stroke-width="1.2"${op}/>`;
+      case 'archimage': { const id = `clip${++clipN}`;
+        defs.push(`<clipPath id="${id}"><path d="${archPath(it)}"/></clipPath>`);
+        return `<image x="${f(it.x)}" y="${f(it.y)}" width="${f(it.w)}" height="${f(it.h)}" preserveAspectRatio="xMidYMid slice" clip-path="url(#${id})" xlink:href="${photos[it.file]}"/>`; }
+      case 'archframe': return `<path d="${archPath(it)}" fill="none" stroke="${it.stroke}" stroke-width="1.4"${op}/>`;
+      case 'sun': return `<g transform="translate(${f(it.x)} ${f(it.y)}) scale(${f(it.s)})" fill="none" stroke="${it.stroke}" stroke-width="2" stroke-linecap="round"><circle cx="50" cy="50" r="13"/>${SUN_RAYS.map(l => `<line x1="${l[0]}" y1="${l[1]}" x2="${l[2]}" y2="${l[3]}"/>`).join('')}</g>`;
       case 'circle': return `<circle cx="${f(it.cx)}" cy="${f(it.cy)}" r="${f(it.r)}" fill="${it.fill}"${op}/>`;
       case 'line': return `<line x1="${f(it.x1)}" y1="${f(it.y1)}" x2="${f(it.x2)}" y2="${f(it.y2)}" stroke="${it.stroke}"${op} stroke-width="1"/>`;
       case 'plus': return `<g opacity="0.5"><line x1="${f(it.x)}" y1="${f(it.y + it.h / 2)}" x2="${f(it.x + it.w)}" y2="${f(it.y + it.h / 2)}" stroke="${it.fill}" stroke-width="1"/><line x1="${f(it.x + it.w / 2)}" y1="${f(it.y)}" x2="${f(it.x + it.w / 2)}" y2="${f(it.y + it.h)}" stroke="${it.fill}" stroke-width="1"/></g>`;
       case 'path': return `<path d="${it.d}" fill="${it.fill}" transform="translate(${f(it.x)} ${f(it.y)}) scale(${f(it.s)})"/>`;
       case 'qr': return `<g transform="translate(${f(it.x)} ${f(it.y)}) scale(${f(it.w / 75)})">${qrInner}</g>`;
       case 'text': { const ls = it.ls ? ` letter-spacing="${f(it.ls)}"` : '';
+        const st = it.style && it.style !== 'normal' ? ` font-style="${it.style}"` : '';
         let body = esc(it.text);
         if (it.group.includes('Headline') && it.text.endsWith('.')) body = esc(it.text.slice(0, -1)) + '<tspan fill="rgb(214,59,31)" fill-opacity="1">.</tspan>';
-        return `<text x="${f(it.x)}" y="${f(it.y)}" fill="${it.fill}"${op} font-family="${it.ff}" font-size="${f(it.size)}" font-weight="${it.weight}" text-anchor="${it.anchor}" dominant-baseline="central"${ls}>${body}</text>`; }
+        return `<text x="${f(it.x)}" y="${f(it.y)}" fill="${it.fill}"${op} font-family="${it.ff}" font-size="${f(it.size)}" font-weight="${it.weight}"${st} text-anchor="${it.anchor}" dominant-baseline="central"${ls}>${body}</text>`; }
     }
     return '';
   };
@@ -430,6 +490,9 @@ function assemble(data, dim) {
     <linearGradient id="artyVGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgb(8,6,5)" stop-opacity="0.5"/><stop offset="0.2" stop-color="rgb(8,6,5)" stop-opacity="0.05"/><stop offset="0.4" stop-color="rgb(8,6,5)" stop-opacity="0"/><stop offset="0.7" stop-color="rgb(8,6,5)" stop-opacity="0.42"/><stop offset="1" stop-color="rgb(8,6,5)" stop-opacity="0.88"/></linearGradient>
     <radialGradient id="artyVigGrad" cx="0.5" cy="0.3" r="0.62"><stop offset="0.5" stop-color="rgb(8,6,5)" stop-opacity="0"/><stop offset="1" stop-color="rgb(8,6,5)" stop-opacity="0.34"/></radialGradient>
     <linearGradient id="artyWarmGrad" x1="0.15" y1="0" x2="0.7" y2="1"><stop offset="0" stop-color="rgb(214,59,31)" stop-opacity="0.4"/><stop offset="0.6" stop-color="rgb(20,14,10)" stop-opacity="0.3"/><stop offset="1" stop-color="rgb(8,6,5)" stop-opacity="0.5"/></linearGradient>
+    <linearGradient id="edSandGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgb(232,219,194)"/><stop offset="1" stop-color="rgb(224,207,176)"/></linearGradient>
+    <radialGradient id="edGlowTopGrad" cx="0.5" cy="0" r="0.6"><stop offset="0" stop-color="rgb(194,135,47)" stop-opacity="0.2"/><stop offset="1" stop-color="rgb(194,135,47)" stop-opacity="0"/></radialGradient>
+    <radialGradient id="edGlowBotGrad" cx="0.5" cy="1" r="0.55"><stop offset="0" stop-color="rgb(177,74,43)" stop-opacity="0.12"/><stop offset="1" stop-color="rgb(177,74,43)" stop-opacity="0"/></radialGradient>
     ${defs.join('\n    ')}
   </defs>
   <g id="Background"><rect x="0" y="0" width="${f(data.w)}" height="${f(data.h)}" fill="rgb(247,244,239)"/></g>

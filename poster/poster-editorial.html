@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio North — Boho / Sacred Valley Poster (A4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sand:#e8dbc2; --sand-2:#e0cfb0; --ink:#2c2118; --ink-2:#6f6150;
+  --clay:#b14a2b; --ochre:#c2872f; --sage:#7d7f5b;
+  --serif:'Fraunces',serif; --body:'Outfit',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfc9bf}
+body{font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;align-items:center;gap:30px;-webkit-font-smoothing:antialiased}
+.label{font-family:var(--body);font-weight:600;color:#5b554e;text-transform:uppercase;letter-spacing:.14em;font-size:13px}
+
+.poster{width:210mm;height:297mm;position:relative;overflow:hidden;color:var(--ink);
+  background:
+    radial-gradient(130% 80% at 50% -8%, rgba(194,135,47,.20), transparent 46%),
+    radial-gradient(120% 70% at 50% 108%, rgba(177,74,43,.12), transparent 50%),
+    linear-gradient(180deg, var(--sand) 0%, var(--sand-2) 100%);
+  box-shadow:0 30px 80px rgba(0,0,0,.30);padding:14mm 15mm 13mm;display:flex;flex-direction:column;align-items:center}
+.grain{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.07;z-index:9;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* sun motif */
+.sun{width:17mm;height:17mm;display:block;flex:0 0 auto}
+.sun line,.sun circle{stroke:var(--ochre);stroke-width:2;stroke-linecap:round;fill:none}
+
+/* masthead */
+.masthead{font-family:var(--serif);font-weight:300;font-size:56px;line-height:.98;letter-spacing:.005em;text-align:center;
+  margin-top:3mm;font-optical-sizing:auto}
+.masthead .it{font-style:italic;font-weight:400;color:var(--clay)}
+
+/* woven divider */
+.weave{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:5mm;width:100%}
+.weave .ln{height:1px;background:var(--ink);opacity:.45;flex:1 1 auto;max-width:34mm}
+.weave .dia{font-family:var(--body);color:var(--clay);font-size:9px;letter-spacing:.1em}
+.weave .tx{font-family:var(--body);font-weight:600;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+
+/* arched plate (portal) */
+.plate{flex:1 1 auto;width:100%;margin-top:9mm;min-height:0;position:relative;
+  border-radius:999px 999px 7px 7px;overflow:hidden;
+  background-size:cover;background-position:center 28%;background-repeat:no-repeat;
+  box-shadow:0 16px 44px rgba(44,33,24,.28), 0 0 0 5px var(--sand), 0 0 0 6.5px rgba(177,74,43,.55)}
+
+/* caption */
+.caption{margin-top:8mm;width:100%;display:flex;justify-content:space-between;align-items:flex-end;gap:9mm}
+.caption .q{font-family:var(--serif);font-style:italic;font-weight:300;font-size:22px;line-height:1.3;letter-spacing:-.005em;max-width:124mm;color:var(--ink)}
+.caption .q b{font-style:normal;font-weight:500;color:var(--clay)}
+.caption .stamp{flex:0 0 auto;width:21mm;height:21mm;border-radius:50%;border:1.2px solid var(--sage);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--body);font-weight:600;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);line-height:1.5}
+
+/* footer */
+.foot{margin-top:auto;padding-top:7mm;width:100%;display:flex;align-items:flex-end;justify-content:space-between;gap:10mm}
+.foot .l .k{font-family:var(--body);font-weight:600;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--clay)}
+.foot .l .big{font-family:var(--serif);font-weight:400;font-style:italic;font-size:23px;line-height:1.1;margin-top:3mm;color:var(--ink)}
+.foot .l .url{font-family:var(--body);font-weight:500;font-size:12.5px;letter-spacing:.04em;color:var(--ink-2);margin-top:3mm}
+.foot .l .url b{color:var(--clay);font-weight:600}
+.qr-wrap{display:flex;align-items:center;gap:11px}
+.qr-wrap .sc{font-family:var(--body);font-weight:500;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);text-align:right;line-height:1.5;max-width:24mm}
+.qr-card{background:#fbf6ec;padding:7px;border-radius:3px;box-shadow:0 8px 22px rgba(44,33,24,.16);border:1px solid rgba(44,33,24,.08)}
+.qr-card img{width:25mm;height:25mm;display:block}
+
+@page{size:A4;margin:0}
+@media print{body{padding:0;gap:0;background:#fff}.label{display:none}.poster{box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="label">Studio North — Boho / Sacred Valley</div>
+
+<div class="poster ed">
+  <div class="grain"></div>
+
+  <svg class="sun" viewBox="0 0 100 100" aria-hidden="true">
+    <circle cx="50" cy="50" r="13"/>
+    <line x1="70" y1="50" x2="80" y2="50"/><line x1="67.3" y1="60" x2="74.6" y2="64.2"/>
+    <line x1="60" y1="67.3" x2="64.2" y2="74.6"/><line x1="50" y1="70" x2="50" y2="80"/>
+    <line x1="40" y1="67.3" x2="35.8" y2="74.6"/><line x1="32.7" y1="60" x2="25.4" y2="64.2"/>
+    <line x1="30" y1="50" x2="20" y2="50"/><line x1="32.7" y1="40" x2="25.4" y2="35.8"/>
+    <line x1="40" y1="32.7" x2="35.8" y2="25.4"/><line x1="50" y1="30" x2="50" y2="20"/>
+    <line x1="60" y1="32.7" x2="64.2" y2="25.4"/><line x1="67.3" y1="40" x2="74.6" y2="35.8"/>
+  </svg>
+
+  <h1 class="masthead">Studio <span class="it">North</span></h1>
+
+  <div class="weave">
+    <span class="ln"></span><span class="dia">◆ ◇ ◆</span>
+    <span class="tx">Pisac · Sacred Valley</span>
+    <span class="dia">◆ ◇ ◆</span><span class="ln"></span>
+  </div>
+
+  <div class="plate" style="background-image:url('photos/dancing.jpg')"></div>
+
+  <div class="caption">
+    <p class="q">Portraits &amp; stories carried on Andean light — the land, the people &amp; the slow magic of the <b>Sacred Valley</b>.</p>
+    <span class="stamp">Shot in<br>Pisac<br>Peru</span>
+  </div>
+
+  <div class="foot">
+    <div class="l">
+      <div class="k">✶ Book a sitting</div>
+      <div class="big">Studio North Photography</div>
+      <div class="url"><b>studio-north.uk</b> · message on WhatsApp</div>
+    </div>
+    <div class="qr-wrap">
+      <div class="sc">Scan to wander over</div>
+      <div class="qr-card"><img src="qr-en.svg" alt="WhatsApp QR — Studio North"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
