@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Studio North — Flyer 2: Point North</title>
+<!--
+  A4 flyer, portrait. Trim 210x297mm, bleed 3mm all edges -> page 216x303mm.
+  Concept: Saul Bass. One bold symbol (red upward arrow), extreme hierarchy, minimal copy.
+  Export: Chrome > Print > Save as PDF, margins None, scale 100%, Background graphics ON.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  @page { size: 216mm 303mm; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page {
+    width: 216mm; height: 303mm;
+    position: relative; overflow: hidden;
+    background: #141210; color: #f7f4ef;
+    font-family: 'Outfit', sans-serif;
+  }
+  .inner { position: absolute; inset: 17mm 16mm 15mm 16mm; z-index: 2; }
+
+  /* The symbol: a huge red arrow rising off the left third, tip aimed at the headline */
+  .arrow {
+    position: absolute; left: 24mm; bottom: -3mm;
+    width: 96mm; height: 210mm; z-index: 1;
+  }
+
+  .brand {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700; font-size: 15pt;
+  }
+  .brand .dot { color: #d63b1f; }
+  .tag {
+    margin-top: 1.5mm;
+    font-size: 8.5pt; font-weight: 500;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    color: #9a9490;
+  }
+
+  h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; font-size: 58pt; line-height: 1.0;
+    letter-spacing: -0.015em;
+    position: absolute; top: 30mm; left: 0;
+    max-width: 176mm;
+  }
+  h1 em { font-style: normal; color: #d63b1f; }
+
+  .sideline {
+    position: absolute; right: 0; top: 118mm;
+    width: 58mm;
+    font-size: 11.5pt; line-height: 1.6; color: #cfc9c2;
+    text-align: left;
+  }
+  .sideline strong { color: #f7f4ef; font-weight: 600; }
+
+  .from {
+    position: absolute; right: 0; top: 168mm;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700; font-size: 15pt; color: #f7f4ef;
+  }
+  .from span { color: #d63b1f; }
+
+  .cta {
+    position: absolute; right: 0; bottom: 0;
+    width: 94mm;
+    background: #d63b1f; color: #f7f4ef;
+    border-radius: 2.5mm;
+    padding: 8mm 9mm 8.5mm;
+  }
+  .cta h2 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700; font-size: 21pt;
+  }
+  .cta .contact { margin-top: 4mm; font-size: 11pt; line-height: 1.6; }
+  .cta .contact strong { font-weight: 600; font-size: 13pt; }
+
+  .foot {
+    position: absolute; left: 0; bottom: 2mm;
+    font-size: 9pt; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #9a9490; line-height: 2;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <svg class="arrow" viewBox="0 0 96 210" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M48,0 L96,58 L66,58 L66,210 L30,210 L30,58 L0,58 Z" fill="#d63b1f"/>
+  </svg>
+
+  <div class="inner">
+    <div class="brand">Studio North<span class="dot">.</span></div>
+    <div class="tag">Web design &middot; Leeds</div>
+
+    <h1>Point your business <em>north.</em></h1>
+
+    <div class="sideline">
+      <strong>Custom websites, built from scratch.</strong><br>
+      Fast to load, right on every phone, found on Google. No templates. No page builders.
+    </div>
+
+    <div class="from">Sites from <span>&pound;350</span></div>
+
+    <div class="foot">Designed<br>&amp; built<br>in Leeds</div>
+
+    <div class="cta">
+      <h2>Get a free quote</h2>
+      <div class="contact">
+        <strong>studio-north.uk</strong><br>
+        hello@studionorth.co.uk
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

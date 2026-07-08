@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Studio North — Flyer 1: Better Than a Template</title>
+<!--
+  A4 flyer, portrait. Trim 210x297mm, bleed 3mm all edges -> page 216x303mm.
+  Concept: Swiss clarity. Type-led hook, three-tier price anchor, red CTA terminal.
+  Export: Chrome > Print > Save as PDF, margins None, scale 100%, Background graphics ON.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  @page { size: 216mm 303mm; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page {
+    width: 216mm; height: 303mm;
+    position: relative; overflow: hidden;
+    background: #f7f4ef; color: #141210;
+    font-family: 'Outfit', sans-serif;
+  }
+  .inner { position: absolute; inset: 17mm 16mm 15mm 16mm; }
+
+  .brand {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700; font-size: 15pt;
+  }
+  .brand .dot { color: #d63b1f; }
+  .topline {
+    margin-top: 3mm; border-top: 0.4mm solid #141210;
+    padding-top: 2.5mm;
+    font-size: 8.5pt; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: #6b655f;
+    display: flex; justify-content: space-between;
+  }
+
+  h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700; font-size: 50pt; line-height: 1.04;
+    letter-spacing: -0.015em;
+    margin-top: 20mm; max-width: 170mm;
+  }
+  h1 .strike { position: relative; white-space: nowrap; }
+  h1 .strike::after {
+    content: ""; position: absolute; left: -1mm; right: -1mm; top: 54%;
+    height: 2.2mm; background: #d63b1f; transform: rotate(-2deg);
+  }
+  .sub {
+    margin-top: 8mm; font-size: 13pt; line-height: 1.55;
+    max-width: 128mm; color: #4a4642;
+  }
+
+  .tiers {
+    position: absolute; left: 0; right: 0; bottom: 58mm;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    border-top: 0.5mm solid #141210;
+  }
+  .tier { padding: 5mm 4mm 0 0; }
+  .tier + .tier { padding-left: 6mm; border-left: 0.3mm solid rgba(20,18,16,0.2); }
+  .tier .name {
+    font-size: 9.5pt; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    min-height: 9mm; /* keeps the three prices on one baseline when a name wraps */
+  }
+  .tier .name em { font-style: normal; color: #d63b1f; }
+  .tier .price {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700; font-size: 27pt; margin-top: 1.5mm;
+  }
+  .tier .who { margin-top: 1.5mm; font-size: 9.5pt; line-height: 1.4; color: #6b655f; }
+
+  .note {
+    position: absolute; left: 0; bottom: 8mm;
+    font-size: 9.5pt; line-height: 1.6; color: #6b655f; width: 74mm;
+  }
+
+  .cta {
+    position: absolute; right: 0; bottom: 0;
+    width: 96mm;
+    background: #d63b1f; color: #f7f4ef;
+    border-radius: 2.5mm;
+    padding: 8mm 9mm 8.5mm;
+  }
+  .cta h2 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700; font-size: 21pt; line-height: 1.1;
+  }
+  .cta .contact { margin-top: 4mm; font-size: 11pt; line-height: 1.6; }
+  .cta .contact strong { font-weight: 600; font-size: 13pt; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="inner">
+    <div class="brand">Studio North<span class="dot">.</span></div>
+    <div class="topline">
+      <span>Web design, built from scratch</span>
+      <span>Leeds, West Yorkshire</span>
+    </div>
+
+    <h1>Your business deserves better than <span class="strike">a template</span>.</h1>
+
+    <p class="sub">We design and build fast, mobile-first websites for Leeds businesses &mdash; from scratch, to your brief. No page builders, no shortcuts, no monthly platform ransom.</p>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="name">Starter</div>
+        <div class="price">&pound;350</div>
+        <div class="who">Personal sites &amp; simple landing pages</div>
+      </div>
+      <div class="tier">
+        <div class="name">Standard <em>&mdash; most popular</em></div>
+        <div class="price">&pound;600</div>
+        <div class="who">Small businesses, freelancers &amp; coaches</div>
+      </div>
+      <div class="tier">
+        <div class="name">Premium</div>
+        <div class="price">&pound;950</div>
+        <div class="who">Businesses wanting a strong online presence</div>
+      </div>
+    </div>
+
+    <p class="note">One-off price. Designed, built and launched for you &mdash; you own the site outright.</p>
+
+    <div class="cta">
+      <h2>Get a free quote</h2>
+      <div class="contact">
+        <strong>studio-north.uk</strong><br>
+        hello@studionorth.co.uk
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
