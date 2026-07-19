@@ -14,6 +14,7 @@ const sites = [
   { url: 'https://ashdabash2926.github.io/solace-massage/', file: 'solace' },
   { url: 'https://ashdabash2926.github.io/travel-portfolio/', file: 'wanderlens' },
   { url: 'https://ashdabash2926.github.io/Munay2/', file: 'munay2' },
+  { url: 'https://megustaspanish.com/', file: 'migusta-school' },
 ];
 
 (async () => {
