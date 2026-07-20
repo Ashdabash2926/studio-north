@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio North — Essence Package Poster (A4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f4ef; --paper-2:#efe9e0;
+  --ink:#141210; --ink-2:#4a4642; --ink-3:#8c857d;
+  --red:#d63b1f; --red-deep:#b32e15;
+  --tile:#1a1714;
+  --line:rgba(20,18,16,.12);
+  --disp:'Bricolage Grotesque',sans-serif;
+  --body:'Outfit',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfc9bf}
+body{font-family:var(--body);padding:40px 0;display:flex;flex-direction:column;align-items:center;gap:30px;-webkit-font-smoothing:antialiased}
+.label{font-family:var(--disp);font-weight:700;color:#5b554e;text-transform:uppercase;letter-spacing:.14em;font-size:13px;text-align:center}
+.label span{color:var(--red)}
+
+/* ════ A4 FRAME ════ */
+.poster{
+  width:210mm;height:297mm;position:relative;overflow:hidden;
+  background:var(--paper);color:var(--ink);
+  box-shadow:0 30px 80px rgba(0,0,0,.30);
+  display:flex;flex-direction:column;
+  padding:12mm 13mm 11mm;
+}
+.grain{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.06;z-index:8;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.tick{position:absolute;width:7mm;height:7mm;z-index:9;opacity:.5}
+.tick::before,.tick::after{content:"";position:absolute;background:var(--ink)}
+.tick::before{width:100%;height:1px;top:50%}
+.tick::after{height:100%;width:1px;left:50%}
+.tick.tl{top:6mm;left:6mm}.tick.tr{top:6mm;right:6mm}
+.tick.bl{bottom:6mm;left:6mm}.tick.br{bottom:6mm;right:6mm}
+
+/* shared atoms */
+.brand{font-family:var(--disp);font-weight:800;font-size:21px;letter-spacing:.02em;text-transform:uppercase;display:inline-flex;align-items:center;gap:9px;line-height:1}
+.brand .dot{width:9px;height:9px;background:var(--red);border-radius:50%;transform:translateY(1px)}
+.eyebrow{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:var(--ink-2);line-height:1.75;text-align:right}
+.eyebrow i{font-style:normal;color:var(--red)}
+.kicker{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:10.5px;color:var(--ink-3);display:flex;align-items:center;gap:8px}
+.kicker::before{content:"";width:16px;height:2px;background:var(--red);border-radius:2px}
+
+/* ════ HEAD ════ */
+.head{display:flex;justify-content:space-between;align-items:flex-start;flex:0 0 auto}
+
+/* ════ HEADLINE ════ */
+.hgroup{margin-top:9mm;flex:0 0 auto}
+.hgroup h1{font-family:var(--disp);font-weight:800;font-size:71px;line-height:.92;letter-spacing:-.038em;margin-top:4.5mm}
+.hgroup h1 .red{color:var(--red)}
+.hgroup .lede{margin-top:5mm;font-size:15.5px;line-height:1.52;color:var(--ink-2);max-width:138mm}
+.hgroup .lede b{color:var(--ink);font-weight:600}
+
+/* ════ STAGE — print → browser ════ */
+.stage{position:relative;flex:1 1 auto;min-height:0;margin-top:8mm}
+
+/* the raw print, tucked behind */
+.print{position:absolute;left:0;top:7mm;bottom:9mm;width:74mm;z-index:1;
+  background:#fff;padding:5mm 5mm 12mm;border-radius:3px;
+  transform:rotate(-3.2deg);transform-origin:50% 100%;
+  box-shadow:0 14px 34px rgba(20,18,16,.26), 0 2px 8px rgba(20,18,16,.14)}
+.print .ph{position:absolute;inset:5mm 5mm 12mm;background-size:cover;background-position:center 30%;background-repeat:no-repeat}
+.print .plabel{position:absolute;left:5mm;right:5mm;bottom:3.5mm;display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--disp);font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.print .plabel i{font-style:normal;color:var(--ink-3)}
+
+/* the browser window, front */
+.browser{position:absolute;right:0;top:0;bottom:0;width:122mm;z-index:2;
+  border-radius:9px;overflow:hidden;background:var(--tile);
+  box-shadow:0 22px 55px rgba(20,18,16,.34), inset 0 0 0 1px rgba(255,255,255,.06);
+  display:flex;flex-direction:column}
+.cbar{flex:0 0 auto;height:9.5mm;background:#26211c;display:flex;align-items:center;gap:4mm;padding:0 5mm}
+.cbar .dots{display:flex;gap:5px}
+.cbar .dots span{width:8px;height:8px;border-radius:50%}
+.cbar .dots span:nth-child(1){background:#e05c48}
+.cbar .dots span:nth-child(2){background:#d8a33c}
+.cbar .dots span:nth-child(3){background:#7fae64}
+.cbar .url{flex:1 1 auto;height:5.5mm;border-radius:999px;background:rgba(255,255,255,.09);
+  display:flex;align-items:center;padding:0 4mm;font-family:var(--disp);font-weight:600;font-size:10.5px;
+  letter-spacing:.05em;color:rgba(255,255,255,.72)}
+.view{flex:1 1 auto;min-height:0;position:relative;color:#fff;
+  background-size:cover;background-position:center 38%;background-repeat:no-repeat}
+.view::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(10,9,8,.5) 0%, rgba(10,9,8,.06) 30%, rgba(10,9,8,.1) 55%, rgba(10,9,8,.82) 100%)}
+.site-nav{position:absolute;top:5.5mm;left:6.5mm;right:6.5mm;z-index:2;display:flex;justify-content:space-between;align-items:center;
+  text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.site-nav .slogo{font-family:var(--disp);font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.site-nav .slinks{font-family:var(--disp);font-weight:600;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.site-hero{position:absolute;left:6.5mm;right:6.5mm;bottom:6mm;z-index:2}
+.site-hero .sk{font-family:var(--disp);font-weight:700;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.site-hero h2{font-family:var(--disp);font-weight:800;font-size:31px;line-height:.98;letter-spacing:-.025em;margin-top:2.5mm;
+  text-shadow:0 2px 18px rgba(0,0,0,.4)}
+.site-hero .sbtn{display:inline-block;margin-top:4mm;font-family:var(--disp);font-weight:700;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--red);padding:6px 14px;border-radius:999px;
+  box-shadow:0 8px 20px rgba(179,46,21,.4)}
+.chip{position:absolute;z-index:3;font-family:var(--disp);font-weight:700;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:#fff;padding:5px 11px;border-radius:999px;
+  background:rgba(20,18,16,.55);border:1px solid rgba(255,255,255,.28)}
+.browser .chip{bottom:5.5mm;right:5mm}
+
+/* hand-drawn arrow between the two */
+.arrow{position:absolute;left:35mm;bottom:0;z-index:3;width:26mm;height:14mm}
+.arrow svg{width:100%;height:100%;display:block}
+
+/* ════ BOTTOM ════ */
+.bottom{flex:0 0 auto;margin-top:8mm;display:grid;grid-template-columns:1fr 84mm;gap:9mm;align-items:stretch}
+.points{display:flex;flex-direction:column;gap:3.6mm;padding-top:1mm}
+.points div{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;line-height:1.35;color:var(--ink-2);font-weight:500}
+.points div::before{content:"";width:6px;height:6px;background:var(--red);border-radius:50%;flex:0 0 auto;margin-top:6px}
+.points div b{color:var(--ink);font-weight:600}
+.price{margin-top:5mm;display:flex;align-items:flex-end;gap:4mm;font-family:var(--disp)}
+.price .from{font-weight:700;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);padding-bottom:2mm}
+.price .big{font-weight:800;font-size:44px;line-height:.82;letter-spacing:-.02em;display:inline-flex;align-items:flex-start;gap:5px}
+.price .big .cur{color:var(--red);font-size:25px;font-weight:700;margin-top:4px}
+.price .big .ghost{display:inline-block;width:48px;height:30px;border:2px dashed var(--ink-3);border-radius:6px;opacity:.5}
+
+.cta-panel{border-radius:13px;background:linear-gradient(160deg, var(--red) 0%, var(--red-deep) 100%);color:#fff;
+  padding:7mm 7mm;display:flex;align-items:center;gap:6mm;
+  box-shadow:0 16px 40px rgba(179,46,21,.35)}
+.cta-panel .txt{flex:1 1 auto}
+.cta-panel .txt .big{font-family:var(--disp);font-weight:800;font-size:23px;letter-spacing:-.015em;line-height:1}
+.cta-panel .txt .sub{margin-top:3mm;font-size:11.5px;line-height:1.45;color:rgba(255,255,255,.88);font-weight:500}
+.qr-card{flex:0 0 auto;background:#fff;border-radius:11px;padding:8px;
+  box-shadow:0 10px 26px rgba(90,15,4,.35)}
+.qr-card img{width:26mm;height:26mm;display:block}
+
+/* ════ FOOT ════ */
+.foot{flex:0 0 auto;margin-top:6mm;border-top:1px solid var(--line);padding-top:4.5mm;
+  display:flex;justify-content:space-between;align-items:center}
+.foot .l{font-size:12px;color:var(--ink-2)}
+.foot .l b{font-family:var(--disp);font-weight:700;color:var(--ink)}
+.foot .url{font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:-.01em;color:var(--ink)}
+.foot .url .red{color:var(--red)}
+
+@page{size:A4;margin:0}
+@media print{
+  body{padding:0;gap:0;background:#fff}
+  .label{display:none}
+  .poster{box-shadow:none}
+}
+</style>
+</head>
+<body>
+
+<div class="label">Studio North — <span>Essence package (shoot → website)</span></div>
+
+<div class="poster es">
+  <div class="grain"></div>
+  <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+
+  <!-- ───── HEAD ───── -->
+  <div class="head">
+    <div class="brand"><span class="dot"></span>Studio North</div>
+    <div class="eyebrow">Pisac based<br>Photography <i>·</i> Websites</div>
+  </div>
+
+  <!-- ───── HEADLINE ───── -->
+  <div class="hgroup">
+    <div class="kicker">The essence package</div>
+    <h1>One shoot.<br>One website<span class="red">.</span></h1>
+    <p class="lede"><b>We photograph the essence of what you do</b>: the hands, the space, the detail. Then we design and build your website around those photographs. Not a template with your logo on it. A site that could only be yours.</p>
+  </div>
+
+  <!-- ───── STAGE: the same photo, twice ───── -->
+  <div class="stage">
+    <div class="print">
+      <div class="ph" style="background-image:url('photos/barista.jpg')"></div>
+      <div class="plabel"><span>01 · The shoot</span></div>
+    </div>
+
+    <div class="browser">
+      <div class="cbar">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div class="url">yourbusiness.com</div>
+      </div>
+      <div class="view" style="background-image:url('photos/barista.jpg')">
+        <div class="site-nav">
+          <span class="slogo">Café Alma</span>
+          <span class="slinks">Menu &nbsp;·&nbsp; Story &nbsp;·&nbsp; Visit</span>
+        </div>
+        <div class="site-hero">
+          <div class="sk">Roasted in the Sacred Valley</div>
+          <h2>Coffee with<br>a story.</h2>
+          <span class="sbtn">Reserve a table</span>
+        </div>
+      </div>
+      <span class="chip">02 · The website</span>
+    </div>
+
+    <div class="arrow">
+      <svg viewBox="0 0 120 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 14 C 34 52, 74 56, 104 34" stroke="#141210" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M92 30 L 106 32.5 L 97 44" stroke="#141210" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ───── BOTTOM ───── -->
+  <div class="bottom">
+    <div class="left">
+      <div class="points">
+        <div><span>An <b>essence shoot</b> on location: your space, your craft, your people</span></div>
+        <div><span>A website <b>designed from your photographs</b>, no templates, no stock</span></div>
+        <div><span><b>Live, hosted and handled</b> by one studio, start to finish</span></div>
+      </div>
+      <div class="price">
+        <span class="big"><span class="cur">£</span><span class="ghost"></span></span>
+        <span class="from">The package<br>shoot + site</span>
+      </div>
+    </div>
+
+    <div class="cta-panel">
+      <div class="txt">
+        <div class="big">Start yours</div>
+        <div class="sub">Scan to WhatsApp us<br>and tell us what you do.</div>
+      </div>
+      <div class="qr-card"><img src="qr-en.svg" alt="WhatsApp QR — Studio North"></div>
+    </div>
+  </div>
+
+  <!-- ───── FOOT ───── -->
+  <div class="foot">
+    <div class="l"><b>Studio North</b> · Pisac · Sacred Valley</div>
+    <div class="url">studio-north<span class="red">.uk</span></div>
+  </div>
+</div>
+
+</body>
+</html>

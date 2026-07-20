@@ -28,6 +28,9 @@ Three print-ready A4 poster variants advertising **website + photography package
 | `studio-north-photography-2b-hero-split.svg` | **Named, layered** Illustrator version (built by `build-svg.mjs`) |
 | `render-hero-split-a5.mjs` | Renders the **A5** (148.5×210mm) hero-split — PNG (1748×2480), vector PDF, named SVG |
 | `studio-north-photography-2b-hero-split-a5.{png,pdf,svg}` | A5 hero-split (print + Illustrator) |
+| `poster-essence.html` | **Essence package** poster — "One shoot. One website." Combined offer: essence shoot + a website built from the photographs. Print card → browser-mockup visual (same photo in both), red WhatsApp CTA panel |
+| `render-essence.mjs` | Renders it to a 300 DPI PNG, A4 PDF, and a web preview |
+| `studio-north-essence-package.{png,pdf}` | Print-ready essence-package poster |
 | `social-wa-hero.html` | **WhatsApp share** (4:5, 1080×1350) — hero on top, "Book on WhatsApp" link instead of a QR |
 | `social-wa-split.html` | **WhatsApp share — vertical-image split** (4:5) — full-height photo left, content + book link right |
 | `render-wa.mjs` | Renders both WhatsApp images to 2160×2700 PNGs (`node render-wa.mjs split` for just one) |
